@@ -1,1 +1,3 @@
-# SimpleNetworkSimulator
+# Simple Network Simulator
+
+Este proyecto consiste en un simulador...
