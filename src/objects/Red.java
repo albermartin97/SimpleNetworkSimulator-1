@@ -88,7 +88,7 @@ public class Red implements Serializable {
      */
     public List<Event> sendPackages(BigDecimal time) {
         List<Event> eventos = new ArrayList<>();
-        ArrayList<NodeState> queueStates = new ArrayList<>();
+        //ArrayList<NodeState> queueStates = new ArrayList<>();
         queueStates.addAll(getRandomConfig(time));
         queueStates.addAll(getFirstPackageToSend());
         List<Vertex<Node>> listHost = getHosts(queueStates);
@@ -642,21 +642,21 @@ public class Red implements Serializable {
                     p.setArriveTime(p.getTime());
                     c.updateTimeQueue(p.getTime());
                     String menssageTransmision = h1.getElement().getName()
-                            + " A TRANSMITIDO EL PAQUETE " + p.getId()
+                            + " Ha transmitido el Paquete " + p.getId()
                             + " al cable " + nextEdge.getElement().getIp()
-                            + " EN = " + timeTransmision + " s";
+                            + " en = " + timeTransmision + " s";
                     Event eTransmision = new Event(p.getTime(),
-                            menssageTransmision, h1.getElement());
+                            menssageTransmision, h1.getElement(),nextNode.getElement(),nextEdge.getElement(),timeTransmision);
 
                     // Se configura el evento que ha generado el envio por el
                     // cable
                     BigDecimal timeTransport = nextEdge.getElement().getDistance().divide(velocidadCable, 5, RoundingMode.HALF_UP);
                     p.setTime(p.getTime().add(timeTransport));
                     p.setArriveTime(p.getTime());
-                    String menssageTransport = "Paquete " + p.getId()
-                            + " -- HA LLEGADO DESDE "
-                            + h1.getElement().getName() + " HASTA "
-                            + nextNode.getElement().getName() + " = "
+                    String menssageTransport = "El Paquete " + p.getId()
+                            + " ha llegado desde "
+                            + h1.getElement().getName() + " hasta "
+                            + nextNode.getElement().getName() + " en = "
                             + timeTransport;
 
                     // Se a�ade a la cola del siguiente nodo
@@ -665,12 +665,12 @@ public class Red implements Serializable {
                     // Se crean los estados
                     List<State> states = new ArrayList<>();
                     State state1 = new State(eTransmision, new Event(
-                            p.getTime(), menssageTransport, h1.getElement()), nextNode);
+                            p.getTime(), menssageTransport, h1.getElement(),nextNode.getElement(),nextEdge.getElement(),timeTransport), nextNode);
                     states.add(state1);
                     if (!c.getQueuePackages().isEmpty()) {
                         State state2 = new State(new Event(c.getQueuePackages()
-                                .peek().getTime(), null, h1.getElement()), new Event(c
-                                .getQueuePackages().peek().getTime(), null, h1.getElement()), h1);
+                                .peek().getTime(), null, h1.getElement(),nextNode.getElement(),nextEdge.getElement(),null), new Event(c
+                                .getQueuePackages().peek().getTime(), null, h1.getElement(),nextNode.getElement(),nextEdge.getElement(),null), h1);
                         states.add(state2);
                     }
 
@@ -703,18 +703,18 @@ public class Red implements Serializable {
                 p.setArriveTime(p.getTime());
                 r.updateTimeQueue(p.getTime());
                 String menssageTransmision = h1.getElement().getName()
-                        + " A TRANSMITIDO EL PAQUETE " + p.getId()
-                        + " al cable " + linker.getElement().getIp() + " EN = "
+                        + " Ha transmitido el Paquete " + p.getId()
+                        + " al cable " + linker.getElement().getIp() + " en = "
                         + timeTransmision + " s";
-                Event eTransmision = new Event(p.getTime(), menssageTransmision, h1.getElement());
+                Event eTransmision = new Event(p.getTime(), menssageTransmision, h1.getElement(),nextNode.getElement(),linker.getElement(),timeTransmision);
 
                 // Se configura el evento de transporte por el cable
                 BigDecimal timeTransport = linker.getElement().getDistance().divide(velocidadCable, 5, RoundingMode.HALF_UP);
                 p.setTime(p.getTime().add(timeTransport));
                 p.setArriveTime(p.getTime());
-                String menssageTransport = "Paquete " + p.getId()
-                        + " -- HA LLEGADO DESDE " + h1.getElement().getName()
-                        + " HASTA " + nextNode.getElement().getName() + " = "
+                String menssageTransport = "El Paquete " + p.getId()
+                        + " ha llegado desde " + h1.getElement().getName()
+                        + " hasta " + nextNode.getElement().getName() + " en = "
                         + timeTransport;
 
                 // Se mueve el paquete a la siguiente cola
@@ -723,12 +723,12 @@ public class Red implements Serializable {
                 // Se guardan los estados
                 List<State> states = new ArrayList<>();
                 State state1 = new State(eTransmision, new Event(p.getTime(),
-                        menssageTransport, h1.getElement()), nextNode);
+                        menssageTransport, h1.getElement(),nextNode.getElement(),linker.getElement(),timeTransport), nextNode);
                 states.add(state1);
                 if (!r.getQueuePackages().isEmpty()) {
                     State state2 = new State(new Event(r.getQueuePackages()
-                            .peek().getTime(), null, h1.getElement()), new Event(r
-                            .getQueuePackages().peek().getTime(), null, h1.getElement()), h1);
+                            .peek().getTime(), null, h1.getElement(),nextNode.getElement(),linker.getElement(),null), new Event(r
+                            .getQueuePackages().peek().getTime(), null, h1.getElement(),nextNode.getElement(),linker.getElement(),null), h1);
                     states.add(state2);
                 }
 
@@ -736,10 +736,10 @@ public class Red implements Serializable {
                 return states;
             }
         } else {
-            String mensaje = "PAQUETE " + p.getId() + " ENVIADO";
+            String mensaje = "El Paquete " + p.getId() + " ha sido enviado";
             List<State> states = new ArrayList<>();
-            State state = new State(new Event(p.getTime(), mensaje, h1.getElement()), new Event(
-                    p.getTime(), mensaje, h1.getElement()), null);
+            State state = new State(new Event(p.getTime(), mensaje, h1.getElement(),null,null,null), new Event(
+                    p.getTime(), mensaje, h1.getElement(),null,null,null), null);
             states.add(state);
             return states;
         }

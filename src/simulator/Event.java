@@ -2,22 +2,30 @@ package simulator;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
+import objects.Linker;
 import objects.Node;
 
 public class Event implements Comparator<Event> {
 
     private BigDecimal time;
     private String mensaje;
-    private Node host;
+    private Node hostOrigen;
+    private Node hostDestino;
+    private Linker linker;
+    private BigDecimal instant;
+    
 
     public Event() {
 
     }
 
-    public Event(BigDecimal time, String mensaje, Node host) {
+    public Event(BigDecimal time, String mensaje, Node hostOrigen, Node hostDestino, Linker linker, BigDecimal instant) {
         this.time = time;
         this.mensaje = mensaje;
-        this.host = host;
+        this.hostOrigen = hostOrigen;
+        this.hostDestino = hostDestino;
+        this.linker = linker;
+        this.instant = instant;
     }
 
     //GETTERS AND SETTERS
@@ -36,14 +44,39 @@ public class Event implements Comparator<Event> {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-    
-    public Node getHost() {
-        return host;
+
+    public Node getHostOrigen() {
+        return hostOrigen;
     }
 
-    public void setHost(Node h) {
-        this.host = h;
+    public void setHostOrigen(Node hostOrigen) {
+        this.hostOrigen = hostOrigen;
     }
+
+    public Node getHostDestino() {
+        return hostDestino;
+    }
+
+    public void setHostDestino(Node hostDestino) {
+        this.hostDestino = hostDestino;
+    }
+
+    public Linker getLinker() {
+        return linker;
+    }
+
+    public void setLinker(Linker linker) {
+        this.linker = linker;
+    }
+
+    public BigDecimal getInstant() {
+        return instant;
+    }
+
+    public void setInstant(BigDecimal instant) {
+        this.instant = instant;
+    }
+    
     @Override
     public int compare(Event e1, Event e2) {
         return e1.getTime().compareTo(e2.getTime());

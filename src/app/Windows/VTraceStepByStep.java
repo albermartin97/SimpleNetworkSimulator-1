@@ -36,7 +36,7 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         this.eventos = new ArrayList<>();
         this.contRow = 0;
         initComponents();
-        btnPlayUntil.setEnabled(false);
+        //btnPlayUntil.setEnabled(false);
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }
@@ -45,14 +45,16 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         this.eventos = new ArrayList<>();
         this.contRow = 0;
         initComponents();
-        btnPlayUntil.setEnabled(false);
+        //btnPlayUntil.setEnabled(false);
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
         DefaultTableModel model = (DefaultTableModel) jTEvents.getModel();
         for(Event e : eventos){
-            model.addRow(new Object[]{e.getTime(),e.getMensaje()});
+            model.addRow(new Object[]{e.getTime(),e.getHostOrigen().getName(),e.getHostDestino().getName(),e.getLinker().getIp(),e.getInstant(),e.getMensaje()});
         }
         this.btnNextTrace.setVisible(false);
+        this.btnPlayUntil.setVisible(false);
+        this.txtTime.setVisible(false);
         jTEvents.updateUI();
     }
     /**
@@ -80,14 +82,14 @@ public class VTraceStepByStep extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tiempo", "Eventos"
+                "Instante", "Origen", "Destino", "Enlace", "Tiempo", "Mensaje"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -101,8 +103,13 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         jTEvents.getColumnModel().getColumn(0).setPreferredWidth(10);
         jScrollPane1.setViewportView(jTEvents);
         if (jTEvents.getColumnModel().getColumnCount() > 0) {
-            jTEvents.getColumnModel().getColumn(0).setResizable(false);
-            jTEvents.getColumnModel().getColumn(1).setResizable(false);
+            jTEvents.getColumnModel().getColumn(0).setPreferredWidth(3);
+            jTEvents.getColumnModel().getColumn(1).setPreferredWidth(3);
+            jTEvents.getColumnModel().getColumn(2).setPreferredWidth(3);
+            jTEvents.getColumnModel().getColumn(3).setPreferredWidth(3);
+            jTEvents.getColumnModel().getColumn(4).setPreferredWidth(7);
+            jTEvents.getColumnModel().getColumn(5).setResizable(false);
+            jTEvents.getColumnModel().getColumn(5).setPreferredWidth(10);
         }
 
         javax.swing.GroupLayout jTableTraceLayout = new javax.swing.GroupLayout(jTableTrace);
@@ -155,12 +162,7 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         });
         jToolBarTrace.add(btnPlayUntil);
 
-        txtTime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTimeActionPerformed(evt);
-            }
-        });
-        jToolBarTrace.add(txtTime);
+        txtTime.setText("jTextField1");
 
         javax.swing.GroupLayout jTraceLayout = new javax.swing.GroupLayout(jTrace);
         jTrace.setLayout(jTraceLayout);
@@ -172,7 +174,9 @@ public class VTraceStepByStep extends javax.swing.JFrame {
                     .addComponent(jTableTrace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTraceLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jToolBarTrace, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToolBarTrace, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -180,8 +184,13 @@ public class VTraceStepByStep extends javax.swing.JFrame {
             jTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTraceLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToolBarTrace, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jTraceLayout.createSequentialGroup()
+                        .addComponent(jToolBarTrace, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTraceLayout.createSequentialGroup()
+                        .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)))
                 .addComponent(jTableTrace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -208,7 +217,7 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         if(!eventos.isEmpty()){
             Event e = eventos.remove(0);
             DefaultTableModel model = (DefaultTableModel) jTEvents.getModel();
-            model.addRow(new Object[]{e.getTime(),e.getMensaje()});
+            model.addRow(new Object[]{e.getTime(),e.getHostOrigen().getName(),e.getHostDestino().getName(),e.getLinker().getIp(),e.getInstant(),e.getMensaje()});
             jTEvents.updateUI();
         }else
             btnNextTrace.setEnabled(false);
@@ -216,15 +225,14 @@ public class VTraceStepByStep extends javax.swing.JFrame {
 
     private void btnPlayUntilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayUntilActionPerformed
         BigDecimal time = new BigDecimal(txtTime.getText());
+        DefaultTableModel model = (DefaultTableModel) jTEvents.getModel();
+        if(model.getRowCount() > 0)
+            time = time.add(new BigDecimal(model.getValueAt(model.getRowCount()-1,0).toString()));
         List<Event> ev = this.si.getSimulator().play(time);
+        for(Event e : ev){
+            model.addRow(new Object[]{e.getTime(),e.getHostOrigen().getName(),e.getHostDestino().getName(),e.getLinker().getIp(),e.getInstant(),e.getMensaje()});
+        }
     }//GEN-LAST:event_btnPlayUntilActionPerformed
-
-    private void txtTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimeActionPerformed
-        if(txtTime.getText() != null && txtTime.getText() != ""){
-            btnPlayUntil.setEnabled(true);
-        }else
-            btnPlayUntil.setEnabled(false);
-    }//GEN-LAST:event_txtTimeActionPerformed
 
     /**
      * @param args the command line arguments
