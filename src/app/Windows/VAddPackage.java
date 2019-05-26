@@ -70,28 +70,29 @@ public class VAddPackage extends javax.swing.JFrame {
         btnCancelarPackage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Configuracion del Paquete");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
+        setTitle(bundle.getString("VAddPackage.title")); // NOI18N
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
         lblConfPackage.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblConfPackage.setText("Configuracion del Paquete");
+        lblConfPackage.setText(bundle.getString("VAddPackage.lblConfPackage.text")); // NOI18N
 
-        lblKb.setText("Kb");
+        lblKb.setText(bundle.getString("VAddPackage.lblKb.text")); // NOI18N
 
-        lblTamañoPackage.setText("Tamaño del Paquete");
+        lblTamañoPackage.setText(bundle.getString("VAddPackage.lblTamañoPackage.text")); // NOI18N
 
-        lblDestinoPackage.setText("Destino del Paquete");
+        lblDestinoPackage.setText(bundle.getString("VAddPackage.lblDestinoPackage.text")); // NOI18N
 
-        btnAceptarPackage.setText("Aceptar");
+        btnAceptarPackage.setText(bundle.getString("VAddPackage.btnAceptarPackage.text")); // NOI18N
         btnAceptarPackage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarPackageActionPerformed(evt);
             }
         });
 
-        btnCancelarPackage.setText("Cancelar");
+        btnCancelarPackage.setText(bundle.getString("VAddPackage.btnCancelarPackage.text")); // NOI18N
         btnCancelarPackage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarPackageActionPerformed(evt);

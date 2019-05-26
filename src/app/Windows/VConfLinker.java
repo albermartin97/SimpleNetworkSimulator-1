@@ -58,40 +58,41 @@ public class VConfLinker extends javax.swing.JFrame {
         lblNameLinker = new javax.swing.JLabel();
         txtNameLinker = new javax.swing.JTextField();
 
-        jLabel1.setText("jLabel1");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
+        jLabel1.setText(bundle.getString("VConfLinker.jLabel1.text")); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Configuracion del Enlace");
+        setTitle(bundle.getString("VConfLinker.title")); // NOI18N
         setResizable(false);
 
         lblConfLinker.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblConfLinker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblConfLinker.setText("Configuracion del Enlace");
+        lblConfLinker.setText(bundle.getString("VConfLinker.lblConfLinker.text")); // NOI18N
 
-        lblSpeedLinker.setText("Velocidad del Enlace");
+        lblSpeedLinker.setText(bundle.getString("VConfLinker.lblSpeedLinker.text")); // NOI18N
 
-        lblSizeLinker.setText("Distancia del Enlace");
+        lblSizeLinker.setText(bundle.getString("VConfLinker.lblSizeLinker.text")); // NOI18N
 
-        lblBSConfLinker.setText("b/s");
+        lblBSConfLinker.setText(bundle.getString("VConfLinker.lblBSConfLinker.text")); // NOI18N
 
-        lblMConfLinker.setText("m");
-        lblMConfLinker.setToolTipText("");
+        lblMConfLinker.setText(bundle.getString("VConfLinker.lblMConfLinker.text")); // NOI18N
+        lblMConfLinker.setToolTipText(bundle.getString("VConfLinker.lblMConfLinker.toolTipText")); // NOI18N
 
-        btnAceptarConfLinker.setText("Aceptar");
+        btnAceptarConfLinker.setText(bundle.getString("VConfLinker.btnAceptarConfLinker.text")); // NOI18N
         btnAceptarConfLinker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarConfLinkerActionPerformed(evt);
             }
         });
 
-        btnCancelarConfLinker.setText("Cancelar");
+        btnCancelarConfLinker.setText(bundle.getString("VConfLinker.btnCancelarConfLinker.text")); // NOI18N
         btnCancelarConfLinker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarConfLinkerActionPerformed(evt);
             }
         });
 
-        lblNameLinker.setText("Nombre del Enlace");
+        lblNameLinker.setText(bundle.getString("VConfLinker.lblNameLinker.text")); // NOI18N
 
         javax.swing.GroupLayout jConfLinkerLayout = new javax.swing.GroupLayout(jConfLinker);
         jConfLinker.setLayout(jConfLinkerLayout);
@@ -102,7 +103,7 @@ public class VConfLinker extends javax.swing.JFrame {
                 .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jConfLinkerLayout.createSequentialGroup()
                         .addComponent(lblSizeLinker)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addComponent(txtSizeLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jConfLinkerLayout.createSequentialGroup()
                         .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

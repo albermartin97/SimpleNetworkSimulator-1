@@ -65,23 +65,24 @@ public class VConfRouter extends javax.swing.JFrame {
         btnAceptarConfRouter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Configuracion del Router");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
+        setTitle(bundle.getString("VConfRouter.title")); // NOI18N
         setResizable(false);
 
         lblConfRouter.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblConfRouter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblConfRouter.setText("Configuracion del Router");
+        lblConfRouter.setText(bundle.getString("VConfRouter.lblConfRouter.text")); // NOI18N
 
-        lblNameRouter.setText("Nombre del Router");
+        lblNameRouter.setText(bundle.getString("VConfRouter.lblNameRouter.text")); // NOI18N
 
-        btnCancelarConfRouter.setText("Cancelar");
+        btnCancelarConfRouter.setText(bundle.getString("VConfRouter.btnCancelarConfRouter.text")); // NOI18N
         btnCancelarConfRouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarConfRouterActionPerformed(evt);
             }
         });
 
-        btnAceptarConfRouter.setText("Aceptar");
+        btnAceptarConfRouter.setText(bundle.getString("VConfRouter.btnAceptarConfRouter.text")); // NOI18N
         btnAceptarConfRouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarConfRouterActionPerformed(evt);

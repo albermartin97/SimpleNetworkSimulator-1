@@ -92,7 +92,8 @@ public class VEnrutamiento extends javax.swing.JFrame {
 
         lblConfTablaEnrutamiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblConfTablaEnrutamiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblConfTablaEnrutamiento.setText("Configurar Tabla de Enrutamiento");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
+        lblConfTablaEnrutamiento.setText(bundle.getString("VEnrutamiento.lblConfTablaEnrutamiento.text")); // NOI18N
 
         tbRun.setFloatable(false);
         tbRun.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -111,7 +112,7 @@ public class VEnrutamiento extends javax.swing.JFrame {
         tbRun.add(btnStart);
 
         btnStartToFinish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconStartToFinish2.png"))); // NOI18N
-        btnStartToFinish.setToolTipText("");
+        btnStartToFinish.setToolTipText(bundle.getString("VEnrutamiento.btnStartToFinish.toolTipText")); // NOI18N
         btnStartToFinish.setFocusable(false);
         btnStartToFinish.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStartToFinish.setMargin(new java.awt.Insets(20, 14, 20, 14));
@@ -124,7 +125,7 @@ public class VEnrutamiento extends javax.swing.JFrame {
         tbRun.add(btnStartToFinish);
 
         btnEnrutadoAutomatico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/routingIcon.png"))); // NOI18N
-        btnEnrutadoAutomatico.setToolTipText("");
+        btnEnrutadoAutomatico.setToolTipText(bundle.getString("VEnrutamiento.btnEnrutadoAutomatico.toolTipText")); // NOI18N
         btnEnrutadoAutomatico.setFocusable(false);
         btnEnrutadoAutomatico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEnrutadoAutomatico.setMargin(new java.awt.Insets(20, 14, 20, 14));

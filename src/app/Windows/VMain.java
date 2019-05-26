@@ -103,7 +103,8 @@ public class VMain extends javax.swing.JFrame {
         btnNewRouter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Simulador de Redes V1");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
+        setTitle(bundle.getString("VMain.title")); // NOI18N
         setMinimumSize(new java.awt.Dimension(1276, 792));
 
         jMain.setMinimumSize(new java.awt.Dimension(1255, 760));

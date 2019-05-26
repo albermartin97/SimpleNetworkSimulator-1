@@ -8,8 +8,12 @@ package app.Windows;
 import app.Elements.SimulatorItem;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import simulator.Event;
 
@@ -70,12 +74,14 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         jTableTrace = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTEvents = new javax.swing.JTable();
-        jToolBarTrace = new javax.swing.JToolBar();
+        tbtMenu = new javax.swing.JToolBar();
         btnNextTrace = new javax.swing.JButton();
-        btnPlayUntil = new javax.swing.JButton();
         txtTime = new javax.swing.JTextField();
+        tbtMenu2 = new javax.swing.JToolBar();
+        btnPlayUntil = new javax.swing.JButton();
 
-        setTitle("Traza de la Ejecucion");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
+        setTitle(bundle.getString("VTraceStepByStep.title")); // NOI18N
 
         jTEvents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,7 +131,7 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         );
         jTableTraceLayout.setVerticalGroup(
             jTableTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
+            .addGap(0, 701, Short.MAX_VALUE)
             .addGroup(jTableTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTableTraceLayout.createSequentialGroup()
                     .addContainerGap()
@@ -133,13 +139,13 @@ public class VTraceStepByStep extends javax.swing.JFrame {
                     .addContainerGap()))
         );
 
-        jToolBarTrace.setBorder(null);
-        jToolBarTrace.setFloatable(false);
-        jToolBarTrace.setRollover(true);
-        jToolBarTrace.setToolTipText("Next Step");
+        tbtMenu.setBorder(null);
+        tbtMenu.setFloatable(false);
+        tbtMenu.setRollover(true);
+        tbtMenu.setToolTipText(bundle.getString("VTraceStepByStep.tbtMenu.toolTipText")); // NOI18N
 
         btnNextTrace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nextIcon2.png"))); // NOI18N
-        btnNextTrace.setToolTipText("Siguiente Evento");
+        btnNextTrace.setToolTipText(bundle.getString("VTraceStepByStep.btnNextTrace.toolTipText")); // NOI18N
         btnNextTrace.setFocusable(false);
         btnNextTrace.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNextTrace.setMargin(new java.awt.Insets(5, 20, 5, 20));
@@ -149,20 +155,23 @@ public class VTraceStepByStep extends javax.swing.JFrame {
                 btnNextTraceActionPerformed(evt);
             }
         });
-        jToolBarTrace.add(btnNextTrace);
+        tbtMenu.add(btnNextTrace);
+
+        txtTime.setPreferredSize(new java.awt.Dimension(6, 22));
+
+        tbtMenu2.setBorder(null);
 
         btnPlayUntil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconStartToFinish2.png"))); // NOI18N
         btnPlayUntil.setFocusable(false);
         btnPlayUntil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPlayUntil.setMargin(new java.awt.Insets(5, 20, 5, 20));
         btnPlayUntil.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPlayUntil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayUntilActionPerformed(evt);
             }
         });
-        jToolBarTrace.add(btnPlayUntil);
-
-        txtTime.setText("jTextField1");
+        tbtMenu2.add(btnPlayUntil);
 
         javax.swing.GroupLayout jTraceLayout = new javax.swing.GroupLayout(jTrace);
         jTrace.setLayout(jTraceLayout);
@@ -173,11 +182,13 @@ public class VTraceStepByStep extends javax.swing.JFrame {
                 .addGroup(jTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTableTrace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTraceLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jToolBarTrace, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 477, Short.MAX_VALUE)
+                        .addComponent(tbtMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(tbtMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 443, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jTraceLayout.setVerticalGroup(
@@ -185,12 +196,11 @@ public class VTraceStepByStep extends javax.swing.JFrame {
             .addGroup(jTraceLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jTraceLayout.createSequentialGroup()
-                        .addComponent(jToolBarTrace, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTraceLayout.createSequentialGroup()
-                        .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)))
+                    .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tbtMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                        .addComponent(tbtMenu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addComponent(jTableTrace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -224,13 +234,31 @@ public class VTraceStepByStep extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNextTraceActionPerformed
 
     private void btnPlayUntilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayUntilActionPerformed
-        BigDecimal time = new BigDecimal(txtTime.getText());
-        DefaultTableModel model = (DefaultTableModel) jTEvents.getModel();
-        if(model.getRowCount() > 0)
-            time = time.add(new BigDecimal(model.getValueAt(model.getRowCount()-1,0).toString()));
-        List<Event> ev = this.si.getSimulator().play(time);
-        for(Event e : ev){
-            model.addRow(new Object[]{e.getTime(),e.getHostOrigen().getName(),e.getHostDestino().getName(),e.getLinker().getIp(),e.getInstant(),e.getMensaje()});
+        boolean formatoCorrecto = true;
+        BigDecimal time = null;
+        try{
+            time = new BigDecimal(txtTime.getText());
+        }catch(NumberFormatException ne){
+            formatoCorrecto = false;
+        }
+        if(formatoCorrecto){
+            //BigDecimal time = new BigDecimal(txtTime.getText());
+            DefaultTableModel model = (DefaultTableModel) jTEvents.getModel();
+            if(model.getRowCount() > 0)
+                time = time.add(new BigDecimal(model.getValueAt(model.getRowCount()-1,0).toString()));
+            eventos.addAll(this.si.getSimulator().play(time));
+            eventos.sort(new Event());
+            BigDecimal timeEvent = new BigDecimal("0.00");
+            while(!eventos.isEmpty() && timeEvent.compareTo(time)<=0){
+                Event e = eventos.get(0);
+                timeEvent = e.getTime();
+                if(timeEvent.compareTo(time) <= 0){
+                    model.addRow(new Object[]{e.getTime(),e.getHostOrigen().getName(),e.getHostDestino().getName(),e.getLinker().getIp(),e.getInstant(),e.getMensaje()});
+                    eventos.remove(0);
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(this,"Se necesita insertar tiempo de envío o el formato es incorrecto","Tiempo de envío",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPlayUntilActionPerformed
 
@@ -270,11 +298,11 @@ public class VTraceStepByStep extends javax.swing.JFrame {
     }
 
     public JToolBar getjToolBarTrace() {
-        return jToolBarTrace;
+        return tbtMenu;
     }
 
     public void setjToolBarTrace(JToolBar jToolBarTrace) {
-        this.jToolBarTrace = jToolBarTrace;
+        this.tbtMenu = jToolBarTrace;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -283,8 +311,9 @@ public class VTraceStepByStep extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTEvents;
     private javax.swing.JPanel jTableTrace;
-    private javax.swing.JToolBar jToolBarTrace;
     private javax.swing.JPanel jTrace;
+    private javax.swing.JToolBar tbtMenu;
+    private javax.swing.JToolBar tbtMenu2;
     private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
 }

@@ -84,16 +84,17 @@ public class VConfComputer extends javax.swing.JFrame {
         btnCancelarConfHost = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Configuracion del Host");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
+        setTitle(bundle.getString("VConfComputer.title")); // NOI18N
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Configuracion del Host");
+        jLabel1.setText(bundle.getString("VConfComputer.jLabel1.text")); // NOI18N
 
-        lblNameComputer.setText("Nombre del Host");
+        lblNameComputer.setText(bundle.getString("VConfComputer.lblNameComputer.text")); // NOI18N
 
-        tComputer.setModel(new HostTable(si.getSimulator(),ci.getVertex()));
+        tComputer.setModel(new app.Elements.HostTable(si.getSimulator(),ci.getVertex()));
         jScrollPane1.setViewportView(tComputer);
 
         javax.swing.GroupLayout jComputerTableLayout = new javax.swing.GroupLayout(jComputerTable);
@@ -117,7 +118,7 @@ public class VConfComputer extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        rbtnEnvioAleatorio.setText("Envio Aleatorio");
+        rbtnEnvioAleatorio.setText(bundle.getString("VConfComputer.rbtnEnvioAleatorio.text")); // NOI18N
         rbtnEnvioAleatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtnEnvioAleatorioActionPerformed(evt);
@@ -128,7 +129,7 @@ public class VConfComputer extends javax.swing.JFrame {
         jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.setRollover(true);
 
-        btnAddPackage.setText("Añadir");
+        btnAddPackage.setText(bundle.getString("VConfComputer.btnAddPackage.text")); // NOI18N
         btnAddPackage.setFocusable(false);
         btnAddPackage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAddPackage.setMargin(new java.awt.Insets(6, 14, 2, 14));
@@ -140,7 +141,7 @@ public class VConfComputer extends javax.swing.JFrame {
         });
         jToolBar1.add(btnAddPackage);
 
-        btnRemovePackage.setText("Borrar");
+        btnRemovePackage.setText(bundle.getString("VConfComputer.btnRemovePackage.text")); // NOI18N
         btnRemovePackage.setEnabled(false);
         btnRemovePackage.setFocusable(false);
         btnRemovePackage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -153,14 +154,14 @@ public class VConfComputer extends javax.swing.JFrame {
         });
         jToolBar1.add(btnRemovePackage);
 
-        btnAceptarConfHost.setText("Aceptar");
+        btnAceptarConfHost.setText(bundle.getString("VConfComputer.btnAceptarConfHost.text")); // NOI18N
         btnAceptarConfHost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarConfHostActionPerformed(evt);
             }
         });
 
-        btnCancelarConfHost.setText("Cancelar");
+        btnCancelarConfHost.setText(bundle.getString("VConfComputer.btnCancelarConfHost.text")); // NOI18N
         btnCancelarConfHost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarConfHostActionPerformed(evt);

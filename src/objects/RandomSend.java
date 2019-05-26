@@ -7,6 +7,7 @@ public class RandomSend implements Serializable {
 
     private BigDecimal sizePackage;
     private BigDecimal averageTime;
+    private BigDecimal timeLastPackage;
 
     //CONSTRUCTOR
     public RandomSend(){
@@ -16,6 +17,7 @@ public class RandomSend implements Serializable {
         super();
         this.sizePackage = sizePackage;
         this.averageTime = averageTime;
+        this.timeLastPackage = new BigDecimal("0.00");
     }
 
     //GETTER AND SETTERS
@@ -33,6 +35,14 @@ public class RandomSend implements Serializable {
 
     public void setAverageTime(BigDecimal averageTime) {
         this.averageTime = averageTime;
+    }
+
+    public BigDecimal getTimeLastPackage() {
+        return timeLastPackage;
+    }
+
+    public void setTimeLastPackage(BigDecimal timeLastPackage) {
+        this.timeLastPackage = timeLastPackage;
     }
 
     @Override

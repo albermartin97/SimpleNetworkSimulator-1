@@ -47,23 +47,24 @@ public class VNameFile extends javax.swing.JFrame {
         btnCancelarNameFile = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Guardar Archivo");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
+        setTitle(bundle.getString("VNameFile.title")); // NOI18N
         setResizable(false);
 
         lblNameFile.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameFile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNameFile.setText("Escribe el nombre del Archivo");
+        lblNameFile.setText(bundle.getString("VNameFile.lblNameFile.text")); // NOI18N
 
-        lblNombreFichero.setText("Nombre del Fichero");
+        lblNombreFichero.setText(bundle.getString("VNameFile.lblNombreFichero.text")); // NOI18N
 
-        btnAceptarNameFile.setText("Aceptar");
+        btnAceptarNameFile.setText(bundle.getString("VNameFile.btnAceptarNameFile.text")); // NOI18N
         btnAceptarNameFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarNameFileActionPerformed(evt);
             }
         });
 
-        btnCancelarNameFile.setText("Cancelar");
+        btnCancelarNameFile.setText(bundle.getString("VNameFile.btnCancelarNameFile.text")); // NOI18N
         btnCancelarNameFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarNameFileActionPerformed(evt);

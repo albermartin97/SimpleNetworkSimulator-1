@@ -60,34 +60,35 @@ public class VRandomSend extends javax.swing.JFrame {
         lblSegundosRandomSend = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Configuracion Envio Aleatorio");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
+        setTitle(bundle.getString("VRandomSend.title")); // NOI18N
         setResizable(false);
 
         lblEnvioAleatorio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblEnvioAleatorio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEnvioAleatorio.setText("Configuracion Envio Aleatorio");
+        lblEnvioAleatorio.setText(bundle.getString("VRandomSend.lblEnvioAleatorio.text")); // NOI18N
 
-        lblTamañoPackageRandomSend.setText("Tamaño Medio de los Paquetes");
+        lblTamañoPackageRandomSend.setText(bundle.getString("VRandomSend.lblTamañoPackageRandomSend.text")); // NOI18N
 
-        lblTiempoMedioRandomSend.setText("Tiempo Medio de Envio");
+        lblTiempoMedioRandomSend.setText(bundle.getString("VRandomSend.lblTiempoMedioRandomSend.text")); // NOI18N
 
-        btnCancelarRandomSend.setText("Cancelar");
+        btnCancelarRandomSend.setText(bundle.getString("VRandomSend.btnCancelarRandomSend.text")); // NOI18N
         btnCancelarRandomSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarRandomSendActionPerformed(evt);
             }
         });
 
-        btnAceptarRandomSend.setText("Aceptar");
+        btnAceptarRandomSend.setText(bundle.getString("VRandomSend.btnAceptarRandomSend.text")); // NOI18N
         btnAceptarRandomSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarRandomSendActionPerformed(evt);
             }
         });
 
-        lblKbRandomSend.setText("Kb");
+        lblKbRandomSend.setText(bundle.getString("VRandomSend.lblKbRandomSend.text")); // NOI18N
 
-        lblSegundosRandomSend.setText("s");
+        lblSegundosRandomSend.setText(bundle.getString("VRandomSend.lblSegundosRandomSend.text")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
