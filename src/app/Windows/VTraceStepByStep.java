@@ -157,11 +157,13 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         });
         tbtMenu.add(btnNextTrace);
 
+        txtTime.setToolTipText(bundle.getString("VTraceStepByStep.txtTime.toolTipText")); // NOI18N
         txtTime.setPreferredSize(new java.awt.Dimension(6, 22));
 
         tbtMenu2.setBorder(null);
 
         btnPlayUntil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconStartToFinish2.png"))); // NOI18N
+        btnPlayUntil.setToolTipText(bundle.getString("VTraceStepByStep.btnPlayUntil.toolTipText")); // NOI18N
         btnPlayUntil.setFocusable(false);
         btnPlayUntil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPlayUntil.setMargin(new java.awt.Insets(5, 20, 5, 20));

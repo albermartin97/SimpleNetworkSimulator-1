@@ -119,8 +119,18 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTama&#xf1;oMedioRandomSend">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="app/Windows/Bundle.properties" key="VRandomSend.txtTama&#xf1;oMedioRandomSend.toolTipText" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTiempoMedioMedioRandomSend">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="app/Windows/Bundle.properties" key="VRandomSend.txtTiempoMedioMedioRandomSend.toolTipText" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnCancelarRandomSend">
       <Properties>

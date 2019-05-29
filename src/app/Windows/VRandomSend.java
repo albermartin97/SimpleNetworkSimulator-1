@@ -72,6 +72,10 @@ public class VRandomSend extends javax.swing.JFrame {
 
         lblTiempoMedioRandomSend.setText(bundle.getString("VRandomSend.lblTiempoMedioRandomSend.text")); // NOI18N
 
+        txtTamañoMedioRandomSend.setToolTipText(bundle.getString("VRandomSend.txtTamañoMedioRandomSend.toolTipText")); // NOI18N
+
+        txtTiempoMedioMedioRandomSend.setToolTipText(bundle.getString("VRandomSend.txtTiempoMedioMedioRandomSend.toolTipText")); // NOI18N
+
         btnCancelarRandomSend.setText(bundle.getString("VRandomSend.btnCancelarRandomSend.text")); // NOI18N
         btnCancelarRandomSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

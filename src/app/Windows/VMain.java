@@ -34,6 +34,8 @@ import objects.Linker;
 import objects.Package;
 import simulator.Simulator;
 import app.Elements.NodeItem;
+import java.awt.Desktop;
+import java.net.URI;
 import java.util.HashMap;
 import objects.Router;
 
@@ -68,7 +70,7 @@ public class VMain extends javax.swing.JFrame {
         Simulator simulator = new Simulator();
         si.setSimulator(simulator);
         si.setWorkSpacePanel(jWorkSpace);
-        si.setMenu(jToolBar);
+        si.setMenu(jMenuWorkSpace);
         si.setPallette(jAddItems);
         if (si.getWorkSpacePanel().getChildsItems().size() < 2) {
             btnNewLinker.setEnabled(false);
@@ -92,7 +94,7 @@ public class VMain extends javax.swing.JFrame {
         jMain = new javax.swing.JPanel();
         jScrollPaneWorkSpace = new javax.swing.JScrollPane();
         jWorkSpace = new app.Elements.WorkSpacePanel();
-        jToolBar = new javax.swing.JToolBar();
+        jMenuWorkSpace = new javax.swing.JToolBar();
         btnNewWorkSpace = new javax.swing.JButton();
         btnOpenFile = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
@@ -101,6 +103,8 @@ public class VMain extends javax.swing.JFrame {
         btnNewComputer = new javax.swing.JButton();
         btnNewLinker = new javax.swing.JButton();
         btnNewRouter = new javax.swing.JButton();
+        jtbHelp = new javax.swing.JToolBar();
+        btnHelp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
@@ -129,12 +133,13 @@ public class VMain extends javax.swing.JFrame {
 
         jScrollPaneWorkSpace.setViewportView(jWorkSpace);
 
-        jToolBar.setBorder(null);
-        jToolBar.setFloatable(false);
-        jToolBar.setRollover(true);
-        jToolBar.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jMenuWorkSpace.setBorder(null);
+        jMenuWorkSpace.setFloatable(false);
+        jMenuWorkSpace.setRollover(true);
+        jMenuWorkSpace.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
         btnNewWorkSpace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconNew2s.png"))); // NOI18N
+        btnNewWorkSpace.setToolTipText(bundle.getString("VMain.btnNewWorkSpace.toolTipText")); // NOI18N
         btnNewWorkSpace.setFocusable(false);
         btnNewWorkSpace.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewWorkSpace.setMargin(new java.awt.Insets(8, 20, 8, 20));
@@ -144,9 +149,10 @@ public class VMain extends javax.swing.JFrame {
                 btnNewWorkSpaceActionPerformed(evt);
             }
         });
-        jToolBar.add(btnNewWorkSpace);
+        jMenuWorkSpace.add(btnNewWorkSpace);
 
         btnOpenFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/openIcon2.png"))); // NOI18N
+        btnOpenFile.setToolTipText(bundle.getString("VMain.btnOpenFile.toolTipText")); // NOI18N
         btnOpenFile.setFocusable(false);
         btnOpenFile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnOpenFile.setMargin(new java.awt.Insets(8, 20, 8, 20));
@@ -156,9 +162,10 @@ public class VMain extends javax.swing.JFrame {
                 btnOpenFileActionPerformed(evt);
             }
         });
-        jToolBar.add(btnOpenFile);
+        jMenuWorkSpace.add(btnOpenFile);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/saveIcon2.png"))); // NOI18N
+        btnSave.setToolTipText(bundle.getString("VMain.btnSave.toolTipText")); // NOI18N
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSave.setMargin(new java.awt.Insets(8, 20, 8, 20));
@@ -168,9 +175,10 @@ public class VMain extends javax.swing.JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        jToolBar.add(btnSave);
+        jMenuWorkSpace.add(btnSave);
 
         btnStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconStart2.png"))); // NOI18N
+        btnStart.setToolTipText(bundle.getString("VMain.btnStart.toolTipText")); // NOI18N
         btnStart.setFocusable(false);
         btnStart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStart.setMargin(new java.awt.Insets(8, 20, 8, 20));
@@ -180,13 +188,14 @@ public class VMain extends javax.swing.JFrame {
                 btnStartActionPerformed(evt);
             }
         });
-        jToolBar.add(btnStart);
+        jMenuWorkSpace.add(btnStart);
 
         jAddItems.setBorder(null);
         jAddItems.setFloatable(false);
         jAddItems.setRollover(true);
 
         btnNewComputer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconNewComputer2.png"))); // NOI18N
+        btnNewComputer.setToolTipText(bundle.getString("VMain.btnNewComputer.toolTipText")); // NOI18N
         btnNewComputer.setFocusable(false);
         btnNewComputer.setHideActionText(true);
         btnNewComputer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -200,6 +209,7 @@ public class VMain extends javax.swing.JFrame {
         jAddItems.add(btnNewComputer);
 
         btnNewLinker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/newLinkerIcon.png"))); // NOI18N
+        btnNewLinker.setToolTipText(bundle.getString("VMain.btnNewLinker.toolTipText")); // NOI18N
         btnNewLinker.setFocusable(false);
         btnNewLinker.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewLinker.setMargin(new java.awt.Insets(8, 20, 8, 20));
@@ -212,6 +222,7 @@ public class VMain extends javax.swing.JFrame {
         jAddItems.add(btnNewLinker);
 
         btnNewRouter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/newRouterIcon2.png"))); // NOI18N
+        btnNewRouter.setToolTipText(bundle.getString("VMain.btnNewRouter.toolTipText")); // NOI18N
         btnNewRouter.setFocusable(false);
         btnNewRouter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewRouter.setMargin(new java.awt.Insets(8, 20, 8, 20));
@@ -223,6 +234,22 @@ public class VMain extends javax.swing.JFrame {
         });
         jAddItems.add(btnNewRouter);
 
+        jtbHelp.setBorder(null);
+        jtbHelp.setFloatable(false);
+        jtbHelp.setRollover(true);
+
+        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/helpIcon.png"))); // NOI18N
+        btnHelp.setText(bundle.getString("VMain.btnHelp.text")); // NOI18N
+        btnHelp.setToolTipText(bundle.getString("VMain.btnHelp.toolTipText")); // NOI18N
+        btnHelp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnHelp.setMargin(new java.awt.Insets(8, 20, 8, 20));
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpActionPerformed(evt);
+            }
+        });
+        jtbHelp.add(btnHelp);
+
         javax.swing.GroupLayout jMainLayout = new javax.swing.GroupLayout(jMain);
         jMain.setLayout(jMainLayout);
         jMainLayout.setHorizontalGroup(
@@ -232,10 +259,11 @@ public class VMain extends javax.swing.JFrame {
                 .addGroup(jMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPaneWorkSpace, javax.swing.GroupLayout.DEFAULT_SIZE, 1256, Short.MAX_VALUE)
                     .addGroup(jMainLayout.createSequentialGroup()
-                        .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jMenuWorkSpace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(jAddItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtbHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jMainLayout.setVerticalGroup(
@@ -243,10 +271,11 @@ public class VMain extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jMainLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jAddItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(11, 11, 11)
-                .addComponent(jScrollPaneWorkSpace, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+                    .addComponent(jMenuWorkSpace, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jAddItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtbHelp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPaneWorkSpace, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -565,6 +594,17 @@ public class VMain extends javax.swing.JFrame {
         vMain.setVisible(true);
     }//GEN-LAST:event_btnNewWorkSpaceActionPerformed
 
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(new URI("https://github.com/jfvelezserrano/SimpleNetworkSimulator"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_btnHelpActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -634,8 +674,9 @@ public class VMain extends javax.swing.JFrame {
     public JToolBar getJAddItems() {
         return jAddItems;
     }
+
     public JToolBar getJMenu() {
-        return jToolBar;
+        return jMenuWorkSpace;
     }
 
     public JButton getBtnStart() {
@@ -692,6 +733,7 @@ public class VMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnNewComputer;
     private javax.swing.JButton btnNewLinker;
     private javax.swing.JButton btnNewRouter;
@@ -701,8 +743,9 @@ public class VMain extends javax.swing.JFrame {
     private javax.swing.JButton btnStart;
     private javax.swing.JToolBar jAddItems;
     private javax.swing.JPanel jMain;
+    private javax.swing.JToolBar jMenuWorkSpace;
     private javax.swing.JScrollPane jScrollPaneWorkSpace;
-    private javax.swing.JToolBar jToolBar;
     private app.Elements.WorkSpacePanel jWorkSpace;
+    private javax.swing.JToolBar jtbHelp;
     // End of variables declaration//GEN-END:variables
 }

@@ -75,6 +75,8 @@ public class VConfRouter extends javax.swing.JFrame {
 
         lblNameRouter.setText(bundle.getString("VConfRouter.lblNameRouter.text")); // NOI18N
 
+        txtNameRouter.setToolTipText(bundle.getString("VConfRouter.txtNameRouter.toolTipText")); // NOI18N
+
         btnCancelarConfRouter.setText(bundle.getString("VConfRouter.btnCancelarConfRouter.text")); // NOI18N
         btnCancelarConfRouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -73,6 +73,10 @@ public class VConfLinker extends javax.swing.JFrame {
 
         lblSizeLinker.setText(bundle.getString("VConfLinker.lblSizeLinker.text")); // NOI18N
 
+        txtSpeedLinker.setToolTipText(bundle.getString("VConfLinker.txtSpeedLinker.toolTipText")); // NOI18N
+
+        txtSizeLinker.setToolTipText(bundle.getString("VConfLinker.txtSizeLinker.toolTipText")); // NOI18N
+
         lblBSConfLinker.setText(bundle.getString("VConfLinker.lblBSConfLinker.text")); // NOI18N
 
         lblMConfLinker.setText(bundle.getString("VConfLinker.lblMConfLinker.text")); // NOI18N
@@ -93,6 +97,8 @@ public class VConfLinker extends javax.swing.JFrame {
         });
 
         lblNameLinker.setText(bundle.getString("VConfLinker.lblNameLinker.text")); // NOI18N
+
+        txtNameLinker.setToolTipText(bundle.getString("VConfLinker.txtNameLinker.toolTipText")); // NOI18N
 
         javax.swing.GroupLayout jConfLinkerLayout = new javax.swing.GroupLayout(jConfLinker);
         jConfLinker.setLayout(jConfLinkerLayout);

@@ -79,6 +79,10 @@ public class VAddPackage extends javax.swing.JFrame {
         lblConfPackage.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblConfPackage.setText(bundle.getString("VAddPackage.lblConfPackage.text")); // NOI18N
 
+        txtTamañoPackage.setToolTipText(bundle.getString("VAddPackage.txtTamañoPackage.toolTipText")); // NOI18N
+
+        jcbDestinoPackage.setToolTipText(bundle.getString("VAddPackage.jcbDestinoPackage.toolTipText")); // NOI18N
+
         lblKb.setText(bundle.getString("VAddPackage.lblKb.text")); // NOI18N
 
         lblTamañoPackage.setText(bundle.getString("VAddPackage.lblTamañoPackage.text")); // NOI18N

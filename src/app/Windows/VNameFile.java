@@ -57,6 +57,8 @@ public class VNameFile extends javax.swing.JFrame {
 
         lblNombreFichero.setText(bundle.getString("VNameFile.lblNombreFichero.text")); // NOI18N
 
+        txtNameFile.setToolTipText(bundle.getString("VNameFile.txtNameFile.toolTipText")); // NOI18N
+
         btnAceptarNameFile.setText(bundle.getString("VNameFile.btnAceptarNameFile.text")); // NOI18N
         btnAceptarNameFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

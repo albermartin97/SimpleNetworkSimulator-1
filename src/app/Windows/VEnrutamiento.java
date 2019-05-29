@@ -100,6 +100,7 @@ public class VEnrutamiento extends javax.swing.JFrame {
         tbRun.setRollover(true);
 
         btnStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconStart2.png"))); // NOI18N
+        btnStart.setToolTipText(bundle.getString("VEnrutamiento.btnStart.toolTipText")); // NOI18N
         btnStart.setFocusable(false);
         btnStart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStart.setMargin(new java.awt.Insets(20, 14, 20, 14));

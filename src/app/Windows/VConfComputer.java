@@ -94,6 +94,8 @@ public class VConfComputer extends javax.swing.JFrame {
 
         lblNameComputer.setText(bundle.getString("VConfComputer.lblNameComputer.text")); // NOI18N
 
+        txtNameComputer.setToolTipText(bundle.getString("VConfComputer.txtNameComputer.toolTipText")); // NOI18N
+
         tComputer.setModel(new app.Elements.HostTable(si.getSimulator(),ci.getVertex()));
         jScrollPane1.setViewportView(tComputer);
 
@@ -130,6 +132,7 @@ public class VConfComputer extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         btnAddPackage.setText(bundle.getString("VConfComputer.btnAddPackage.text")); // NOI18N
+        btnAddPackage.setToolTipText(bundle.getString("VConfComputer.btnAddPackage.toolTipText")); // NOI18N
         btnAddPackage.setFocusable(false);
         btnAddPackage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAddPackage.setMargin(new java.awt.Insets(6, 14, 2, 14));
@@ -142,6 +145,7 @@ public class VConfComputer extends javax.swing.JFrame {
         jToolBar1.add(btnAddPackage);
 
         btnRemovePackage.setText(bundle.getString("VConfComputer.btnRemovePackage.text")); // NOI18N
+        btnRemovePackage.setToolTipText(bundle.getString("VConfComputer.btnRemovePackage.toolTipText")); // NOI18N
         btnRemovePackage.setEnabled(false);
         btnRemovePackage.setFocusable(false);
         btnRemovePackage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
