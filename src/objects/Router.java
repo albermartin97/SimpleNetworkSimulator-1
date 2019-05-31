@@ -20,8 +20,8 @@ public class Router implements Node, Serializable {
     public Router(String name) {
         this.name = name;
         this.routingTable = new HashMap<>();
-        Comparator<Package> compS = (Comparator<Package> & Serializable) (Package a, Package b) -> a.compareTo(b);
-        //this.queuePackages = new PriorityQueue<>((a, b) -> a.compareTo(b));
+        Comparator<Package> compS = (Comparator<Package> & Serializable) 
+                (Package a, Package b) -> a.compareTo(b);
         this.queuePackages = new PriorityQueue<>(compS);
     }
 
@@ -57,9 +57,8 @@ public class Router implements Node, Serializable {
     public void setRoutingTable(HashMap<Vertex<Node>, Edge<Linker>> routingTable) {
         this.routingTable = routingTable;
     }
-    
-    //METHODS
 
+    //METHODS
     public Edge<Linker> getEnrutamiento(Vertex<Node> h1) {
         return routingTable.get(h1);
     }
@@ -67,7 +66,7 @@ public class Router implements Node, Serializable {
     public void enrutar(Vertex<Node> h, Edge<Linker> l) {
         routingTable.put(h, l);
     }
-    
+
     public void updateTimeQueue(BigDecimal timePackage) {
         for (Package p : this.getQueuePackages()) {
             if (p.getTime().compareTo(timePackage) < 0) {
@@ -82,8 +81,9 @@ public class Router implements Node, Serializable {
 
     @Override
     public String toString() {
-        return "Router{\n" + name + ",\n" + routingTable.size() + "\n"+ routingTable.toString() + ",\n"+queuePackages.size() + "\n" + queuePackages + '}';
+        return "Router{\n" + name + ",\n" + routingTable.size() + "\n" + routingTable.toString() + ",\n" + queuePackages.size() + "\n" + queuePackages + '}';
     }
+
     public String toStringAux() {
         return "Router{\n" + name + '}';
     }

@@ -394,59 +394,6 @@ public class Red implements Serializable {
     }
 
     private ArrayList<NodeState> getRandomConfig(BigDecimal time) {
-        /*ArrayList<NodeState> queueStates = new ArrayList<>();
-        List<Vertex<Node>> listComputers = getAllHosts();
-        BigDecimal timeLastEven = new BigDecimal(0.0);
-        List<Vertex<Node>> listComputersRandoms = new ArrayList<>();
-        Package p = null;
-        Host computer = null;
-        for (Vertex<Node> host : listComputers) {
-            if (host.getElement() instanceof Host) {
-                computer = (Host) host.getElement();
-                if (computer.isRandomSend()) {
-                    listComputersRandoms.add(host);
-                    p = getRandomPackage(computer.getRandomSend()
-                            .getSizePackage(), host);
-                    p.setTime(getRamdonTimePoisson(computer.getRandomSend()
-                            .getAverageTime()));
-                    host.getElement().addPackage(p);
-                    if (p.getTime().compareTo(timeLastEven) > 0) {
-                        timeLastEven = p.getTime();
-                    }
-                    NodeState hs = new NodeState(host, p.getTime());
-                    queueStates.add(hs);
-                }
-            }
-        }
-
-        Vertex<Node> host = null;
-        Iterator<Vertex<Node>> it = listComputersRandoms.iterator();
-        int i = 2;
-        if (!listComputersRandoms.isEmpty()) {
-            while (timeLastEven.compareTo(time) <= 0) {
-                if (it.hasNext()) {
-                    host = it.next();
-                    if (host.getElement() instanceof Host) {
-                        computer = (Host) host.getElement();
-                        if (computer.isRandomSend()) {
-                            p = getRandomPackage(computer.getRandomSend()
-                                    .getSizePackage(), host);
-                            p.setTime(getRamdonTimePoisson(computer
-                                    .getRandomSend().getAverageTime().multiply(new BigDecimal(i))));
-                            host.getElement().addPackage(p);
-                            if (p.getTime().compareTo(timeLastEven) > 0) {
-                                timeLastEven = p.getTime();
-                            }
-                        }
-                    }
-                } else {
-                    i++;
-                    it = listComputers.iterator();
-                }
-
-            }
-        }
-        return queueStates;*/
         ArrayList<NodeState> queue = new ArrayList<>();
         List<Vertex<Node>> listComputers = getAllHosts();
         BigDecimal timeLastEvent = new BigDecimal(0.0);
@@ -488,8 +435,7 @@ public class Red implements Serializable {
 
     private BigDecimal getPackageSize(BigDecimal sizePackage) {
         Random r = new Random();
-        double lambda = 1.0f / sizePackage.doubleValue(); // el 25000.0f es la media de los
-        // valores que van a salir
+        double lambda = 1.0f / sizePackage.doubleValue();
         return new BigDecimal(-(Math.log(r.nextDouble()) / lambda));
     }
 

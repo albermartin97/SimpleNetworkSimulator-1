@@ -9,14 +9,12 @@ public class Host implements Node, Serializable {
     private String name;
     private PriorityQueue<Package> queuePackages;
     private RandomSend randomSend;
-    //private float speed; //Velocidad a la que pone los paquetes en el enlace
 
     //CONTRUCTORES
     public Host(String name) {
         this.name = name;
-        this.queuePackages = new PriorityQueue<Package>((a, b) -> a.compareTo(b));
+        this.queuePackages = new PriorityQueue<>((a, b) -> a.compareTo(b));
         this.randomSend = null;
-        //this.speed = speed;
     }
 
     //GETTERS AND SETTERS
