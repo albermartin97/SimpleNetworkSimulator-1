@@ -119,7 +119,7 @@ public class Red implements Serializable {
                 // necesario
                 if (state1 != null && state1.getHost() != null){
                         //&& state1.getEventTransport().getTime().compareTo(time) <= 0) {
-                    eventos.add(state1.getEventTransmision());
+                    eventos.add(state1.getEventTransmission());
                     eventos.add(state1.getEventTransport());
                     if (!listHost.contains(state1.getHost())) {
                         queueStates.add(new NodeState(state1.getHost(), state1
@@ -238,7 +238,7 @@ public class Red implements Serializable {
                 // Se procesan los estados y se actualiza la cola si es
                 // necesario
                 if (state1 != null && state1.getHost() != null) {
-                    eventos.add(state1.getEventTransmision());
+                    eventos.add(state1.getEventTransmission());
                     eventos.add(state1.getEventTransport());
                     if (!listHost.contains(state1.getHost())) {
                         queueStates.add(new NodeState(state1.getHost(), state1
@@ -302,7 +302,7 @@ public class Red implements Serializable {
                 // Se procesan los estados y se actualiza la cola si es
                 // necesario
                 if (state1 != null && state1.getHost() != null) {
-                    eventos.add(state1.getEventTransmision());
+                    eventos.add(state1.getEventTransmission());
                     eventos.add(state1.getEventTransport());
                     if (!listHost.contains(state1.getHost())) {
                         queueStates.add(new NodeState(state1.getHost(), state1
@@ -513,7 +513,7 @@ public class Red implements Serializable {
 	 * 
 	 * if(state1 != null && state1.getHost() != null &&
 	 * state1.getEventTransport().getTime() <= time){
-	 * eventos.add(state1.getEventTransmision());
+	 * eventos.add(state1.getEventTransmission());
 	 * eventos.add(state1.getEventTransport()); queueStates.add(state1); }
 	 * if(state2 != null && state2.getHost() != null &&
 	 * state2.getEventTransport().getTime() <= time){ queueStates.add(state2); }
@@ -539,7 +539,7 @@ public class Red implements Serializable {
 	 * //Se procesan los estados y se actualiza la cola si es necesario
 	 * if(state1 != null && state1.getHost() != null &&
 	 * state1.getEventTransport().getTime() <= time){
-	 * eventos.add(state1.getEventTransmision());
+	 * eventos.add(state1.getEventTransmission());
 	 * eventos.add(state1.getEventTransport());
 	 * if(!listHost.contains(state1.getHost())){ queueStates.add(new
 	 * HostState(state1.getHost(),state1.getEventTransport().getTime()));

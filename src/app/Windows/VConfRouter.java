@@ -72,6 +72,7 @@ public class VConfRouter extends javax.swing.JFrame {
         lblConfRouter.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblConfRouter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblConfRouter.setText(bundle.getString("VConfRouter.lblConfRouter.text")); // NOI18N
+        lblConfRouter.setToolTipText(bundle.getString("VConfRouter.lblConfRouter.toolTipText")); // NOI18N
 
         lblNameRouter.setText(bundle.getString("VConfRouter.lblNameRouter.text")); // NOI18N
 

@@ -23,7 +23,7 @@ public class VAddPackage extends javax.swing.JFrame {
     private SimulatorItem si;
     private String[] computerList;
     private HostItem ci;
-    private VConfComputer vConfComputer;
+    private VConfHost vConfComputer;
 
     /**
      * Creates new form VAddPackage
@@ -34,7 +34,7 @@ public class VAddPackage extends javax.swing.JFrame {
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }
 
-    public VAddPackage(VConfComputer vConfComputer) {
+    public VAddPackage(VConfHost vConfComputer) {
         this.si = vConfComputer.getSI();
         this.ci = vConfComputer.getCI();
         this.vConfComputer = vConfComputer;

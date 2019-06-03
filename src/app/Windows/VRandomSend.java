@@ -15,7 +15,7 @@ import objects.Host;
  */
 public class VRandomSend extends javax.swing.JFrame {
 
-    private VConfComputer vConfComputer;
+    private VConfHost vConfComputer;
 
     /**
      * Creates new form VRandomSend
@@ -26,13 +26,13 @@ public class VRandomSend extends javax.swing.JFrame {
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }
 
-    public VRandomSend(VConfComputer vConfComputer) {
+    public VRandomSend(VConfHost vConfComputer) {
         this.vConfComputer = vConfComputer;
         initComponents();
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2, 
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }
-     public VRandomSend(VConfComputer vConfComputer, Host c) {
+     public VRandomSend(VConfHost vConfComputer, Host c) {
         this.vConfComputer = vConfComputer;
         initComponents();
         this.txtTamañoMedioRandomSend.setText(c.getRandomSend().getSizePackage().toString());

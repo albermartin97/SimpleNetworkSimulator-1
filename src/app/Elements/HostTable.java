@@ -23,7 +23,7 @@ public class HostTable extends AbstractTableModel{
 	public HostTable(Simulator simulator, Vertex<Node> vh) {
 		if (vh != null) {
 			rowData = new Object[vh.getElement().getQueuePackages().size()][4];
-			String columnNames[] = { "Paquete ID", "Tama�o", "Tiempo",
+			String columnNames[] = { "Paquete ID", "Tamaño", "Tiempo",
 					"Destino" };
 			this.columnNames = columnNames;
 			int j = 0;

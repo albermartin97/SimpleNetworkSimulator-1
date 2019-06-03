@@ -46,11 +46,10 @@ import objects.Router;
 public class VMain extends javax.swing.JFrame {
 
     private SimulatorItem si;
-    private VConfComputer vConfComputer;
+    private VConfHost vConfComputer;
     private VConfRouter vConfRouter;
     private VConfLinker vConfLinker;
     private VEnrutamiento vEnrutamiento;
-    private VNameFile vNameFile;
     private String nameFile;
     //private int nComputers = 0;
     //private int nRouters = 0;
@@ -300,7 +299,7 @@ public class VMain extends javax.swing.JFrame {
 
     private void btnNewComputerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewComputerActionPerformed
         HostItem ci = new HostItem(si, "");
-        this.vConfComputer = new VConfComputer(ci, this);
+        this.vConfComputer = new VConfHost(ci, this);
         this.vConfComputer.setVisible(true);
     }//GEN-LAST:event_btnNewComputerActionPerformed
 
@@ -388,7 +387,7 @@ public class VMain extends javax.swing.JFrame {
                             miConfigurar.setText("Configurar Host");
                             miConfigurar.addActionListener(new java.awt.event.ActionListener() {
                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                    VConfComputer vConfComputer = new VConfComputer(ci, vMain);
+                                    VConfHost vConfComputer = new VConfHost(ci, vMain);
                                     //vConfComputer.setVisible(true);
                                 }
                             });
@@ -524,15 +523,6 @@ public class VMain extends javax.swing.JFrame {
                     this.si.getWorkSpacePanel().getLinkers().add(li);
                     h1.getLinkers().add(li);
                     h2.getLinkers().add(li);
-                    /*Graphics g = parent.getSimulatorItem().getWorkSpacePanel().getGraphics();
-
-                    li.repaint(g);
-
-                    parent.getSimulatorItem().getMenu().setVisible(true);
-                    parent.getSimulatorItem().getPallette().setVisible(true);
-//				//g.drawLine(parent.getX(), parent.getY(), this.parent.getSimulatorItem().getAuxHost().getX(), this.parent.getSimulatorItem().getAuxHost().getY());
-                    parent.getSimulatorItem().getWorkSpacePanel().paint(g);
-                    //parent.getSimulatorItem().getWorkSpacePanel().updateUI();*/
                 }
                 for (String node : this.routingTable.keySet()) {
                     NodeItem ni = this.si.getWorkSpacePanel().findChild(node);
@@ -562,28 +552,23 @@ public class VMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOpenFileActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if (false) {
-            this.vNameFile = new VNameFile(this);
-            this.vNameFile.setVisible(true);
-        } else {
-            JFileChooser jd = new JFileChooser();
-            //jd.showOpenDialog(this);
-            //jd.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            jd.setAcceptAllFileFilterUsed(false);
-            jd.setApproveButtonText("Guardar");
-            int userSelection = jd.showSaveDialog(this);
-            if (userSelection == JFileChooser.APPROVE_OPTION) {
+        JFileChooser jd = new JFileChooser();
+        //jd.showOpenDialog(this);
+        //jd.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        jd.setAcceptAllFileFilterUsed(false);
+        jd.setApproveButtonText("Guardar");
+        int userSelection = jd.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
 
-                try {
-                    FileOutputStream fileOut = new FileOutputStream(jd.getSelectedFile().getAbsolutePath());
-                    ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-                    objectOut.writeObject(si.toString());
-                    objectOut.close();
-                    System.out.println("The Object  was succesfully written to a file");
+            try {
+                FileOutputStream fileOut = new FileOutputStream(jd.getSelectedFile().getAbsolutePath());
+                ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+                objectOut.writeObject(si.toString());
+                objectOut.close();
+                System.out.println("The Object  was succesfully written to a file");
 
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed

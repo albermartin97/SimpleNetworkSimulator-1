@@ -5,25 +5,25 @@ import material.graphs.Vertex;
 import simulator.Event;
 
 public class State implements Comparable<State>{
-	private Event eventTransmision;
+	private Event eventTransmission;
 	private Event eventTransport;
 	private Vertex<Node> host;
 	
 	//CONSTRUCTORS
 	public State(Event eventTransmision, Event eventTransport, Vertex<Node> host) {
-		this.eventTransmision = eventTransmision;
+		this.eventTransmission = eventTransmision;
 		this.eventTransport = eventTransport;
 		this.host = host;
 	}
 
 	//GETTERS AND SETTERS
 	
-	public Event getEventTransmision() {
-		return eventTransmision;
+	public Event getEventTransmission() {
+		return eventTransmission;
 	}
 
-	public void setEventTransmision(Event eventTransmision) {
-		this.eventTransmision = eventTransmision;
+	public void setEventTransmission(Event eventTransmission) {
+		this.eventTransmission = eventTransmission;
 	}
 
 	public Event getEventTransport() {

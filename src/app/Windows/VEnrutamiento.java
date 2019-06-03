@@ -90,9 +90,11 @@ public class VEnrutamiento extends javax.swing.JFrame {
         jSPHostTable = new javax.swing.JScrollPane();
         jtHostTable = new javax.swing.JTable();
 
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
+        setTitle(bundle.getString("VEnrutamiento.title")); // NOI18N
+
         lblConfTablaEnrutamiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblConfTablaEnrutamiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         lblConfTablaEnrutamiento.setText(bundle.getString("VEnrutamiento.lblConfTablaEnrutamiento.text")); // NOI18N
 
         tbRun.setFloatable(false);
