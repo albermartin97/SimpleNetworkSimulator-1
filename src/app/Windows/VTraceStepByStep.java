@@ -22,10 +22,12 @@ import simulator.Event;
  * @author alber
  */
 public class VTraceStepByStep extends javax.swing.JFrame {
+
     private SimulatorItem si;
     private List<Event> eventos;
     private int contRow;
     private int i = 0;
+
     /**
      * Creates new form VTraceStepByStep
      */
@@ -44,23 +46,17 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }
-    public VTraceStepByStep(SimulatorItem si,List<Event> eventos) {
+
+    public VTraceStepByStep(SimulatorItem si, List<Event> eventos) {
         this.si = si;
         this.eventos = new ArrayList<>();
         this.contRow = 0;
         initComponents();
+        configComponents(eventos);
         //btnPlayUntil.setEnabled(false);
-        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
-                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
-        DefaultTableModel model = (DefaultTableModel) jTEvents.getModel();
-        for(Event e : eventos){
-            model.addRow(new Object[]{e.getTime(),e.getHostOrigen().getName(),e.getHostDestino().getName(),e.getLinker().getIp(),e.getInstant(),e.getMensaje()});
-        }
-        this.btnNextTrace.setVisible(false);
-        this.btnPlayUntil.setVisible(false);
-        this.txtTime.setVisible(false);
-        jTEvents.updateUI();
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,6 +78,9 @@ public class VTraceStepByStep extends javax.swing.JFrame {
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         setTitle(bundle.getString("VTraceStepByStep.title")); // NOI18N
+        setAlwaysOnTop(true);
+
+        jTableTrace.setMinimumSize(new java.awt.Dimension(679, 246));
 
         jTEvents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,20 +121,20 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         jTableTrace.setLayout(jTableTraceLayout);
         jTableTraceLayout.setHorizontalGroup(
             jTableTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1243, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jTableTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTableTraceLayout.createSequentialGroup()
+                .addGroup(jTableTraceLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1223, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jTableTraceLayout.setVerticalGroup(
             jTableTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 701, Short.MAX_VALUE)
+            .addGap(0, 246, Short.MAX_VALUE)
             .addGroup(jTableTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTableTraceLayout.createSequentialGroup()
+                .addGroup(jTableTraceLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -161,6 +160,7 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         txtTime.setPreferredSize(new java.awt.Dimension(6, 22));
 
         tbtMenu2.setBorder(null);
+        tbtMenu2.setFloatable(false);
 
         btnPlayUntil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconStartToFinish2.png"))); // NOI18N
         btnPlayUntil.setToolTipText(bundle.getString("VTraceStepByStep.btnPlayUntil.toolTipText")); // NOI18N
@@ -180,18 +180,14 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         jTraceLayout.setHorizontalGroup(
             jTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTraceLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTableTrace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTraceLayout.createSequentialGroup()
-                        .addGap(0, 477, Short.MAX_VALUE)
-                        .addComponent(tbtMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(tbtMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 443, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addContainerGap(176, Short.MAX_VALUE)
+                .addComponent(tbtMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(tbtMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(177, Short.MAX_VALUE))
+            .addComponent(jTableTrace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jTraceLayout.setVerticalGroup(
             jTraceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,8 +199,7 @@ public class VTraceStepByStep extends javax.swing.JFrame {
                         .addComponent(tbtMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                         .addComponent(tbtMenu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addComponent(jTableTrace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTableTrace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,78 +221,45 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         eventos.addAll(ev);
         eventos.sort(new Event());
         i++;
-        if(!eventos.isEmpty()){
+        if (!eventos.isEmpty()) {
             Event e = eventos.remove(0);
             DefaultTableModel model = (DefaultTableModel) jTEvents.getModel();
-            model.addRow(new Object[]{e.getTime(),e.getHostOrigen().getName(),e.getHostDestino().getName(),e.getLinker().getIp(),e.getInstant(),e.getMensaje()});
+            model.addRow(new Object[]{e.getTime(), e.getHostOrigen().getName(), e.getHostDestino().getName(), e.getLinker().getIp(), e.getInstant(), e.getMensaje()});
             jTEvents.updateUI();
-        }else
+        } else {
             btnNextTrace.setEnabled(false);
+        }
     }//GEN-LAST:event_btnNextTraceActionPerformed
 
     private void btnPlayUntilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayUntilActionPerformed
         boolean formatoCorrecto = true;
         BigDecimal time = null;
-        try{
+        try {
             time = new BigDecimal(txtTime.getText());
-        }catch(NumberFormatException ne){
+        } catch (NumberFormatException ne) {
             formatoCorrecto = false;
         }
-        if(formatoCorrecto){
+        if (formatoCorrecto) {
             //BigDecimal time = new BigDecimal(txtTime.getText());
             DefaultTableModel model = (DefaultTableModel) jTEvents.getModel();
-            if(model.getRowCount() > 0)
-                time = time.add(new BigDecimal(model.getValueAt(model.getRowCount()-1,0).toString()));
+            if (model.getRowCount() > 0) {
+                time = time.add(new BigDecimal(model.getValueAt(model.getRowCount() - 1, 0).toString()));
+            }
             eventos.addAll(this.si.getSimulator().play(time));
             eventos.sort(new Event());
             BigDecimal timeEvent = new BigDecimal("0.00");
-            while(!eventos.isEmpty() && timeEvent.compareTo(time)<=0){
+            while (!eventos.isEmpty() && timeEvent.compareTo(time) <= 0) {
                 Event e = eventos.get(0);
                 timeEvent = e.getTime();
-                if(timeEvent.compareTo(time) <= 0){
-                    model.addRow(new Object[]{e.getTime(),e.getHostOrigen().getName(),e.getHostDestino().getName(),e.getLinker().getIp(),e.getInstant(),e.getMensaje()});
+                if (timeEvent.compareTo(time) <= 0) {
+                    model.addRow(new Object[]{e.getTime(), e.getHostOrigen().getName(), e.getHostDestino().getName(), e.getLinker().getIp(), e.getInstant(), e.getMensaje()});
                     eventos.remove(0);
                 }
             }
-        }else{
-            JOptionPane.showMessageDialog(this,"Se necesita insertar tiempo de envío o el formato es incorrecto","Tiempo de envío",JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Se necesita insertar tiempo de envío o el formato es incorrecto", "Tiempo de envío", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPlayUntilActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VTraceStepByStep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VTraceStepByStep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VTraceStepByStep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VTraceStepByStep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VTraceStepByStep().setVisible(true);
-            }
-        });
-    }
 
     public JToolBar getjToolBarTrace() {
         return tbtMenu;
@@ -306,7 +268,7 @@ public class VTraceStepByStep extends javax.swing.JFrame {
     public void setjToolBarTrace(JToolBar jToolBarTrace) {
         this.tbtMenu = jToolBarTrace;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNextTrace;
     private javax.swing.JButton btnPlayUntil;
@@ -318,4 +280,17 @@ public class VTraceStepByStep extends javax.swing.JFrame {
     private javax.swing.JToolBar tbtMenu2;
     private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
+
+    private void configComponents(List<Event> eventos) {
+        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
+                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
+        DefaultTableModel model = (DefaultTableModel) jTEvents.getModel();
+        for (Event e : eventos) {
+            model.addRow(new Object[]{e.getTime(), e.getHostOrigen().getName(), e.getHostDestino().getName(), e.getLinker().getIp(), e.getInstant(), e.getMensaje()});
+        }
+        this.btnNextTrace.setVisible(false);
+        this.btnPlayUntil.setVisible(false);
+        this.txtTime.setVisible(false);
+        jTEvents.updateUI();
+    }
 }

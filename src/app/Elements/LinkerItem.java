@@ -21,7 +21,7 @@ public class LinkerItem implements Serializable {
     private JLabel lblName;
     
     public void paint(Graphics g) {
-        lblName.setBounds((h1.getX() + h2.getX())/2,(h1.getY() +  h2.getY())/2,10,10);
+        lblName.setBounds((h1.getX() + h2.getX())/2,(h1.getY() +  h2.getY())/2,100,20);
         g.drawLine(h1.getX() + h1.getWidth() / 2, h1.getY() + h1.getHeight() / 2, h2.getX() + h2.getWidth() / 2, h2.getY() + h2.getHeight() / 2);
     }
 
@@ -29,8 +29,9 @@ public class LinkerItem implements Serializable {
         this.lblName = new JLabel();
         this.si = simulatorItem;        
         //lblName.setText(linker.getElement().getIp());
-        lblName.setBounds((h1.getX() + h2.getX())/2,(h1.getY() +  h2.getY())/2,10,10);
+        lblName.setBounds((h1.getX() + h2.getX())/2,(h1.getY() +  h2.getY())/2,100,20);
         lblName.setVisible(true);
+        lblName.setFont(new java.awt.Font("Tahoma", 1, 14));
         //this.si.getWorkSpacePanel().getLayout().addLayoutComponent("lblLinker", lblName);
         this.si.getWorkSpacePanel().add(lblName);
         this.h1 = h1;

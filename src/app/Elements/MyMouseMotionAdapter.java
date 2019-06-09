@@ -15,11 +15,13 @@ public class MyMouseMotionAdapter extends MouseMotionAdapter{
 	@Override
 	public void mouseDragged(MouseEvent e) {
             Point limits = parent.getSimulatorItem().getWorkSpacePanel().getLocation();
-            int wLimit = parent.getSimulatorItem().getWorkSpacePanel().getWidth();
-            int hLimit = parent.getSimulatorItem().getWorkSpacePanel().getHeight();
+            int wLimit = parent.getSimulatorItem().getWorkSpaceScroll().getWidth();
+            //wLimit = 1789;
+            int hLimit = parent.getSimulatorItem().getWorkSpaceScroll().getHeight();
+            //hLimit = 850;
             int x = parent.getX() + e.getX() - parent.getDragX();
             int y = parent.getY() + e.getY() - parent.getDragY();
-            if(x > limits.x && y > limits.y  && x < limits.x + wLimit - parent.getWidth() && y <limits.y + hLimit - parent.getHeight()){
+            if(-x < limits.x && -y < limits.y  && -x > limits.x - wLimit + parent.getWidth() && -y > limits.y - hLimit + parent.getHeight()){
 		Graphics g = parent.getSimulatorItem().getWorkSpacePanel().getGraphics();
 		//g.clearRect(parent.getX(), parent.getY() , parent.getSimulatorItem().getWorkSpacePanel().getWidth()-parent.getWidth(), parent.getSimulatorItem().getWorkSpacePanel().getHeight()- parent.getHeight());
 		parent.getSimulatorItem().getWorkSpacePanel().setBackground(Color.WHITE);

@@ -1,5 +1,6 @@
 package app.Elements;
 
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -45,9 +46,11 @@ public class MyMouseAdapter extends MouseAdapter {
                 parent.getLinkers().add(li);
                 parent.getSimulatorItem().getAuxHost().getLinkers().add(li);
                 
-
-                parent.getSimulatorItem().getMenu().setVisible(true);
-                //parent.getSimulatorItem().getPallette().setVisible(true);
+                parent.getSimulatorItem().getvMain().enabled(true);
+                Cursor hourglassCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+                this.parent.getSimulatorItem().getvMain().setCursor(hourglassCursor);
+                enabledBotons();
+                
                 parent.getSimulatorItem().getWorkSpacePanel().paint(g);
 //				//g.drawLine(parent.getX(), parent.getY(), this.parent.getSimulatorItem().getAuxHost().getX(), this.parent.getSimulatorItem().getAuxHost().getY());
                 //li.repaint(g);
@@ -66,5 +69,16 @@ public class MyMouseAdapter extends MouseAdapter {
     public void setParent(NodeItem parent) {
         this.parent = parent;
     }
-
+    public void enabledBotons() {
+        if (this.parent.getSimulatorItem().getWorkSpacePanel().getChildsItems().size() >= 2) {
+            this.parent.getSimulatorItem().getvMain().getBtnNewLinker().setEnabled(true);
+        } else {
+            this.parent.getSimulatorItem().getvMain().getBtnNewLinker().setEnabled(false);
+        }
+        if (this.parent.getSimulatorItem().getWorkSpacePanel().getChildsItems().size() > 0 && this.parent.getSimulatorItem().getWorkSpacePanel().getLinkers().size() >= this.parent.getSimulatorItem().getWorkSpacePanel().getChildsItems().size() - 1) {
+           this.parent.getSimulatorItem().getvMain().getBtnStart().setEnabled(true);
+        } else {
+            this.parent.getSimulatorItem().getvMain().getBtnStart().setEnabled(false);
+        }
+    }   
 }

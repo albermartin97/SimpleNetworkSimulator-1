@@ -42,10 +42,8 @@ public class VConfRouter extends javax.swing.JFrame {
         this.si = vMain.getSI();
         this.vMain = vMain;
         initComponents();
-        this.ri = ri;
-        txtNameRouter.setText(ri.getName());
-        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2, 
-                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
+        configComponents(ri);
+        
         
     }
 
@@ -58,21 +56,16 @@ public class VConfRouter extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblConfRouter = new javax.swing.JLabel();
         lblNameRouter = new javax.swing.JLabel();
         txtNameRouter = new javax.swing.JTextField();
         btnCancelarConfRouter = new javax.swing.JButton();
         btnAceptarConfRouter = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         setTitle(bundle.getString("VConfRouter.title")); // NOI18N
+        setAlwaysOnTop(true);
+        setMinimumSize(new java.awt.Dimension(360, 82));
         setResizable(false);
-
-        lblConfRouter.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblConfRouter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblConfRouter.setText(bundle.getString("VConfRouter.lblConfRouter.text")); // NOI18N
-        lblConfRouter.setToolTipText(bundle.getString("VConfRouter.lblConfRouter.toolTipText")); // NOI18N
 
         lblNameRouter.setText(bundle.getString("VConfRouter.lblNameRouter.text")); // NOI18N
 
@@ -96,33 +89,31 @@ public class VConfRouter extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblConfRouter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(lblNameRouter)
-                .addGap(32, 32, 32)
-                .addComponent(txtNameRouter, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addComponent(btnAceptarConfRouter, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelarConfRouter, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAceptarConfRouter, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelarConfRouter, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNameRouter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNameRouter)))
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblConfRouter)
-                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNameRouter)
                     .addComponent(txtNameRouter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelarConfRouter, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAceptarConfRouter, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAceptarConfRouter, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelarConfRouter, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -180,40 +171,6 @@ public class VConfRouter extends javax.swing.JFrame {
         si.getWorkSpacePanel().updateUI();
     }//GEN-LAST:event_btnAceptarConfRouterActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VConfRouter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VConfRouter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VConfRouter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VConfRouter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VConfRouter().setVisible(true);
-            }
-        });
-    }
     public void enabledBotons() {
         if (si.getWorkSpacePanel().getChildsItems().size() >= 2) {
             this.vMain.getBtnNewLinker().setEnabled(true);
@@ -230,8 +187,14 @@ public class VConfRouter extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarConfRouter;
     private javax.swing.JButton btnCancelarConfRouter;
-    private javax.swing.JLabel lblConfRouter;
     private javax.swing.JLabel lblNameRouter;
     private javax.swing.JTextField txtNameRouter;
     // End of variables declaration//GEN-END:variables
+
+    private void configComponents(RouterItem ri) {
+        this.ri = ri;
+        txtNameRouter.setText(ri.getName());
+        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2, 
+                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
+    }
 }

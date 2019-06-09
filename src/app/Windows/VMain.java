@@ -34,9 +34,12 @@ import objects.Linker;
 import objects.Package;
 import simulator.Simulator;
 import app.Elements.NodeItem;
+import java.awt.Cursor;
 import java.awt.Desktop;
 import java.net.URI;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import objects.Router;
 
 /**
@@ -65,20 +68,7 @@ public class VMain extends javax.swing.JFrame {
     public VMain() {
         this.tuplasPD = new ArrayList<>();
         initComponents();
-        si = new SimulatorItem();
-        Simulator simulator = new Simulator();
-        si.setSimulator(simulator);
-        si.setWorkSpacePanel(jWorkSpace);
-        si.setMenu(jMenuWorkSpace);
-        si.setPallette(jAddItems);
-        if (si.getWorkSpacePanel().getChildsItems().size() < 2) {
-            btnNewLinker.setEnabled(false);
-        } else {
-            btnNewLinker.setEnabled(false);
-        }
-        btnStart.setEnabled(false);
-        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
-                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
+        configComponents();
     }
 
     /**
@@ -108,7 +98,8 @@ public class VMain extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         setTitle(bundle.getString("VMain.title")); // NOI18N
-        setMinimumSize(new java.awt.Dimension(1276, 792));
+        setMinimumSize(new java.awt.Dimension(697, 527));
+        setPreferredSize(new java.awt.Dimension(697, 527));
 
         jMain.setMinimumSize(new java.awt.Dimension(1255, 760));
         jMain.setPreferredSize(new java.awt.Dimension(1255, 760));
@@ -155,6 +146,9 @@ public class VMain extends javax.swing.JFrame {
         btnOpenFile.setFocusable(false);
         btnOpenFile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnOpenFile.setMargin(new java.awt.Insets(8, 20, 8, 20));
+        btnOpenFile.setMaximumSize(new java.awt.Dimension(73, 51));
+        btnOpenFile.setMinimumSize(new java.awt.Dimension(73, 51));
+        btnOpenFile.setPreferredSize(new java.awt.Dimension(73, 51));
         btnOpenFile.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnOpenFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +162,9 @@ public class VMain extends javax.swing.JFrame {
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSave.setMargin(new java.awt.Insets(8, 20, 8, 20));
+        btnSave.setMaximumSize(new java.awt.Dimension(73, 51));
+        btnSave.setMinimumSize(new java.awt.Dimension(73, 51));
+        btnSave.setPreferredSize(new java.awt.Dimension(73, 51));
         btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +178,9 @@ public class VMain extends javax.swing.JFrame {
         btnStart.setFocusable(false);
         btnStart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStart.setMargin(new java.awt.Insets(8, 20, 8, 20));
+        btnStart.setMaximumSize(new java.awt.Dimension(73, 51));
+        btnStart.setMinimumSize(new java.awt.Dimension(73, 51));
+        btnStart.setPreferredSize(new java.awt.Dimension(73, 51));
         btnStart.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,10 +196,11 @@ public class VMain extends javax.swing.JFrame {
         btnNewComputer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconNewComputer2.png"))); // NOI18N
         btnNewComputer.setToolTipText(bundle.getString("VMain.btnNewComputer.toolTipText")); // NOI18N
         btnNewComputer.setFocusable(false);
-        btnNewComputer.setHideActionText(true);
         btnNewComputer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewComputer.setMargin(new java.awt.Insets(8, 20, 8, 20));
-        btnNewComputer.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconNewComputer.png"))); // NOI18N
+        btnNewComputer.setMaximumSize(new java.awt.Dimension(73, 51));
+        btnNewComputer.setMinimumSize(new java.awt.Dimension(73, 51));
+        btnNewComputer.setPreferredSize(new java.awt.Dimension(73, 51));
         btnNewComputer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewComputerActionPerformed(evt);
@@ -212,6 +213,9 @@ public class VMain extends javax.swing.JFrame {
         btnNewLinker.setFocusable(false);
         btnNewLinker.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewLinker.setMargin(new java.awt.Insets(8, 20, 8, 20));
+        btnNewLinker.setMaximumSize(new java.awt.Dimension(73, 51));
+        btnNewLinker.setMinimumSize(new java.awt.Dimension(73, 51));
+        btnNewLinker.setPreferredSize(new java.awt.Dimension(73, 51));
         btnNewLinker.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnNewLinker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,6 +229,9 @@ public class VMain extends javax.swing.JFrame {
         btnNewRouter.setFocusable(false);
         btnNewRouter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewRouter.setMargin(new java.awt.Insets(8, 20, 8, 20));
+        btnNewRouter.setMaximumSize(new java.awt.Dimension(73, 51));
+        btnNewRouter.setMinimumSize(new java.awt.Dimension(73, 51));
+        btnNewRouter.setPreferredSize(new java.awt.Dimension(73, 51));
         btnNewRouter.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnNewRouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,7 +248,13 @@ public class VMain extends javax.swing.JFrame {
         btnHelp.setText(bundle.getString("VMain.btnHelp.text")); // NOI18N
         btnHelp.setToolTipText(bundle.getString("VMain.btnHelp.toolTipText")); // NOI18N
         btnHelp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnHelp.setFocusable(false);
+        btnHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHelp.setMargin(new java.awt.Insets(8, 20, 8, 20));
+        btnHelp.setMaximumSize(new java.awt.Dimension(73, 51));
+        btnHelp.setMinimumSize(new java.awt.Dimension(73, 51));
+        btnHelp.setPreferredSize(new java.awt.Dimension(73, 51));
+        btnHelp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHelpActionPerformed(evt);
@@ -253,28 +266,29 @@ public class VMain extends javax.swing.JFrame {
         jMain.setLayout(jMainLayout);
         jMainLayout.setHorizontalGroup(
             jMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jMainLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jMainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneWorkSpace, javax.swing.GroupLayout.DEFAULT_SIZE, 1256, Short.MAX_VALUE)
+                .addGroup(jMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPaneWorkSpace, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jMainLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
                         .addComponent(jMenuWorkSpace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jAddItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jAddItems, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jtbHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jMainLayout.setVerticalGroup(
             jMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jMainLayout.createSequentialGroup()
+            .addGroup(jMainLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jMenuWorkSpace, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jMenuWorkSpace, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                     .addComponent(jAddItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtbHelp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPaneWorkSpace, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+                    .addComponent(jtbHelp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneWorkSpace, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -282,42 +296,48 @@ public class VMain extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1276, Short.MAX_VALUE)
+            .addComponent(jMain, javax.swing.GroupLayout.PREFERRED_SIZE, 687, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jMain, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+            .addComponent(jMain, javax.swing.GroupLayout.PREFERRED_SIZE, 495, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewRouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewRouterActionPerformed
+        this.jMain.setEnabled(false);
         this.vConfRouter = new VConfRouter(this);
         this.vConfRouter.setVisible(true);
     }//GEN-LAST:event_btnNewRouterActionPerformed
 
     private void btnNewComputerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewComputerActionPerformed
+        this.jMain.setEnabled(false);
         HostItem ci = new HostItem(si, "");
         this.vConfComputer = new VConfHost(ci, this);
         this.vConfComputer.setVisible(true);
     }//GEN-LAST:event_btnNewComputerActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        this.jMain.setEnabled(false);
         this.vEnrutamiento = new VEnrutamiento(this, anyRandom, routing);
         this.vEnrutamiento.setVisible(true);
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnNewLinkerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewLinkerActionPerformed
+        this.jMain.setEnabled(false);
         this.vConfLinker = new VConfLinker(this);
         this.vConfLinker.setVisible(true);
     }//GEN-LAST:event_btnNewLinkerActionPerformed
 
     private void btnOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenFileActionPerformed
+        this.jMain.setEnabled(false);
         JFileChooser jf = new JFileChooser();
         int approve = jf.showOpenDialog(this);
         File archivo = jf.getSelectedFile();
         if (archivo != null && approve == JFileChooser.APPROVE_OPTION) {
+            this.jMain.setEnabled(true);
             jWorkSpace.removeAll();
             jWorkSpace.setChildsItems(new ArrayList<>());
             jWorkSpace.setLinkers(new ArrayList<>());
@@ -548,10 +568,12 @@ public class VMain extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(VMain.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }else
+            this.jMain.setEnabled(true);
     }//GEN-LAST:event_btnOpenFileActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        this.jMain.setEnabled(false);
         JFileChooser jd = new JFileChooser();
         //jd.showOpenDialog(this);
         //jd.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -559,7 +581,7 @@ public class VMain extends javax.swing.JFrame {
         jd.setApproveButtonText("Guardar");
         int userSelection = jd.showSaveDialog(this);
         if (userSelection == JFileChooser.APPROVE_OPTION) {
-
+            this.jMain.setEnabled(true);
             try {
                 FileOutputStream fileOut = new FileOutputStream(jd.getSelectedFile().getAbsolutePath());
                 ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -570,21 +592,36 @@ public class VMain extends javax.swing.JFrame {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+        }else{
+            this.jMain.setEnabled(true);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnNewWorkSpaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewWorkSpaceActionPerformed
-        VMain vMain = new VMain();
-        this.setVisible(false);
-        vMain.setVisible(true);
+        int result = JOptionPane.showConfirmDialog(this,"Se va a borrar la red ¿Quieres continuar?","Nueva Hoja",JOptionPane.OK_CANCEL_OPTION);
+        if(result == JOptionPane.OK_OPTION){
+            VMain vMain = new VMain();
+            this.setVisible(false);
+            vMain.setVisible(true);
+        }
     }//GEN-LAST:event_btnNewWorkSpaceActionPerformed
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        String url = "https://github.com/jfvelezserrano/SimpleNetworkSimulator";
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+       
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
             try {
-                desktop.browse(new URI("https://github.com/jfvelezserrano/SimpleNetworkSimulator"));
+                desktop.browse(new URI(url));
             } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec("xdg-open " + url);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -663,7 +700,9 @@ public class VMain extends javax.swing.JFrame {
     public JToolBar getJMenu() {
         return jMenuWorkSpace;
     }
-
+    public JToolBar getJHelp() {
+        return jtbHelp;
+    }
     public JButton getBtnStart() {
         return btnStart;
     }
@@ -700,6 +739,23 @@ public class VMain extends javax.swing.JFrame {
         this.routing = routing;
     }
 
+    public JPanel getjMain() {
+        return jMain;
+    }
+
+    public void setjMain(JPanel jMain) {
+        this.jMain = jMain;
+    }
+    public void enabled(boolean b){
+        this.btnHelp.setEnabled(b);
+        this.btnNewRouter.setEnabled(b);
+        this.btnNewLinker.setEnabled(b);
+        this.btnNewComputer.setEnabled(b);
+        this.btnStart.setEnabled(b);
+        this.btnOpenFile.setEnabled(b);
+        this.btnSave.setEnabled(b);
+        this.btnNewWorkSpace.setEnabled(b);
+    }
     /*@Override
     public void repaint(){
         jWorkSpace.paint(this.getGraphics());
@@ -733,4 +789,21 @@ public class VMain extends javax.swing.JFrame {
     private app.Elements.WorkSpacePanel jWorkSpace;
     private javax.swing.JToolBar jtbHelp;
     // End of variables declaration//GEN-END:variables
+
+    private void configComponents() {
+        si = new SimulatorItem();
+        Simulator simulator = new Simulator();
+        si.setSimulator(simulator);
+        si.setWorkSpacePanel(jWorkSpace);
+        si.setWorkSpaceScroll(jScrollPaneWorkSpace);
+        si.setvMain(this);
+        if (si.getWorkSpacePanel().getChildsItems().size() < 2) {
+            btnNewLinker.setEnabled(false);
+        } else {
+            btnNewLinker.setEnabled(false);
+        }
+        btnStart.setEnabled(false);
+        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
+                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
+    }
 }

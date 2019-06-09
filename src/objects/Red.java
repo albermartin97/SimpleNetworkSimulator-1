@@ -613,7 +613,7 @@ public class Red implements Serializable {
                     }
 
                     // Evento de Transmision al cable
-                    BigDecimal timeTransmision = p.getSize().divide(nextEdge.getElement().getSpeed(), 5, RoundingMode.HALF_UP);
+                    BigDecimal timeTransmision = p.getSize().divide(nextEdge.getElement().getSpeed(), 6, RoundingMode.HALF_UP);
                     p.setTime(p.getTime().add(timeTransmision));
                     p.setArriveTime(p.getTime());
                     c.updateTimeQueue(p.getTime());
@@ -626,7 +626,7 @@ public class Red implements Serializable {
 
                     // Se configura el evento que ha generado el envio por el
                     // cable
-                    BigDecimal timeTransport = nextEdge.getElement().getDistance().divide(velocidadCable, 5, RoundingMode.HALF_UP);
+                    BigDecimal timeTransport = nextEdge.getElement().getDistance().divide(velocidadCable, 6, RoundingMode.HALF_UP);
                     p.setTime(p.getTime().add(timeTransport));
                     p.setArriveTime(p.getTime());
                     String menssageTransport = "El Paquete " + p.getId()
@@ -674,7 +674,7 @@ public class Red implements Serializable {
                 }
 
                 // Se configura el evento de tranmision del paquete al cable
-                BigDecimal timeTransmision = p.getSize().divide(linker.getElement().getSpeed(), 5, RoundingMode.HALF_UP);
+                BigDecimal timeTransmision = p.getSize().divide(linker.getElement().getSpeed(), 6, RoundingMode.HALF_UP);
                 p.setTime(p.getTime().add(timeTransmision));
                 p.setArriveTime(p.getTime());
                 r.updateTimeQueue(p.getTime());
@@ -685,7 +685,7 @@ public class Red implements Serializable {
                 Event eTransmision = new Event(p.getTime(), menssageTransmision, h1.getElement(),nextNode.getElement(),linker.getElement(),timeTransmision);
 
                 // Se configura el evento de transporte por el cable
-                BigDecimal timeTransport = linker.getElement().getDistance().divide(velocidadCable, 5, RoundingMode.HALF_UP);
+                BigDecimal timeTransport = linker.getElement().getDistance().divide(velocidadCable, 6, RoundingMode.HALF_UP);
                 p.setTime(p.getTime().add(timeTransport));
                 p.setArriveTime(p.getTime());
                 String menssageTransport = "El Paquete " + p.getId()

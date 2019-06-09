@@ -59,7 +59,7 @@ public class RouterItem extends JPanel implements NodeItem, Serializable {
 
     @Override
     public void paint(Graphics g) {
-        lblName.setBounds(this.getX() + 20 ,this.getY() - 30,20,20);
+        lblName.setBounds(this.getX() + 20 ,this.getY() - 30,100,20);
         this.setSize(new Dimension(60, 60));
         ImageIcon imageIcon;
         Image image;

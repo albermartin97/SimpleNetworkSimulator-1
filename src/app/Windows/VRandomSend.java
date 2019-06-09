@@ -35,10 +35,8 @@ public class VRandomSend extends javax.swing.JFrame {
      public VRandomSend(VConfHost vConfComputer, Host c) {
         this.vConfComputer = vConfComputer;
         initComponents();
-        this.txtTamañoMedioRandomSend.setText(c.getRandomSend().getSizePackage().toString());
-        this.txtTiempoMedioMedioRandomSend.setText(c.getRandomSend().getAverageTime().toString());
-        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2, 
-                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
+        configComponents(c);
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +47,6 @@ public class VRandomSend extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblEnvioAleatorio = new javax.swing.JLabel();
         lblTamañoPackageRandomSend = new javax.swing.JLabel();
         lblTiempoMedioRandomSend = new javax.swing.JLabel();
         txtTamañoMedioRandomSend = new javax.swing.JTextField();
@@ -62,11 +59,9 @@ public class VRandomSend extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         setTitle(bundle.getString("VRandomSend.title")); // NOI18N
+        setAlwaysOnTop(true);
+        setMinimumSize(new java.awt.Dimension(399, 113));
         setResizable(false);
-
-        lblEnvioAleatorio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblEnvioAleatorio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEnvioAleatorio.setText(bundle.getString("VRandomSend.lblEnvioAleatorio.text")); // NOI18N
 
         lblTamañoPackageRandomSend.setText(bundle.getString("VRandomSend.lblTamañoPackageRandomSend.text")); // NOI18N
 
@@ -98,53 +93,46 @@ public class VRandomSend extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblEnvioAleatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAceptarRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(btnCancelarRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTiempoMedioRandomSend)
-                                    .addComponent(lblTamañoPackageRandomSend))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtTamañoMedioRandomSend)
-                                    .addComponent(txtTiempoMedioMedioRandomSend))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblKbRandomSend)
-                                    .addComponent(lblSegundosRandomSend))))
-                        .addGap(11, 11, 11)))
-                .addContainerGap())
+                        .addGap(0, 64, Short.MAX_VALUE)
+                        .addComponent(btnAceptarRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelarRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTamañoPackageRandomSend)
+                            .addComponent(lblTiempoMedioRandomSend))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTamañoMedioRandomSend)
+                            .addComponent(txtTiempoMedioMedioRandomSend))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblKbRandomSend)
+                            .addComponent(lblSegundosRandomSend))))
+                .addGap(5, 5, 5))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblEnvioAleatorio)
-                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTamañoPackageRandomSend)
                     .addComponent(txtTamañoMedioRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblKbRandomSend))
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTiempoMedioRandomSend)
                     .addComponent(txtTiempoMedioMedioRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSegundosRandomSend))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptarRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelarRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(btnCancelarRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAceptarRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -180,45 +168,10 @@ public class VRandomSend extends javax.swing.JFrame {
         vConfComputer.setVisible(true);
     }//GEN-LAST:event_btnAceptarRandomSendActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VRandomSend.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VRandomSend.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VRandomSend.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VRandomSend.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VRandomSend().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarRandomSend;
     private javax.swing.JButton btnCancelarRandomSend;
-    private javax.swing.JLabel lblEnvioAleatorio;
     private javax.swing.JLabel lblKbRandomSend;
     private javax.swing.JLabel lblSegundosRandomSend;
     private javax.swing.JLabel lblTamañoPackageRandomSend;
@@ -226,4 +179,11 @@ public class VRandomSend extends javax.swing.JFrame {
     private javax.swing.JTextField txtTamañoMedioRandomSend;
     private javax.swing.JTextField txtTiempoMedioMedioRandomSend;
     // End of variables declaration//GEN-END:variables
+
+    private void configComponents(Host c) {
+        this.txtTamañoMedioRandomSend.setText(c.getRandomSend().getSizePackage().toString());
+        this.txtTiempoMedioMedioRandomSend.setText(c.getRandomSend().getAverageTime().toString());
+        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2, 
+                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
+    }
 }

@@ -55,21 +55,8 @@ public class VEnrutamiento extends javax.swing.JFrame {
         }
         this.linkers = linkers;
         initComponents();
-        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
-                (getToolkit().getScreenSize().height - this.getHeight()) / 2);  
-        this.btnStartToFinish.setEnabled(!anyRandom);
-        if(routing){
-            for(int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++){
-            Vertex<Node> vr = getChildItem(jtHostTable.getColumnName(j).toString());
-            Router r = (Router) vr.getElement();
-                for(int m = 0; m < si.getSimulator().getRed().getAllHosts().size(); m++){
-                    Vertex<Node> vh = getChildItem(jtHostTable.getValueAt(m, 0).toString());
-                    String ip = r.getEnrutamiento(vh).getElement().getIp();
-                    if(ip != null)
-                        jtHostTable.setValueAt(ip, m, j);
-                }
-            }
-        }
+        configComponents(routing);
+        
     }
 
     /**
@@ -82,7 +69,6 @@ public class VEnrutamiento extends javax.swing.JFrame {
     private void initComponents() {
 
         jConfTablaEnrutamiento = new javax.swing.JPanel();
-        lblConfTablaEnrutamiento = new javax.swing.JLabel();
         tbRun = new javax.swing.JToolBar();
         btnStart = new javax.swing.JButton();
         btnStartToFinish = new javax.swing.JButton();
@@ -92,10 +78,8 @@ public class VEnrutamiento extends javax.swing.JFrame {
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         setTitle(bundle.getString("VEnrutamiento.title")); // NOI18N
-
-        lblConfTablaEnrutamiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblConfTablaEnrutamiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblConfTablaEnrutamiento.setText(bundle.getString("VEnrutamiento.lblConfTablaEnrutamiento.text")); // NOI18N
+        setAlwaysOnTop(true);
+        setMinimumSize(new java.awt.Dimension(555, 439));
 
         tbRun.setFloatable(false);
         tbRun.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -182,26 +166,19 @@ public class VEnrutamiento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(tbRun, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSPHostTable, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(71, 71, 71))
-            .addGroup(jConfTablaEnrutamientoLayout.createSequentialGroup()
-                .addComponent(lblConfTablaEnrutamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jSPHostTable, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jConfTablaEnrutamientoLayout.setVerticalGroup(
             jConfTablaEnrutamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jConfTablaEnrutamientoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblConfTablaEnrutamiento)
                 .addGroup(jConfTablaEnrutamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSPHostTable, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                     .addGroup(jConfTablaEnrutamientoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSPHostTable, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jConfTablaEnrutamientoLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
                         .addComponent(tbRun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,7 +186,7 @@ public class VEnrutamiento extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jConfTablaEnrutamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 544, Short.MAX_VALUE)
+                .addComponent(jConfTablaEnrutamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(11, 11, 11))
         );
         layout.setVerticalGroup(
@@ -287,40 +264,6 @@ public class VEnrutamiento extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEnrutadoAutomaticoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VEnrutamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VEnrutamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VEnrutamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VEnrutamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VEnrutamiento().setVisible(true);
-            }
-        });
-    }
 
     private Vertex<Node> getChildItem(String selectedItem) {
         for (NodeItem hi : this.si.getWorkSpacePanel()
@@ -348,7 +291,24 @@ public class VEnrutamiento extends javax.swing.JFrame {
     private javax.swing.JPanel jConfTablaEnrutamiento;
     private javax.swing.JScrollPane jSPHostTable;
     private javax.swing.JTable jtHostTable;
-    private javax.swing.JLabel lblConfTablaEnrutamiento;
     private javax.swing.JToolBar tbRun;
     // End of variables declaration//GEN-END:variables
+
+    private void configComponents(boolean routing) {
+        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
+                (getToolkit().getScreenSize().height - this.getHeight()) / 2);  
+        this.btnStartToFinish.setEnabled(!anyRandom);
+        if(routing){
+            for(int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++){
+            Vertex<Node> vr = getChildItem(jtHostTable.getColumnName(j).toString());
+            Router r = (Router) vr.getElement();
+                for(int m = 0; m < si.getSimulator().getRed().getAllHosts().size(); m++){
+                    Vertex<Node> vh = getChildItem(jtHostTable.getValueAt(m, 0).toString());
+                    String ip = r.getEnrutamiento(vh).getElement().getIp();
+                    if(ip != null)
+                        jtHostTable.setValueAt(ip, m, j);
+                }
+            }
+        }
+    }
 }

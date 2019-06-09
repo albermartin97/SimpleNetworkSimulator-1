@@ -1,6 +1,8 @@
 package app.Elements;
 
+import app.Windows.VMain;
 import java.io.Serializable;
+import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
 import objects.Linker;
@@ -9,8 +11,8 @@ import simulator.Simulator;
 public class SimulatorItem implements Serializable {
 
     private WorkSpacePanel workSpacePanel;
-    private JToolBar menu;
-    private JToolBar pallette;
+    private JScrollPane workSpaceScroll;
+    private VMain vMain;
     private Simulator simulator;
     private NodeItem auxHost;
     private boolean conectarHosts = false;
@@ -68,22 +70,23 @@ public class SimulatorItem implements Serializable {
         this.l = l;
     }
 
-    public JToolBar getMenu() {
-        return menu;
+    public VMain getvMain() {
+        return vMain;
     }
 
-    public void setMenu(JToolBar menu) {
-        this.menu = menu;
+    public void setvMain(VMain vMain) {
+        this.vMain = vMain;
     }
 
-    public JToolBar getPallette() {
-        return pallette;
+    public JScrollPane getWorkSpaceScroll() {
+        return workSpaceScroll;
     }
 
-    public void setPallette(JToolBar pallette) {
-        this.pallette = pallette;
+    public void setWorkSpaceScroll(JScrollPane workSpaceScroll) {
+        this.workSpaceScroll = workSpaceScroll;
     }
 
+    
     @Override
     public String toString() {
         return workSpacePanel.toString();

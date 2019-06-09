@@ -6,6 +6,7 @@
 package app.Windows;
 
 import app.Elements.SimulatorItem;
+import java.awt.Cursor;
 import java.math.BigDecimal;
 import objects.Linker;
 
@@ -46,7 +47,6 @@ public class VConfLinker extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jConfLinker = new javax.swing.JPanel();
-        lblConfLinker = new javax.swing.JLabel();
         lblSpeedLinker = new javax.swing.JLabel();
         lblSizeLinker = new javax.swing.JLabel();
         txtSpeedLinker = new javax.swing.JTextField();
@@ -61,13 +61,9 @@ public class VConfLinker extends javax.swing.JFrame {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         jLabel1.setText(bundle.getString("VConfLinker.jLabel1.text")); // NOI18N
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle(bundle.getString("VConfLinker.title")); // NOI18N
+        setAlwaysOnTop(true);
         setResizable(false);
-
-        lblConfLinker.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblConfLinker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblConfLinker.setText(bundle.getString("VConfLinker.lblConfLinker.text")); // NOI18N
 
         lblSpeedLinker.setText(bundle.getString("VConfLinker.lblSpeedLinker.text")); // NOI18N
 
@@ -104,79 +100,69 @@ public class VConfLinker extends javax.swing.JFrame {
         jConfLinker.setLayout(jConfLinkerLayout);
         jConfLinkerLayout.setHorizontalGroup(
             jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfLinkerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jConfLinkerLayout.createSequentialGroup()
-                        .addComponent(lblSizeLinker)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addComponent(txtSizeLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jConfLinkerLayout.createSequentialGroup()
-                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfLinkerLayout.createSequentialGroup()
-                                .addComponent(lblSpeedLinker)
-                                .addGap(43, 43, 43))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfLinkerLayout.createSequentialGroup()
-                                .addComponent(lblNameLinker)
-                                .addGap(51, 51, 51)))
-                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtSpeedLinker, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                            .addComponent(txtNameLinker))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMConfLinker)
-                    .addComponent(lblBSConfLinker))
-                .addGap(49, 49, 49))
             .addGroup(jConfLinkerLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(btnAceptarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
-            .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jConfLinkerLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(lblConfLinker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jConfLinkerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSpeedLinker)
+                            .addComponent(lblNameLinker)
+                            .addComponent(lblSizeLinker))
+                        .addGap(18, 18, 18)
+                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtSizeLinker, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                            .addComponent(txtNameLinker, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSpeedLinker, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(2, 2, 2)
+                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBSConfLinker)
+                            .addComponent(lblMConfLinker)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfLinkerLayout.createSequentialGroup()
+                        .addContainerGap(65, Short.MAX_VALUE)
+                        .addComponent(btnAceptarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(8, 10, Short.MAX_VALUE))
         );
         jConfLinkerLayout.setVerticalGroup(
             jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfLinkerLayout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNameLinker)
-                    .addComponent(txtNameLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSpeedLinker)
-                    .addComponent(txtSpeedLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jConfLinkerLayout.createSequentialGroup()
+                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNameLinker)
+                            .addComponent(txtNameLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSpeedLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSpeedLinker)))
                     .addComponent(lblBSConfLinker))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSizeLinker)
                     .addComponent(txtSizeLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMConfLinker)
-                    .addComponent(lblSizeLinker))
-                .addGap(29, 29, 29)
+                    .addComponent(lblMConfLinker))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAceptarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jConfLinkerLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(lblConfLinker)
-                    .addContainerGap(210, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jConfLinker, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,8 +184,10 @@ public class VConfLinker extends javax.swing.JFrame {
             this.vMain.getBtnStart().setEnabled(false);
         }
         
-        this.vMain.getJAddItems().setVisible(false);
-        this.vMain.getJMenu().setVisible(false);
+        this.vMain.enabled(false);
+        Cursor cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
+        this.vMain.setCursor(cursor);
+        this.vMain.setVisible(true);
         this.vMain.getSI().getWorkSpacePanel().paint(this.getGraphics());
     }//GEN-LAST:event_btnAceptarConfLinkerActionPerformed
 
@@ -208,40 +196,6 @@ public class VConfLinker extends javax.swing.JFrame {
         si.setConectarHosts(false);
     }//GEN-LAST:event_btnCancelarConfLinkerActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VConfLinker.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VConfLinker.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VConfLinker.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VConfLinker.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VConfLinker().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarConfLinker;
@@ -249,7 +203,6 @@ public class VConfLinker extends javax.swing.JFrame {
     private javax.swing.JPanel jConfLinker;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblBSConfLinker;
-    private javax.swing.JLabel lblConfLinker;
     private javax.swing.JLabel lblMConfLinker;
     private javax.swing.JLabel lblNameLinker;
     private javax.swing.JLabel lblSizeLinker;
