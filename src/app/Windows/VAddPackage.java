@@ -74,7 +74,6 @@ public class VAddPackage extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
-        setType(java.awt.Window.Type.POPUP);
 
         txtTamañoPackage.setToolTipText(bundle.getString("VAddPackage.txtTamañoPackage.toolTipText")); // NOI18N
 

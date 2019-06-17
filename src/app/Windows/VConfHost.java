@@ -42,7 +42,6 @@ public class VConfHost extends javax.swing.JFrame {
         this.ci = ci;
         this.si = vMain.getSI();
         this.vMain = vMain;
-        this.setVisible(true);
         initComponents();
         configComponents();
     }
