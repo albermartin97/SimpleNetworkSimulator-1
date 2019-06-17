@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator/src/objects/Node.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator/src/objects/Router.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator/src/app/Windows/VMain.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator/src/app/Windows/VConfRouter.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator/src/objects/Red.java</file>
+            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/gitSNS/SimpleNetworkSimulator/src/app/Windows/VConfHost.java</file>
+            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/gitSNS/SimpleNetworkSimulator/src/app/Windows/VAddPackage.java</file>
         </group>
     </open-files>
 </project-private>
