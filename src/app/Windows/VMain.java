@@ -38,9 +38,12 @@ import java.awt.Cursor;
 import java.awt.Desktop;
 import java.net.URI;
 import java.util.HashMap;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import objects.Router;
+import sun.security.tools.policytool.Resources;
+
 
 /**
  *
@@ -284,7 +287,7 @@ public class VMain extends javax.swing.JFrame {
             .addGroup(jMainLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jMenuWorkSpace, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                    .addComponent(jMenuWorkSpace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jAddItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtbHelp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -598,12 +601,13 @@ public class VMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnNewWorkSpaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewWorkSpaceActionPerformed
-        int result = JOptionPane.showConfirmDialog(this,"Se va a borrar la red ¿Quieres continuar?","Nueva Hoja",JOptionPane.OK_CANCEL_OPTION);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+        int result = JOptionPane.showConfirmDialog(this,bundle.getString("NewFileText"),bundle.getString("NewFileTitle"),JOptionPane.OK_CANCEL_OPTION);
         if(result == JOptionPane.OK_OPTION){
             VMain vMain = new VMain();
             this.setVisible(false);
             vMain.setVisible(true);
-        }
+        }   
     }//GEN-LAST:event_btnNewWorkSpaceActionPerformed
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed

@@ -224,7 +224,8 @@ public class VEnrutamiento extends javax.swing.JFrame {
             vTraceStepByStep.setVisible(true);
             vTraceStepByStep.getjToolBarTrace().setVisible(false);
         }else{
-            JOptionPane.showMessageDialog(this,"Se necesitan enrutar todos los routers para ejecutar","Enruta todos los routers",JOptionPane.ERROR_MESSAGE);
+            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+            JOptionPane.showMessageDialog(this,bundle.getString("ErroEnrutamiento"),bundle.getString("ErroEnrutamientoTitulo"),JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnStartToFinishActionPerformed
 
