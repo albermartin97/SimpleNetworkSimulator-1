@@ -597,6 +597,7 @@ public class Red implements Serializable {
         Package p = h1.getElement().getQueuePackages().remove();
 
         if (h1 != p.getDestinationHost() && p.getDestinationHost() != null) {
+            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
             // Se diferencia entre si es un computer o un router por la forma de
             // obtener el siguiente nodo
             if (h1.getElement() instanceof Host) {
@@ -618,9 +619,9 @@ public class Red implements Serializable {
                     p.setArriveTime(p.getTime());
                     c.updateTimeQueue(p.getTime());
                     String menssageTransmision = h1.getElement().getName()
-                            + " Ha transmitido el Paquete " + p.getId()
-                            + " al cable " + nextEdge.getElement().getIp()
-                            + " en = " + timeTransmision + " s";
+                            + bundle.getString("PackageSend") + p.getId()
+                            + bundle.getString("ToLinker") + nextEdge.getElement().getIp()
+                            + bundle.getString("In") + timeTransmision + " s";
                     Event eTransmision = new Event(p.getTime(),
                             menssageTransmision, h1.getElement(),nextNode.getElement(),nextEdge.getElement(),timeTransmision);
 
@@ -629,10 +630,10 @@ public class Red implements Serializable {
                     BigDecimal timeTransport = nextEdge.getElement().getDistance().divide(velocidadCable, 6, RoundingMode.HALF_UP);
                     p.setTime(p.getTime().add(timeTransport));
                     p.setArriveTime(p.getTime());
-                    String menssageTransport = "El Paquete " + p.getId()
-                            + " ha llegado desde "
-                            + h1.getElement().getName() + " hasta "
-                            + nextNode.getElement().getName() + " en = "
+                    String menssageTransport =  bundle.getString("ThePackage") + p.getId()
+                            + bundle.getString("ArrivedFrom")
+                            + h1.getElement().getName() + bundle.getString("To")
+                            + nextNode.getElement().getName() + bundle.getString("In")
                             + timeTransport;
 
                     // Se a�ade a la cola del siguiente nodo
@@ -679,8 +680,8 @@ public class Red implements Serializable {
                 p.setArriveTime(p.getTime());
                 r.updateTimeQueue(p.getTime());
                 String menssageTransmision = h1.getElement().getName()
-                        + " Ha transmitido el Paquete " + p.getId()
-                        + " al cable " + linker.getElement().getIp() + " en = "
+                        + bundle.getString("PackageSend") + p.getId()
+                        + bundle.getString("ToLinker") + linker.getElement().getIp() + bundle.getString("In")
                         + timeTransmision + " s";
                 Event eTransmision = new Event(p.getTime(), menssageTransmision, h1.getElement(),nextNode.getElement(),linker.getElement(),timeTransmision);
 
@@ -688,9 +689,9 @@ public class Red implements Serializable {
                 BigDecimal timeTransport = linker.getElement().getDistance().divide(velocidadCable, 6, RoundingMode.HALF_UP);
                 p.setTime(p.getTime().add(timeTransport));
                 p.setArriveTime(p.getTime());
-                String menssageTransport = "El Paquete " + p.getId()
-                        + " ha llegado desde " + h1.getElement().getName()
-                        + " hasta " + nextNode.getElement().getName() + " en = "
+                String menssageTransport = bundle.getString("ThePackage") + p.getId()
+                        + bundle.getString("ArrivedFrom") + h1.getElement().getName()
+                        + bundle.getString("To") + nextNode.getElement().getName() + bundle.getString("In")
                         + timeTransport;
 
                 // Se mueve el paquete a la siguiente cola
@@ -712,7 +713,8 @@ public class Red implements Serializable {
                 return states;
             }
         } else {
-            String mensaje = "El Paquete " + p.getId() + " ha sido enviado";
+            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+            String mensaje = bundle.getString("ThePackage") + p.getId() + bundle.getString("HasBeenSent");
             List<State> states = new ArrayList<>();
             State state = new State(new Event(p.getTime(), mensaje, h1.getElement(),null,null,null), new Event(
                     p.getTime(), mensaje, h1.getElement(),null,null,null), null);
