@@ -24,9 +24,9 @@ public class HostTable extends AbstractTableModel {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
         if (vh != null) {
             rowData = new Object[vh.getElement().getQueuePackages().size()][4];
-            String columnNames[] = {bundle.getString("IDPackage"), bundle.getString("Size"), bundle.getString("Time"),
+            String names[] = {bundle.getString("IDPackage"), bundle.getString("Size"), bundle.getString("Time"),
                 bundle.getString("Destination")};
-            this.columnNames = columnNames;
+            this.columnNames = names;
             int j = 0;
             for (objects.Package p : vh.getElement().getQueuePackages()) {
                 rowData[j][0] = "package " + p.getId();
@@ -42,9 +42,9 @@ public class HostTable extends AbstractTableModel {
             scrollPane.updateUI();
         } else {
             rowData = new Object[0][4];
-            String columnNames[] = {bundle.getString("IDPackage"), bundle.getString("Size"), bundle.getString("Time"),
+            String names[] = {bundle.getString("IDPackage"), bundle.getString("Size"), bundle.getString("Time"),
                 bundle.getString("Destination")};
-            this.columnNames = columnNames;
+            this.columnNames = names;
             table = new JTable(rowData, this.columnNames);
             scrollPane = new JScrollPane(table);
         }
