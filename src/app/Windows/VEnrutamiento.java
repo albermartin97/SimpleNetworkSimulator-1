@@ -211,8 +211,11 @@ public class VEnrutamiento extends javax.swing.JFrame {
             for (int i = 0; i < si.getSimulator().getRed().getAllHosts().size(); i++) {
                 Vertex<Node> vc = getChildItem(jtHostTable.getValueAt(i, 0).toString());
                 for (int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++) {
-                    Router r = (Router) getChildItem(jtHostTable.getColumnName(j).toString()).getElement();
-                    r.enrutar(vc, getLinkerItem((String) jtHostTable.getValueAt(i, j)));
+                    Node n = getChildItem(jtHostTable.getColumnName(j).toString()).getElement();
+                    if(n != null){
+                        Router r = (Router) n;
+                        r.enrutar(vc, getLinkerItem((String) jtHostTable.getValueAt(i, j)));
+                    }
                 }
             }
             this.setVisible(false);
@@ -241,8 +244,11 @@ public class VEnrutamiento extends javax.swing.JFrame {
             for (int i = 0; i < si.getSimulator().getRed().getAllHosts().size(); i++) {
                 Vertex<Node> vc = getChildItem(jtHostTable.getValueAt(i, 0).toString());
                 for (int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++) {
-                    Router r = (Router) getChildItem(jtHostTable.getColumnName(j).toString()).getElement();
-                    r.enrutar(vc, getLinkerItem((String) jtHostTable.getValueAt(i, j)));
+                    Node n = getChildItem(jtHostTable.getColumnName(j).toString()).getElement();
+                    if(n != null){
+                        Router r = (Router) n;
+                        r.enrutar(vc, getLinkerItem((String) jtHostTable.getValueAt(i, j)));
+                    }
                 }
             }
             this.setVisible(false);
@@ -304,9 +310,11 @@ public class VEnrutamiento extends javax.swing.JFrame {
             Router r = (Router) vr.getElement();
                 for(int m = 0; m < si.getSimulator().getRed().getAllHosts().size(); m++){
                     Vertex<Node> vh = getChildItem(jtHostTable.getValueAt(m, 0).toString());
-                    String ip = r.getEnrutamiento(vh).getElement().getIp();
-                    if(ip != null)
-                        jtHostTable.setValueAt(ip, m, j);
+                    if(vh != null){
+                        String ip = r.getEnrutamiento(vh).getElement().getIp();
+                        if(ip != null)
+                            jtHostTable.setValueAt(ip, m, j);
+                    }
                 }
             }
         }

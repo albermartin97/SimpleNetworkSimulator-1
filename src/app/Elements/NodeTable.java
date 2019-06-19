@@ -1,6 +1,5 @@
 package app.Elements;
 
-import java.awt.Color;
 import java.util.List;
 
 import javax.swing.DefaultCellEditor;
@@ -49,9 +48,6 @@ public class NodeTable extends AbstractTableModel {
                 rowData[i][0] = vHC.getElement().getName();
                 for (Vertex<Node> vHR : vhListRouters) {
                     columnNames[j] = vHR.getElement().getName();
-                    //
-                    //setUpSportColumn(table, table.getColumnModel().getColumn(j));
-                    //rowData[i][j] = comboBox;
                     j++;
                 }
                 j = 1;
