@@ -10,7 +10,6 @@ import app.Elements.LinkerItem;
 import app.Elements.RouterItem;
 import app.Elements.SimulatorItem;
 import app.Elements.Tupla;
-import app.Elements.WorkSpacePanel;
 import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.File;
@@ -34,15 +33,12 @@ import objects.Linker;
 import objects.Package;
 import simulator.Simulator;
 import app.Elements.NodeItem;
-import java.awt.Cursor;
 import java.awt.Desktop;
 import java.net.URI;
 import java.util.HashMap;
-import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import objects.Router;
-import sun.security.tools.policytool.Resources;
 
 
 /**
