@@ -6,7 +6,6 @@
 package app.Windows;
 
 import app.Elements.HostItem;
-import app.Elements.HostTable;
 import app.Elements.SimulatorItem;
 import java.math.BigDecimal;
 import java.util.List;
