@@ -8,12 +8,9 @@ package app.Windows;
 import app.Elements.SimulatorItem;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import simulator.Event;
 
@@ -42,7 +39,6 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         this.eventos = new ArrayList<>();
         this.contRow = 0;
         initComponents();
-        //btnPlayUntil.setEnabled(false);
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }
@@ -53,7 +49,6 @@ public class VTraceStepByStep extends javax.swing.JFrame {
         this.contRow = 0;
         initComponents();
         configComponents(eventos);
-        //btnPlayUntil.setEnabled(false);
 
     }
 
@@ -231,7 +226,6 @@ public class VTraceStepByStep extends javax.swing.JFrame {
             formatoCorrecto = false;
         }
         if (formatoCorrecto) {
-            //BigDecimal time = new BigDecimal(txtTime.getText());
             DefaultTableModel model = (DefaultTableModel) jTEvents.getModel();
             if (model.getRowCount() > 0) {
                 time = time.add(new BigDecimal(model.getValueAt(model.getRowCount() - 1, 0).toString()));

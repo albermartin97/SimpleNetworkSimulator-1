@@ -1,6 +1,5 @@
 package app.Elements;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -29,7 +28,6 @@ public class HostItem extends JPanel implements NodeItem, Serializable {
     private int dragX;
     private int dragY;
     private JLabel lblName;
-    private JPanel jName;
 
     public HostItem() {
 
@@ -40,14 +38,9 @@ public class HostItem extends JPanel implements NodeItem, Serializable {
         this.setName(name);
         lblName = new JLabel();
         lblName.setText(name);
-        //jName = new JPanel();
-        //jName.setBackground(Color.WHITE);
-        //jName.add(lblName);
-        
+
         this.lblName.setVisible(true);
-        //lblName.setBounds((this.getX() + this.getWidth())/2,  (this.getY() + this.getHeight())/2, this.getWidth() + 100, this.getHeight() + 100);
-        //lblName.setBounds(15,40,20,20);
-        //lblName.setLocation(10,10);
+
         lblName.setFont(new java.awt.Font("Tahoma", 1, 14));
         this.simulatorItem = simulator;
         this.linkers = new ArrayList<>();
@@ -64,16 +57,14 @@ public class HostItem extends JPanel implements NodeItem, Serializable {
 
     @Override
     public void paint(Graphics g) {
-        lblName.setBounds(this.getX() + 20 ,this.getY() - 30,100,20);
+        lblName.setBounds(this.getX() + 20, this.getY() - 30, 100, 20);
         this.setSize(new Dimension(60, 60));
         ImageIcon imageIcon;
         Image image;
         imageIcon = new ImageIcon(getClass().getResource("/images/ComputerIcon2.png"));
-        image = imageIcon.getImage();       
-        //super.paintComponent(g);
+        image = imageIcon.getImage();
+
         g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-        //this.jName.updateUI();
-        //super.repaint();
     }
 
     @Override
@@ -141,7 +132,7 @@ public class HostItem extends JPanel implements NodeItem, Serializable {
 
     @Override
     public String toString() {
-        return "ComputerItem{\n"+ this.getLocation().x + ",\n" + this.getLocation().y + ",\n" + vertex.getElement().toString() + "}\n";
+        return "ComputerItem{\n" + this.getLocation().x + ",\n" + this.getLocation().y + ",\n" + vertex.getElement().toString() + "}\n";
     }
 
     @Override

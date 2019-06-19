@@ -40,7 +40,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import objects.Router;
 
-
 /**
  *
  * @author alber
@@ -53,9 +52,6 @@ public class VMain extends javax.swing.JFrame {
     private VConfLinker vConfLinker;
     private VEnrutamiento vEnrutamiento;
     private String nameFile;
-    //private int nComputers = 0;
-    //private int nRouters = 0;
-    //private int nLinkers = 0;
     private List<Tupla> tuplasPD;
     private HashMap<String, ArrayList<String>> routingTable;
     private boolean anyRandom = false;
@@ -343,7 +339,6 @@ public class VMain extends javax.swing.JFrame {
             jWorkSpace.setLinkers(new ArrayList<>());
             nameFile = archivo.getName();
             try {
-                //1,2 sin queue
                 FileReader fr = new FileReader(archivo);
                 BufferedReader br = new BufferedReader(fr);
                 String line = br.readLine();
@@ -368,7 +363,6 @@ public class VMain extends javax.swing.JFrame {
                             String name = br.readLine();
                             name = name.substring(0, name.length() - 1).trim();
                             HostItem ci = new HostItem(si, name);
-                            //ci.setBounds(x, y, 120, 120);
                             int nPackages = Integer.parseInt(br.readLine());
                             for (int p = 0; p < nPackages; p++) {
                                 br.readLine();
@@ -406,6 +400,7 @@ public class VMain extends javax.swing.JFrame {
                             JMenuItem miConfigurar = new JMenuItem();
                             miConfigurar.setText(bundle.getString("VConfWorkSpace"));
                             miConfigurar.addActionListener(new java.awt.event.ActionListener() {
+                                @Override
                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                     VConfHost vConfComputer = new VConfHost(ci, vMain);
                                     vConfComputer.setVisible(true);
@@ -415,6 +410,7 @@ public class VMain extends javax.swing.JFrame {
                             JMenuItem miEliminar = new JMenuItem();
                             miEliminar.setText(bundle.getString("VRemoveWorkSpace"));
                             miEliminar.addActionListener(new java.awt.event.ActionListener() {
+                                @Override
                                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                                     si.getWorkSpacePanel().remove(ci.getLblName());
                                     si.getWorkSpacePanel().remove(ci);
@@ -446,7 +442,6 @@ public class VMain extends javax.swing.JFrame {
                             String name = br.readLine();
                             name = name.substring(0, name.length() - 1).trim();
                             RouterItem ri = new RouterItem(si, name);
-                            //ri.setBounds(x, y, 120, 120);
                             //ROUTING TABLE
                             int nrt = Integer.parseInt(br.readLine().trim());
                             br.readLine();
@@ -459,7 +454,6 @@ public class VMain extends javax.swing.JFrame {
                                 }
                                 this.routingTable.put(name, rtElements);
                             }
-                            //prop = br.readLine();
                             int nPackages = Integer.parseInt(br.readLine());
                             for (int p = 0; p < nPackages; p++) {
                                 br.readLine();
@@ -475,7 +469,6 @@ public class VMain extends javax.swing.JFrame {
                                 String tipoDest = prop.substring(0, prop.length() - 1).trim();
                                 prop = br.readLine();
                                 String nameDest = prop.substring(0, prop.length() - 1).trim();
-                                //Package package = new Package(size,);
                             }
                             br.readLine();
                             VMain vMain = this;
@@ -521,8 +514,6 @@ public class VMain extends javax.swing.JFrame {
                 String linkers = br.readLine();
                 int nLinkers = Integer.parseInt(linkers.substring(2, linkers.length()).trim());
                 for (int l = 0; l < nLinkers; l++) {
-                    String tipoItem = br.readLine();
-                    String linker = br.readLine();
                     prop = br.readLine();
                     String ip = prop.substring(0, prop.length() - 1);
                     prop = br.readLine();
@@ -561,22 +552,20 @@ public class VMain extends javax.swing.JFrame {
                     this.routing = false;
                 }
                 enabledBottons();
-                //
-                //si.getWorkSpacePanel().paint(this.getGraphics());
+
                 si.getWorkSpacePanel().updateUI();
                 System.out.println("app.Windows.VMain.btnOpenFileActionPerformed() FINISH");
             } catch (IOException ex) {
                 Logger.getLogger(VMain.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else
+        } else {
             this.jMain.setEnabled(true);
+        }
     }//GEN-LAST:event_btnOpenFileActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         this.jMain.setEnabled(false);
         JFileChooser jd = new JFileChooser();
-        //jd.showOpenDialog(this);
-        //jd.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         jd.setAcceptAllFileFilterUsed(false);
         jd.setApproveButtonText("Guardar");
         int userSelection = jd.showSaveDialog(this);
@@ -587,37 +576,36 @@ public class VMain extends javax.swing.JFrame {
                 ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
                 objectOut.writeObject(si.toString());
                 objectOut.close();
-                System.out.println("The Object  was succesfully written to a file");
 
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        }else{
+        } else {
             this.jMain.setEnabled(true);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnNewWorkSpaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewWorkSpaceActionPerformed
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
-        int result = JOptionPane.showConfirmDialog(this,bundle.getString("NewFileText"),bundle.getString("NewFileTitle"),JOptionPane.OK_CANCEL_OPTION);
-        if(result == JOptionPane.OK_OPTION){
+        int result = JOptionPane.showConfirmDialog(this, bundle.getString("NewFileText"), bundle.getString("NewFileTitle"), JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
             VMain vMain = new VMain();
             this.setVisible(false);
             vMain.setVisible(true);
-        }   
+        }
     }//GEN-LAST:event_btnNewWorkSpaceActionPerformed
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
         String url = "https://github.com/jfvelezserrano/SimpleNetworkSimulator";
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-       
+
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
             try {
                 desktop.browse(new URI(url));
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else{
+        } else {
             Runtime runtime = Runtime.getRuntime();
             try {
                 runtime.exec("xdg-open " + url);
@@ -702,9 +690,11 @@ public class VMain extends javax.swing.JFrame {
     public JToolBar getJMenu() {
         return jMenuWorkSpace;
     }
+
     public JToolBar getJHelp() {
         return jtbHelp;
     }
+
     public JButton getBtnStart() {
         return btnStart;
     }
@@ -748,7 +738,8 @@ public class VMain extends javax.swing.JFrame {
     public void setjMain(JPanel jMain) {
         this.jMain = jMain;
     }
-    public void enabled(boolean b){
+
+    public void enabled(boolean b) {
         this.btnHelp.setEnabled(b);
         this.btnNewRouter.setEnabled(b);
         this.btnNewLinker.setEnabled(b);
@@ -758,17 +749,7 @@ public class VMain extends javax.swing.JFrame {
         this.btnSave.setEnabled(b);
         this.btnNewWorkSpace.setEnabled(b);
     }
-    /*@Override
-    public void repaint(){
-        jWorkSpace.paint(this.getGraphics());
-        super.paint(this.getGraphics());
-        
-    }
-    @Override
-    public void paint(Graphics g){
-        jWorkSpace.paint(g);   
-        super.paint(g);    
-    }*/
+
     @Override
     public void update(Graphics g) {
         super.update(g);

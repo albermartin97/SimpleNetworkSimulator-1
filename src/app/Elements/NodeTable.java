@@ -18,7 +18,6 @@ import objects.Node;
 public class NodeTable extends AbstractTableModel {
 
     private JTable table;
-    //private JScrollPane scrollPane;
     private Object[][] rowData;
     private String[] columnNames;
 
@@ -59,32 +58,25 @@ public class NodeTable extends AbstractTableModel {
                 i++;
             }
             table = new JTable(rowData, columnNames);
-            //table.setBackground(Color.GREEN);
             JComboBox<String> comboBox = new JComboBox<>(linkers);
             TableColumn column = table.getColumnModel().getColumn(1);
             column.setCellEditor(new DefaultCellEditor(comboBox));
             DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
             renderer.setToolTipText(bundle.getString("ChooseLinker"));
             column.setCellRenderer(renderer);
-            /*scrollPane = new JScrollPane(table);
-            scrollPane.setBackground(Color.orange);
-            scrollPane.updateUI();*/
-            // frame.add(scrollPane, BorderLayout.CENTER);
         }
 
     }
 
     public void setUpSportColumn(JTable table, TableColumn sportColumn, String[] linkers) {
-        // Set up the editor for the sport cells.
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
         JComboBox comboBox = new JComboBox(linkers);
         sportColumn.setCellEditor(new DefaultCellEditor(comboBox));
-        // Set up tool tips for the sport cells.
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
         renderer.setToolTipText(bundle.getString("ChooseLinker"));
         sportColumn.setCellRenderer(renderer);
     }
-    
+
     public JTable getTable() {
         return table;
     }
@@ -93,13 +85,6 @@ public class NodeTable extends AbstractTableModel {
         this.table = table;
     }
 
-    /* public JScrollPane getScrollPane() {
-        return scrollPane;
-    }
-
-    public void setScrollPane(JScrollPane scrollPane) {
-        this.scrollPane = scrollPane;
-    }*/
     @Override
     public int getColumnCount() {
         return columnNames.length;

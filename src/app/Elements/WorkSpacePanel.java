@@ -19,22 +19,11 @@ public class WorkSpacePanel extends JPanel implements Serializable {
     public WorkSpacePanel() {
         linkers = new ArrayList<>();
         childsItems = new ArrayList<>();
-        /*
-		 * this.childsItems = new ArrayList<>(); MyMouseAdapter m1 = new
-		 * MyMouseAdapter(); m1.setWorkSpace(this); this.drag = false;
-		 * this.addMouseListener(m1); MyMouseMotionAdapter m2 = new
-		 * MyMouseMotionAdapter(); m2.setWorkSpace(this);
-		 * this.addMouseMotionListener(m2);
-         */
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        /*if (childsItems != null)
-			for (HostItem h : childsItems) {
-				h.updateUI();
-			}*/
         if (linkers != null) {
             for (LinkerItem l : linkers) {
                 l.paint(g);

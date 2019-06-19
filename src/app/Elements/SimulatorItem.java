@@ -3,7 +3,6 @@ package app.Elements;
 import app.Windows.VMain;
 import java.io.Serializable;
 import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
 
 import objects.Linker;
 import simulator.Simulator;

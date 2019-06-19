@@ -157,11 +157,6 @@ public class VAddPackage extends javax.swing.JFrame {
         this.vConfComputer.getRemovePackage().setEnabled(true);
         this.vConfComputer.setVisible(true);
         this.vConfComputer.getBtnRemovePackage().setEnabled(true);
-        /*table.removeAll();
-				table.add(computerTable.getScrollPane());
-				table.updateUI();
-				jComputerConf.updateUI();
-				jworkSpacePanel.updateUI();*/
     }//GEN-LAST:event_btnAceptarPackageActionPerformed
 
     private void btnCancelarPackageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPackageActionPerformed

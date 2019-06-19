@@ -166,8 +166,6 @@ public class VConfRouter extends javax.swing.JFrame {
         if(!si.getWorkSpacePanel().getChildsItems().contains(ri))
             si.getWorkSpacePanel().add(ri);
         enabledBotons();
-
-        //si.getWorkSpacePanel().getChildsItems().add(ri);
         
         si.getWorkSpacePanel().updateUI();
     }//GEN-LAST:event_btnAceptarConfRouterActionPerformed

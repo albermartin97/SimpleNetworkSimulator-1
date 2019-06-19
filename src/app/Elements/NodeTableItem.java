@@ -7,7 +7,6 @@ package app.Elements;
 
 import java.awt.Graphics;
 import javax.swing.JPanel;
-import simulator.Simulator;
 
 /**
  *
@@ -23,8 +22,6 @@ public class NodeTableItem extends JPanel{
     public NodeTableItem(SimulatorItem si){
         this.ht = new NodeTable(si.getSimulator());
         this.jHt = new JPanel();
-        //this.jHt.add(ht.getScrollPane());
-        //this.add(ht.getScrollPane());
     }
 
     public NodeTable getHt() {

@@ -18,7 +18,6 @@ import objects.Linker;
 import objects.Router;
 import objects.Node;
 import app.Elements.NodeItem;
-import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 /**

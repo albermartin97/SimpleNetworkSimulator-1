@@ -28,7 +28,6 @@ public class RouterItem extends JPanel implements NodeItem, Serializable {
     private int dragX;
     private int dragY;
     private JLabel lblName;
-    //private WorkSpacePanel workSpace;
 
     public RouterItem() {
 
@@ -40,18 +39,15 @@ public class RouterItem extends JPanel implements NodeItem, Serializable {
         lblName.setText(name);
         this.setName(name);
         this.lblName.setVisible(true);
-        //this.add(lblName);
         lblName.setFont(new java.awt.Font("Tahoma", 1, 14));
         this.simulatorItem = simulatorItem;
         this.linkers = new ArrayList<>();
         this.vertex = simulatorItem.getSimulator().getRed().addRouter(router);
         MyMouseAdapter m1 = new MyMouseAdapter();
-        //m1.setWorkSpace(parent);
         m1.setParent(this);
         this.drag = false;
         this.addMouseListener(m1);
         MyMouseMotionAdapter m2 = new MyMouseMotionAdapter();
-        //m2.setWorkSpace(parent);
         m2.setParent(this);
         this.addMouseMotionListener(m2);
         this.simulatorItem.getWorkSpacePanel().add(lblName);
@@ -65,51 +61,60 @@ public class RouterItem extends JPanel implements NodeItem, Serializable {
         Image image;
         imageIcon = new ImageIcon(getClass().getResource("/images/RouterIcon2.png"));
         image = imageIcon.getImage();
-        //super.paintComponent(g);
         g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-        //this.lblName.paint(g);
     }
 
+    @Override
     public boolean isDrag() {
         return drag;
     }
 
+    @Override
     public void setDrag(boolean drag) {
         this.drag = drag;
     }
 
+    @Override
     public int getDragX() {
         return dragX;
     }
 
+    @Override
     public void setDragX(int dragX) {
         this.dragX = dragX;
     }
 
+    @Override
     public int getDragY() {
         return dragY;
     }
 
+    @Override
     public void setDragY(int dragY) {
         this.dragY = dragY;
     }
 
+    @Override
     public SimulatorItem getSimulatorItem() {
         return simulatorItem;
     }
 
+    @Override
     public void setSimulatorItem(SimulatorItem simulatorItem) {
         this.simulatorItem = simulatorItem;
     }
 
+    @Override
     public Vertex<Node> getVertex() {
         return vertex;
     }
 
+    @Override
     public void setVertex(Vertex<Node> router) {
         this.vertex = router;
     }
 
+    @Override
     public List<LinkerItem> getLinkers() {
         return linkers;
     }
@@ -125,6 +130,7 @@ public class RouterItem extends JPanel implements NodeItem, Serializable {
     public String toString() {
         return "RouterItem{\n"+ this.getLocation().x + ",\n" + this.getLocation().y + ",\n" + vertex.getElement().toString() + "}\n";
     }
+    @Override
     public String toStringAux() {
         return "RouterItem{" + vertex.getElement().getName() + "}";
     }

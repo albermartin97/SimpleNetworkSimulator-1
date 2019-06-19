@@ -1,6 +1,5 @@
 package app.Elements;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JScrollPane;
@@ -8,7 +7,6 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 import material.graphs.Vertex;
-import simulator.Simulator;
 import objects.Node;
 
 public class HostTable extends AbstractTableModel {
@@ -22,7 +20,7 @@ public class HostTable extends AbstractTableModel {
 
     }
 
-    public HostTable(Simulator simulator, Vertex<Node> vh) {
+    public HostTable(Vertex<Node> vh) {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
         if (vh != null) {
             rowData = new Object[vh.getElement().getQueuePackages().size()][4];
@@ -39,10 +37,8 @@ public class HostTable extends AbstractTableModel {
                 j++;
             }
             table = new JTable(rowData, this.columnNames);
-            //table.setBackground(Color.GREEN);
             table.updateUI();
             scrollPane = new JScrollPane(table);
-            //scrollPane.setBackground(Color.orange);
             scrollPane.updateUI();
         } else {
             rowData = new Object[0][4];
@@ -64,23 +60,6 @@ public class HostTable extends AbstractTableModel {
         fireTableCellUpdated(row, col);
     }
 
-    /*
-	 * public void updateUI(){ super.updateUI(); if (vh != null) { Object
-	 * rowData[][] = new Object[vh.getElement().getQueuePackages().size()][4];
-	 * Object columnNames[] = { "Paquete ID", "Tama�o", "Tiempo", "Destino" };
-	 * int j = 0; for (objects.Package p : vh.getElement().getQueuePackages()) {
-	 * rowData[j][0] = "package " + p.getId(); rowData[j][1] = "" + p.getSize();
-	 * rowData[j][2] = "" + p.getTime(); rowData[j][3] = "" +
-	 * p.getDestinationHost().getElement().getName(); j++; } table = new
-	 * JTable(rowData, columnNames); table.setBackground(Color.GREEN);
-	 * scrollPane = new JScrollPane(table);
-	 * scrollPane.setBackground(Color.orange); } else { Object rowData[][] = new
-	 * Object[0][4]; Object columnNames[] = { "Paquete ID", "Tama�o", "Tiempo",
-	 * "Destino" }; table = new JTable(rowData, columnNames); scrollPane = new
-	 * JScrollPane(table); }
-	 * 
-	 * }
-     */
     public JTable getTable() {
         return table;
     }
@@ -97,18 +76,22 @@ public class HostTable extends AbstractTableModel {
         this.scrollPane = scrollPane;
     }
 
+    @Override
     public int getColumnCount() {
         return columnNames.length;
     }
 
+    @Override
     public int getRowCount() {
         return rowData.length;
     }
 
+    @Override
     public String getColumnName(int col) {
         return columnNames[col];
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
         return rowData[row][col];
     }
