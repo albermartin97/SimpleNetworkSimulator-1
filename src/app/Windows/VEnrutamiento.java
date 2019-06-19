@@ -265,8 +265,10 @@ public class VEnrutamiento extends javax.swing.JFrame {
             Vertex<Node> vr = getChildItem(jtHostTable.getColumnName(j).toString());
             for(int i = 0; i < si.getSimulator().getRed().getAllHosts().size(); i++){
                 Vertex<Node> vh = getChildItem(jtHostTable.getValueAt(i, 0).toString());
-                Edge<Linker> linker = this.si.getSimulator().getRed().getEnrutamiento(vh,vr);
-                jtHostTable.setValueAt(linker.getElement().getIp(), i, j);
+                if(vh != null){
+                    Edge<Linker> linker = this.si.getSimulator().getRed().getEnrutamiento(vh,vr);
+                    jtHostTable.setValueAt(linker.getElement().getIp(), i, j);
+                }
             }
         }
     }//GEN-LAST:event_btnEnrutadoAutomaticoActionPerformed
