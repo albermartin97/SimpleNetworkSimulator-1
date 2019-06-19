@@ -211,9 +211,9 @@ public class VEnrutamiento extends javax.swing.JFrame {
             for (int i = 0; i < si.getSimulator().getRed().getAllHosts().size(); i++) {
                 Vertex<Node> vc = getChildItem(jtHostTable.getValueAt(i, 0).toString());
                 for (int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++) {
-                    Node n = getChildItem(jtHostTable.getColumnName(j).toString()).getElement();
-                    if(n != null){
-                        Router r = (Router) n;
+                    Vertex<Node> vh = getChildItem(jtHostTable.getColumnName(j).toString());
+                    if(vh != null){
+                        Router r = (Router) vh.getElement();
                         r.enrutar(vc, getLinkerItem((String) jtHostTable.getValueAt(i, j)));
                     }
                 }
@@ -244,9 +244,9 @@ public class VEnrutamiento extends javax.swing.JFrame {
             for (int i = 0; i < si.getSimulator().getRed().getAllHosts().size(); i++) {
                 Vertex<Node> vc = getChildItem(jtHostTable.getValueAt(i, 0).toString());
                 for (int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++) {
-                    Node n = getChildItem(jtHostTable.getColumnName(j).toString()).getElement();
-                    if(n != null){
-                        Router r = (Router) n;
+                    Vertex<Node> vh = getChildItem(jtHostTable.getColumnName(j).toString());
+                    if(vh != null){
+                        Router r = (Router) vh.getElement();
                         r.enrutar(vc, getLinkerItem((String) jtHostTable.getValueAt(i, j)));
                     }
                 }
@@ -255,7 +255,8 @@ public class VEnrutamiento extends javax.swing.JFrame {
             this.vTraceStepByStep = new VTraceStepByStep(this.si);
             vTraceStepByStep.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(this,"Se necesitan enrutar todos los routers para ejecutar","Enrutar routers",JOptionPane.ERROR_MESSAGE);
+            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+            JOptionPane.showMessageDialog(this,bundle.getString("ErroEnrutamiento"),bundle.getString("ErroEnrutamientoTitulo"),JOptionPane.ERROR_MESSAGE);
         }    
     }//GEN-LAST:event_btnStartActionPerformed
 
