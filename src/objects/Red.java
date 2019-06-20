@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -19,7 +18,8 @@ import material.graphs.Vertex;
 public class Red implements Serializable {
 
     private static BigDecimal velocidadCable = new BigDecimal("200000000"); // Unidad : m/s
-
+    private Random r = new Random();
+    
     private ALGraph<Node, Linker> red;
     private HashMap<String, Node> hosts;
     private ArrayList<NodeState> queueStates;
@@ -434,7 +434,6 @@ public class Red implements Serializable {
     }
 
     private BigDecimal getPackageSize(BigDecimal sizePackage) {
-        Random r = new Random();
         double lambda = 1.0f / sizePackage.doubleValue();
         return new BigDecimal(-(Math.log(r.nextDouble()) / lambda));
     }
