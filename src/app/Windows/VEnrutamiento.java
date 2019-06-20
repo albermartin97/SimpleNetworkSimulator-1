@@ -310,13 +310,15 @@ public class VEnrutamiento extends javax.swing.JFrame {
         if(routing){
             for(int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++){
             Vertex<Node> vr = getChildItem(jtHostTable.getColumnName(j).toString());
-            Router r = (Router) vr.getElement();
-                for(int m = 0; m < si.getSimulator().getRed().getAllHosts().size(); m++){
-                    Vertex<Node> vh = getChildItem(jtHostTable.getValueAt(m, 0).toString());
-                    if(vh != null){
-                        String ip = r.getEnrutamiento(vh).getElement().getIp();
-                        if(ip != null)
-                            jtHostTable.setValueAt(ip, m, j);
+                if(vr != null){
+                Router r = (Router) vr.getElement();
+                    for(int m = 0; m < si.getSimulator().getRed().getAllHosts().size(); m++){
+                        Vertex<Node> vh = getChildItem(jtHostTable.getValueAt(m, 0).toString());
+                        if(vh != null){
+                            String ip = r.getEnrutamiento(vh).getElement().getIp();
+                            if(ip != null)
+                                jtHostTable.setValueAt(ip, m, j);
+                        }
                     }
                 }
             }
