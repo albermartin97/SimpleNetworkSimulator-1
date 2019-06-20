@@ -19,7 +19,7 @@ public class Red implements Serializable {
 
     private static BigDecimal velocidadCable = new BigDecimal("200000000"); // Unidad : m/s
     private Random r = new Random();
-    
+
     private ALGraph<Node, Linker> red;
     private HashMap<String, Node> hosts;
     private ArrayList<NodeState> queueStates;
@@ -64,9 +64,6 @@ public class Red implements Serializable {
     public void removeHost(Vertex<Node> vh) {
         hosts.remove(vh.getElement().getName());
         Collection<Edge<Linker>> list = (Collection<Edge<Linker>>) red.incidentEdges(vh);
-        /*for (Edge<Linker> l : list) {
-            red.removeEdge(l);
-        }*/
         red.removeVertex(vh);
     }
 
@@ -88,7 +85,6 @@ public class Red implements Serializable {
      */
     public List<Event> sendPackages(BigDecimal time) {
         List<Event> eventos = new ArrayList<>();
-        //ArrayList<NodeState> queueStates = new ArrayList<>();
         queueStates.addAll(getRandomConfig(time));
         queueStates.addAll(getFirstPackageToSend());
         List<Vertex<Node>> listHost = getHosts(queueStates);
@@ -117,8 +113,7 @@ public class Red implements Serializable {
 
                 // Se procesan los estados y se actualiza la cola si es
                 // necesario
-                if (state1 != null && state1.getHost() != null){
-                        //&& state1.getEventTransport().getTime().compareTo(time) <= 0) {
+                if (state1 != null && state1.getHost() != null) {
                     eventos.add(state1.getEventTransmission());
                     eventos.add(state1.getEventTransport());
                     if (!listHost.contains(state1.getHost())) {
@@ -129,8 +124,7 @@ public class Red implements Serializable {
                         updateState(queueStates, state1.getHost());
                     }
                 }
-                if (state2 != null && state2.getHost() != null){
-                        //&& state2.getEventTransport().getTime().compareTo(time) <= 0) {
+                if (state2 != null && state2.getHost() != null) {
                     if (!listHost.contains(state2.getHost())) {
                         queueStates.add(new NodeState(state2.getHost(), state2
                                 .getEventTransport().getTime()));
@@ -143,7 +137,6 @@ public class Red implements Serializable {
                 state1 = null;
             }
         }
-        //eventos.sort(new Event());
         return eventos;
     }
 
@@ -332,35 +325,6 @@ public class Red implements Serializable {
     /*
 	 * FIN PACKAGE SENDS ENVIO TOTAL SIN ENVIOS ALEATORIOS
      */
- /*DESUSO*/
-    /*private ArrayList<NodeState> getRandomConfig() {
-        ArrayList<NodeState> queueStates = new ArrayList<>();
-        List<Vertex<Node>> listComputers = getAllHosts();
-        //List<Vertex<Host>> listComputersRandoms = new ArrayList<>();
-        Package p = null;
-        Host computer = null;
-        for (Vertex<Node> host : listComputers) {
-            if (host.getElement() instanceof Host) {
-                computer = (Host) host.getElement();
-                if (computer.isRandomSend()) {
-                    //listComputersRandoms.add(host);
-                    p = getRandomPackage(computer.getRandomSend()
-                            .getSizePackage(), host);
-                    p.setTime(getRamdonTimePoisson(computer.getRandomSend()
-                            .getAverageTime()));
-                    host.getElement().addPackage(p);
-                    /*if (p.getTime() > timeLastEven) {
-                        timeLastEven = p.getTime();
-                    }
-                    NodeState hs = new NodeState(host, p.getTime());
-                    queueStates.add(hs);
-                }
-            }
-        }
-        return queueStates;
-    }*/
-
-    /* FIN DESUSO*/
 
  /*
         INICIO CONFIGURACIONES RANDOM
@@ -368,23 +332,18 @@ public class Red implements Serializable {
     private ArrayList<NodeState> getRandomConfig() {
         ArrayList<NodeState> queueStates = new ArrayList<>();
         List<Vertex<Node>> listComputers = getAllHosts();
-        //List<Vertex<Host>> listComputersRandoms = new ArrayList<>();
         Package p = null;
         Host computer = null;
         for (Vertex<Node> host : listComputers) {
             if (host.getElement() instanceof Host) {
                 computer = (Host) host.getElement();
                 if (computer.isRandomSend()) {
-                    //listComputersRandoms.add(host);
                     p = getRandomPackage(computer.getRandomSend()
                             .getSizePackage(), host);
                     p.setTime(getRamdonTimePoisson(computer.getRandomSend().getTimeLastPackage().add(computer.getRandomSend()
                             .getAverageTime())));
                     computer.getRandomSend().setTimeLastPackage(computer.getRandomSend().getTimeLastPackage().add(p.getTime()));
                     host.getElement().addPackage(p);
-                    /*if (p.getTime() > timeLastEven) {
-                        timeLastEven = p.getTime();
-                    }*/
                     NodeState hs = new NodeState(host, p.getTime());
                     queueStates.add(hs);
                 }
@@ -397,17 +356,15 @@ public class Red implements Serializable {
         ArrayList<NodeState> queue = new ArrayList<>();
         List<Vertex<Node>> listComputers = getAllHosts();
         BigDecimal timeLastEvent = new BigDecimal(0.0);
-        BigDecimal timeAux;
         Package p = null;
         Host computer = null;
         for (Vertex<Node> host : listComputers) {
             if (host.getElement() instanceof Host) {
                 computer = (Host) host.getElement();
                 if (computer.isRandomSend()) {
-                    timeAux = time;
-                    while(timeLastEvent.compareTo(time) <= 0){
+                    while (timeLastEvent.compareTo(time) <= 0) {
                         p = getRandomPackage(computer.getRandomSend()
-                            .getSizePackage(), host);
+                                .getSizePackage(), host);
                         p.setTime(getRamdonTimePoisson(computer.getRandomSend().getTimeLastPackage().add(computer.getRandomSend()
                                 .getAverageTime())));
                         computer.getRandomSend().setTimeLastPackage(computer.getRandomSend().getTimeLastPackage().add(p.getTime()));
@@ -471,7 +428,6 @@ public class Red implements Serializable {
      */
     public List<Vertex<Node>> getAllHosts() {
         List<Vertex<Node>> listComputer = new ArrayList<>();
-        // State s ;
         for (Vertex<Node> h : this.red.vertices()) {
             if (h.getElement() instanceof Host) {
                 listComputer.add(h);
@@ -499,58 +455,6 @@ public class Red implements Serializable {
 
  /*
 	 * PACKAGE SENDS
-     */
- /*
-	 * public List<Event> sendPackages(Float time){ List<Event> eventos= new
-	 * ArrayList<>(); PriorityQueue<State> queueStates =
-	 * getFirstPackageToSend(); Vertex<Host> h; List<State> states ; State
-	 * state1 = null; State nextState, state2 = null;
-	 * while(!queueStates.isEmpty()){ nextState = queueStates.remove(); h =
-	 * nextState.getHost(); if(h != null){ states = sendPackage(h);
-	 * if(!states.isEmpty()) state1 = states.get(0); if(states.size() > 1)
-	 * state2 = states.get(1);
-	 * 
-	 * if(state1 != null && state1.getHost() != null &&
-	 * state1.getEventTransport().getTime() <= time){
-	 * eventos.add(state1.getEventTransmission());
-	 * eventos.add(state1.getEventTransport()); queueStates.add(state1); }
-	 * if(state2 != null && state2.getHost() != null &&
-	 * state2.getEventTransport().getTime() <= time){ queueStates.add(state2); }
-	 * state2 = null; state1 = null; } }
-	 * 
-	 * return eventos; }
-     */
- /*
-	 * public List<Event> sendPackages(Float time){ List<Event> eventos= new
-	 * ArrayList<>(); ArrayList<HostState> queueStates =
-	 * getFirstPackageToSend(); List<Vertex<Host>> listHost =
-	 * getHosts(queueStates); Vertex<Host> h; List<State> states ; State state1
-	 * = null; State state2 = null; while(!queueStates.isEmpty()){ //Se coloca
-	 * la cola segn el tiempo que tengan Collections.sort(queueStates); //Se
-	 * coge el host que menos tiempo tiene y se actualiza la lista de hosts h =
-	 * queueStates.remove(0).getHost(); listHost.remove(h);
-	 * 
-	 * //Se empieza con el envio if(h != null){ //Se envia el paquete y se
-	 * recogen los estados que devuelve states = sendPackage(h);
-	 * if(!states.isEmpty()) state1 = states.get(0); if(states.size() > 1)
-	 * state2 = states.get(1);
-	 * 
-	 * //Se procesan los estados y se actualiza la cola si es necesario
-	 * if(state1 != null && state1.getHost() != null &&
-	 * state1.getEventTransport().getTime() <= time){
-	 * eventos.add(state1.getEventTransmission());
-	 * eventos.add(state1.getEventTransport());
-	 * if(!listHost.contains(state1.getHost())){ queueStates.add(new
-	 * HostState(state1.getHost(),state1.getEventTransport().getTime()));
-	 * listHost.add(state1.getHost()); }else{ updateState(queueStates,
-	 * state1.getHost()); } } if(state2 != null && state2.getHost() != null &&
-	 * state2.getEventTransport().getTime() <= time){
-	 * if(!listHost.contains(state2.getHost())){ queueStates.add(new
-	 * HostState(state2.getHost(),state2.getEventTransport().getTime()));
-	 * listHost.add(state2.getHost()); }else{ updateState(queueStates,
-	 * state2.getHost()); } } state2 = null; state1 = null; } }
-	 * 
-	 * return eventos; }
      */
     private ArrayList<NodeState> getFirstPackageToSend() {
         ArrayList<NodeState> listStates = new ArrayList<>();
@@ -622,14 +526,14 @@ public class Red implements Serializable {
                             + bundle.getString("ToLinker") + nextEdge.getElement().getIp()
                             + bundle.getString("In") + timeTransmision + " s";
                     Event eTransmision = new Event(p.getTime(),
-                            menssageTransmision, h1.getElement(),nextNode.getElement(),nextEdge.getElement(),timeTransmision);
+                            menssageTransmision, h1.getElement(), nextNode.getElement(), nextEdge.getElement(), timeTransmision);
 
                     // Se configura el evento que ha generado el envio por el
                     // cable
                     BigDecimal timeTransport = nextEdge.getElement().getDistance().divide(velocidadCable, 6, RoundingMode.HALF_UP);
                     p.setTime(p.getTime().add(timeTransport));
                     p.setArriveTime(p.getTime());
-                    String menssageTransport =  bundle.getString("ThePackage") + p.getId()
+                    String menssageTransport = bundle.getString("ThePackage") + p.getId()
                             + bundle.getString("ArrivedFrom")
                             + h1.getElement().getName() + bundle.getString("To")
                             + nextNode.getElement().getName() + bundle.getString("In")
@@ -641,12 +545,12 @@ public class Red implements Serializable {
                     // Se crean los estados
                     List<State> states = new ArrayList<>();
                     State state1 = new State(eTransmision, new Event(
-                            p.getTime(), menssageTransport, h1.getElement(),nextNode.getElement(),nextEdge.getElement(),timeTransport), nextNode);
+                            p.getTime(), menssageTransport, h1.getElement(), nextNode.getElement(), nextEdge.getElement(), timeTransport), nextNode);
                     states.add(state1);
                     if (!c.getQueuePackages().isEmpty() && !c.isRandomSend()) {
                         State state2 = new State(new Event(c.getQueuePackages()
-                                .peek().getTime(), null, h1.getElement(),nextNode.getElement(),nextEdge.getElement(),null), new Event(c
-                                .getQueuePackages().peek().getTime(), null, h1.getElement(),nextNode.getElement(),nextEdge.getElement(),null), h1);
+                                .peek().getTime(), null, h1.getElement(), nextNode.getElement(), nextEdge.getElement(), null), new Event(c
+                                .getQueuePackages().peek().getTime(), null, h1.getElement(), nextNode.getElement(), nextEdge.getElement(), null), h1);
                         states.add(state2);
                     }
 
@@ -682,7 +586,7 @@ public class Red implements Serializable {
                         + bundle.getString("PackageSend") + p.getId()
                         + bundle.getString("ToLinker") + linker.getElement().getIp() + bundle.getString("In")
                         + timeTransmision + " s";
-                Event eTransmision = new Event(p.getTime(), menssageTransmision, h1.getElement(),nextNode.getElement(),linker.getElement(),timeTransmision);
+                Event eTransmision = new Event(p.getTime(), menssageTransmision, h1.getElement(), nextNode.getElement(), linker.getElement(), timeTransmision);
 
                 // Se configura el evento de transporte por el cable
                 BigDecimal timeTransport = linker.getElement().getDistance().divide(velocidadCable, 6, RoundingMode.HALF_UP);
@@ -699,12 +603,12 @@ public class Red implements Serializable {
                 // Se guardan los estados
                 List<State> states = new ArrayList<>();
                 State state1 = new State(eTransmision, new Event(p.getTime(),
-                        menssageTransport, h1.getElement(),nextNode.getElement(),linker.getElement(),timeTransport), nextNode);
+                        menssageTransport, h1.getElement(), nextNode.getElement(), linker.getElement(), timeTransport), nextNode);
                 states.add(state1);
                 if (!r.getQueuePackages().isEmpty()) {
                     State state2 = new State(new Event(r.getQueuePackages()
-                            .peek().getTime(), null, h1.getElement(),nextNode.getElement(),linker.getElement(),null), new Event(r
-                            .getQueuePackages().peek().getTime(), null, h1.getElement(),nextNode.getElement(),linker.getElement(),null), h1);
+                            .peek().getTime(), null, h1.getElement(), nextNode.getElement(), linker.getElement(), null), new Event(r
+                            .getQueuePackages().peek().getTime(), null, h1.getElement(), nextNode.getElement(), linker.getElement(), null), h1);
                     states.add(state2);
                 }
 
@@ -715,8 +619,8 @@ public class Red implements Serializable {
             java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
             String mensaje = bundle.getString("ThePackage") + p.getId() + bundle.getString("HasBeenSent");
             List<State> states = new ArrayList<>();
-            State state = new State(new Event(p.getTime(), mensaje, h1.getElement(),null,null,null), new Event(
-                    p.getTime(), mensaje, h1.getElement(),null,null,null), null);
+            State state = new State(new Event(p.getTime(), mensaje, h1.getElement(), null, null, null), new Event(
+                    p.getTime(), mensaje, h1.getElement(), null, null, null), null);
             states.add(state);
             return states;
         }
