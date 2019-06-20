@@ -578,7 +578,7 @@ public class VMain extends javax.swing.JFrame {
                 objectOut.close();
 
             } catch (Exception ex) {
-                ex.printStackTrace();
+                Logger.getLogger(VMain.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             this.jMain.setEnabled(true);
@@ -603,7 +603,7 @@ public class VMain extends javax.swing.JFrame {
             try {
                 desktop.browse(new URI(url));
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.getLogger(VMain.class.getName()).log(Level.SEVERE, null, e);
             }
         } else {
             Runtime runtime = Runtime.getRuntime();
@@ -611,7 +611,7 @@ public class VMain extends javax.swing.JFrame {
                 runtime.exec("xdg-open " + url);
             } catch (IOException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+                Logger.getLogger(VMain.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }//GEN-LAST:event_btnHelpActionPerformed
