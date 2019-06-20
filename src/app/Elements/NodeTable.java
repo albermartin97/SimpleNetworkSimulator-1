@@ -64,7 +64,7 @@ public class NodeTable extends AbstractTableModel {
 
     }
 
-    public void setUpSportColumn(JTable table, TableColumn sportColumn, String[] linkers) {
+    public void setUpSportColumn(TableColumn sportColumn, String[] linkers) {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
         JComboBox comboBox = new JComboBox(linkers);
         sportColumn.setCellEditor(new DefaultCellEditor(comboBox));
