@@ -514,6 +514,8 @@ public class VMain extends javax.swing.JFrame {
                 String linkers = br.readLine();
                 int nLinkers = Integer.parseInt(linkers.substring(2, linkers.length()).trim());
                 for (int l = 0; l < nLinkers; l++) {
+                    String tipoItem = br.readLine();	
+                    String linker = br.readLine();
                     prop = br.readLine();
                     String ip = prop.substring(0, prop.length() - 1);
                     prop = br.readLine();
