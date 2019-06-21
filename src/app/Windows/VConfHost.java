@@ -43,7 +43,10 @@ public class VConfHost extends javax.swing.JFrame {
         this.si = vMain.getSI();
         this.vMain = vMain;
         initComponents();
-        this.setVisible(true);
+        btnRemovePackage.setEnabled(ci.getVertex().getElement().getQueuePackages().size() != 0);
+
+        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
+                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
         configComponents();
     }
 
@@ -394,11 +397,11 @@ public class VConfHost extends javax.swing.JFrame {
                 this.setEnabled(false);
                 this.vRandomSend = new VRandomSend(this,c);
                 vRandomSend.setVisible(true);
+            }else{
+                this.setVisible(true);
             }
+        }else{
+            this.setVisible(true);
         }
-        btnRemovePackage.setEnabled(ci.getVertex().getElement().getQueuePackages().size() != 0);
-
-        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
-                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }
 }

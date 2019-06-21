@@ -311,7 +311,7 @@ public class VMain extends javax.swing.JFrame {
         this.jMain.setEnabled(false);
         HostItem ci = new HostItem(si, "");
         this.vConfComputer = new VConfHost(ci, this);
-        //this.vConfComputer.setVisible(true);
+        this.vConfComputer.setVisible(true);
     }//GEN-LAST:event_btnNewComputerActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
