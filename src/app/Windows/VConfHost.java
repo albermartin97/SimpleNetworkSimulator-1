@@ -256,7 +256,7 @@ public class VConfHost extends javax.swing.JFrame {
         miConfigurar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VConfHost vConfComputer = new VConfHost(ci, vMain);
-                vConfComputer.setVisible(true);
+                //vConfComputer.setVisible(true);
             }
         });
         popUpMenuHost.add(miConfigurar);
