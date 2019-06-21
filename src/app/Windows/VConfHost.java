@@ -58,10 +58,10 @@ public class VConfHost extends javax.swing.JFrame {
         jConfComputer = new javax.swing.JPanel();
         lblNameComputer = new javax.swing.JLabel();
         txtNameComputer = new javax.swing.JTextField();
+        btnAceptarConfHost = new javax.swing.JButton();
         jComputerTable = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tComputer = new javax.swing.JTable();
-        btnAceptarConfHost = new javax.swing.JButton();
         btnCancelarConfHost = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         btnAddPackage = new javax.swing.JButton();
@@ -78,6 +78,13 @@ public class VConfHost extends javax.swing.JFrame {
 
         txtNameComputer.setToolTipText(bundle.getString("VConfHost.txtNameComputer.toolTipText_1")); // NOI18N
 
+        btnAceptarConfHost.setText(bundle.getString("VConfHost.btnAceptarConfHost.text_1")); // NOI18N
+        btnAceptarConfHost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarConfHostActionPerformed(evt);
+            }
+        });
+
         tComputer.setModel(new app.Elements.HostTable(ci.getVertex()));
         jScrollPane1.setViewportView(tComputer);
 
@@ -86,24 +93,13 @@ public class VConfHost extends javax.swing.JFrame {
         jComputerTableLayout.setHorizontalGroup(
             jComputerTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jComputerTableLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jComputerTableLayout.setVerticalGroup(
             jComputerTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jComputerTableLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
-
-        btnAceptarConfHost.setText(bundle.getString("VConfHost.btnAceptarConfHost.text_1")); // NOI18N
-        btnAceptarConfHost.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarConfHostActionPerformed(evt);
-            }
-        });
 
         btnCancelarConfHost.setText(bundle.getString("VConfHost.btnCancelarConfHost.text_1")); // NOI18N
         btnCancelarConfHost.addActionListener(new java.awt.event.ActionListener() {
@@ -163,18 +159,20 @@ public class VConfHost extends javax.swing.JFrame {
                         .addGroup(jConfComputerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rbtnEnvioAleatorio))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 18, Short.MAX_VALUE))
                     .addGroup(jConfComputerLayout.createSequentialGroup()
-                        .addComponent(lblNameComputer)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNameComputer)
+                        .addGroup(jConfComputerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jConfComputerLayout.createSequentialGroup()
+                                .addComponent(lblNameComputer)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNameComputer))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfComputerLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnAceptarConfHost, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCancelarConfHost, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)))
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfComputerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAceptarConfHost, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addComponent(btnCancelarConfHost, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         jConfComputerLayout.setVerticalGroup(
             jConfComputerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,31 +181,31 @@ public class VConfHost extends javax.swing.JFrame {
                 .addGroup(jConfComputerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNameComputer)
                     .addComponent(txtNameComputer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jConfComputerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(12, 12, 12)
+                .addGroup(jConfComputerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jConfComputerLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtnEnvioAleatorio))
+                        .addComponent(rbtnEnvioAleatorio)
+                        .addGap(53, 53, 53))
                     .addGroup(jConfComputerLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComputerTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jConfComputerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAceptarConfHost, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelarConfHost, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(113, 113, 113))
+                        .addComponent(jComputerTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(jConfComputerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAceptarConfHost, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(btnCancelarConfHost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(159, 159, 159))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jConfComputer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jConfComputer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jConfComputer, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+            .addComponent(jConfComputer, javax.swing.GroupLayout.PREFERRED_SIZE, 234, Short.MAX_VALUE)
         );
 
         pack();

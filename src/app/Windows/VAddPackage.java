@@ -12,6 +12,7 @@ import java.util.List;
 import material.graphs.Vertex;
 import objects.Node;
 import app.Elements.NodeItem;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -145,18 +146,23 @@ public class VAddPackage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarPackageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarPackageActionPerformed
-        this.setVisible(false);
-        ci.getVertex()
-                .getElement()
-                .addPackage(new objects.Package(new BigDecimal(txtTamañoPackage
-                                .getText()),
-                                (Vertex<Node>) getChildItem(jcbDestinoPackage
-                                        .getSelectedItem().toString())));
-        this.vConfComputer.updateTComputer();
-        this.vConfComputer.setEnabled(true);
-        this.vConfComputer.getRemovePackage().setEnabled(true);
-        this.vConfComputer.setVisible(true);
-        this.vConfComputer.getBtnRemovePackage().setEnabled(true);
+        if(getChildItem(jcbDestinoPackage.getSelectedItem().toString()) != null){
+            this.setVisible(false);
+            ci.getVertex()
+                    .getElement()
+                    .addPackage(new objects.Package(new BigDecimal(txtTamañoPackage
+                                    .getText()),
+                                    (Vertex<Node>) getChildItem(jcbDestinoPackage
+                                            .getSelectedItem().toString())));
+            this.vConfComputer.updateTComputer();
+            this.vConfComputer.setEnabled(true);
+            this.vConfComputer.getRemovePackage().setEnabled(true);
+            this.vConfComputer.setVisible(true);
+            this.vConfComputer.getBtnRemovePackage().setEnabled(true);
+        }else{
+            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+            JOptionPane.showMessageDialog(this,bundle.getString("ErrorDestinoPaquete"),bundle.getString("ErrorDestinoPaqueteTitulo"),JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAceptarPackageActionPerformed
 
     private void btnCancelarPackageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPackageActionPerformed
