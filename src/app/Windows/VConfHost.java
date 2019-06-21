@@ -43,6 +43,7 @@ public class VConfHost extends javax.swing.JFrame {
         this.si = vMain.getSI();
         this.vMain = vMain;
         initComponents();
+        this.setVisible(true);
         configComponents();
     }
 
@@ -230,6 +231,7 @@ public class VConfHost extends javax.swing.JFrame {
             }
 
         }
+        
 
     }//GEN-LAST:event_rbtnEnvioAleatorioActionPerformed
 
