@@ -596,7 +596,7 @@ public class VMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewWorkSpaceActionPerformed
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
-        String url = "https://github.com/jfvelezserrano/SimpleNetworkSimulator";
+        String url = "https://github.com/albermartin97/SimpleNetworkSimulator-1";
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
