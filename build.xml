@@ -39,7 +39,15 @@
                 <fileset dir="${build.classes.dir}"/>
             </obfuscate>
         </target>
-
+	
+	<junit printsummary="yes" haltonfailure="yes">
+    		<classpath>
+        		<path refid="your.classpath.refid" />
+        		<fileset dir="${junit.dir}">
+            			<include name="**/junit.jar" />
+        		</fileset>
+    		</classpath>
+	</junit>
 	<target name="test" depends="compileTest">
   		<junit>
     			<classpath>
