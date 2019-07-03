@@ -40,14 +40,6 @@
             </obfuscate>
         </target>
 
-	<junit printsummary="yes" haltonfailure="yes">
-    <classpath>
-        <path refid="src.UnitTest.TestExamenes" />
-        <fileset dir="${junit.dir}">
-            <include name="**/junit.jar" />
-        </fileset>
-    </classpath>
-</junit>
     For list of available properties check the imported 
     nbproject/build-impl.xml file. 
 
