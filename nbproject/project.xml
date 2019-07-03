@@ -7,9 +7,7 @@
             <source-roots>
                 <root id="src.dir" name="src"/>
             </source-roots>
-            <test-roots>
-                <root id="test.UnitTest.dir"/>
-            </test-roots>
+            <test-roots/>
         </data>
     </configuration>
 </project>
