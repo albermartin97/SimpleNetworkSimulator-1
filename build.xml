@@ -42,22 +42,11 @@
 
 	<junit printsummary="yes" haltonfailure="yes">
     <classpath>
-        <pathelement location="${build.tests}"/>
-        <pathelement path="${java.class.path}"/>
-    </classpath>
-
-    <formatter type="plain"/>
-
-    <test name="src.UnitTest.TestExamenes" haltonfailure="no" outfile="result">
-        <formatter type="xml"/>
-    </test>
-
-    <batchtest fork="yes" todir="${reports.tests}">
-        <fileset dir="${src.tests}">
-            <include name="**/*Test*.java"/>
-            <exclude name="**/AllTests.java"/>
+        <path refid="src.UnitTest.TestExamenes" />
+        <fileset dir="${junit.dir}">
+            <include name="**/junit.jar" />
         </fileset>
-    </batchtest>
+    </classpath>
 </junit>
     For list of available properties check the imported 
     nbproject/build-impl.xml file. 
