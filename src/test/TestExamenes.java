@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UnitTestExamenes;
+package test;
 
 import java.math.BigDecimal;
 import java.util.List;
