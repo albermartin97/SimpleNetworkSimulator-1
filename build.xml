@@ -40,10 +40,29 @@
             </obfuscate>
         </target>
 
+	<junit printsummary="yes" haltonfailure="yes">
+    <classpath>
+        <pathelement location="${build.tests}"/>
+        <pathelement path="${java.class.path}"/>
+    </classpath>
+
+    <formatter type="plain"/>
+
+    <test name="src.test.TestExamenes" haltonfailure="no" outfile="result">
+        <formatter type="xml"/>
+    </test>
+
+    <batchtest fork="yes" todir="${reports.tests}">
+        <fileset dir="${src.tests}">
+            <include name="**/*Test*.java"/>
+            <exclude name="**/AllTests.java"/>
+        </fileset>
+    </batchtest>
+</junit>
     For list of available properties check the imported 
     nbproject/build-impl.xml file. 
 
-
+	
     Another way to customize the build is by overriding existing main targets.
     The targets of interest are: 
 
