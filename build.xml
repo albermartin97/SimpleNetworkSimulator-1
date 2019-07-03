@@ -37,6 +37,10 @@
   <property name="main.src.dir" value="src/"/>
   <property name="test.build.dir" value="build/test"/>
   <property name="test.src.dir" value="test/"/>
+<property name="build.dir"   value="build"/>
+    <property name="jar.dir"     value="${build.dir}/jar"/>
+    <property name="main.build.dir" value="build/main"/>
+
         <target name="-post-compile">
             <obfuscate>
                 <fileset dir="${build.classes.dir}"/>
@@ -49,30 +53,40 @@
     <pathelement location="${main.build.dir}"/>
   </path>
 
-  <target name="compile">
-    <mkdir dir="${main.build.dir}"/>
-    <javac srcdir="${main.src.dir}" destdir="${main.build.dir}" includeantruntime="false"/>
-  </target>
+  <!--CLEAN-->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
 
-  <target name="test-compile" depends="compile">
-    <mkdir dir="${test.build.dir}"/>
-    <javac srcdir="${test.src.dir}" destdir="${test.build.dir}" includeantruntime="false">
-        <classpath refid="classpath.test"/>
-    </javac>
-  </target>
+        <!--COMPILE-->
+    <target name="compile">
+        <mkdir dir="${main.build.dir}"/>
+        <javac srcdir="${main.src.dir}" destdir="${main.build.dir}" includeantruntime="false">
+		<exclude name="test/**"/>
+    </target>
 
-  <target name="test" depends="test-compile">
-    <junit printsummary="on" haltonfailure="yes" fork="true">
-        <classpath>
-          <path refid="classpath.test"/>
-          <pathelement location="${test.build.dir}"/>
-        </classpath>
-        <formatter type="brief" usefile="false" />
-        <batchtest>
-            <fileset dir="${test.src.dir}" includes="**/*Test.java" />
-        </batchtest>
-    </junit>
-  </target>
+        <!--TEST-COMPILE-->
+    <target name="test-compile" depends="compile">
+        <mkdir dir="${test.build.dir}"/>
+        <javac srcdir="${test.src.dir}" destdir="${test.build.dir}" includeantruntime="false">
+            <classpath refid="classpath.test"/>
+        </javac>
+    </target>
+
+    <!--TEST-->
+    <target name="test" depends="test-compile">
+        <junit printsummary="on" haltonfailure="yes" fork="true">
+            <classpath>
+                <path refid="classpath.test"/>
+                <pathelement location="${test.build.dir}"/>
+            </classpath>
+            <formatter type="brief" usefile="false" />
+            <batchtest>
+                <fileset dir="${test.src.dir}" includes="**/*Test.java" >
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
     For list of available properties check the imported 
     nbproject/build-impl.xml file. 
 
