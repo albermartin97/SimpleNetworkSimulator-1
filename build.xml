@@ -48,7 +48,7 @@
 
     <formatter type="plain"/>
 
-    <test name="src.test.TestExamenes" haltonfailure="no" outfile="result">
+    <test name="src.UnitTest.TestExamenes" haltonfailure="no" outfile="result">
         <formatter type="xml"/>
     </test>
 
