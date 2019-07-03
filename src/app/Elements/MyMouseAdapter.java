@@ -18,6 +18,7 @@ public class MyMouseAdapter extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
         if (parent.getSimulatorItem().isConectarHosts()) {
             if (parent.getSimulatorItem().getClickHost() == 1) {
                 Graphics g = parent.getSimulatorItem().getWorkSpacePanel().getGraphics();
@@ -26,6 +27,7 @@ public class MyMouseAdapter extends MouseAdapter {
                 Edge<Linker> l = parent.getSimulatorItem().getSimulator().getRed().connect(parent.getVertex(), this.parent.getSimulatorItem().getAuxHost().getVertex(), parent.getSimulatorItem().getL().getIp(), parent.getSimulatorItem().getL().getSpeed(), parent.getSimulatorItem().getL().getDistance());
                 li.setLinker(l);
                 li.getLblName().setText(l.getElement().getIp());
+                li.getLblName().setToolTipText(bundle.getString("speed") + "= " + li.getLinker().getElement().getSpeed().toString() + "; " + bundle.getString("distance") + "= " + li.getLinker().getElement().getDistance().toString());
 
                 parent.getSimulatorItem().setClickHost(0);
                 parent.getSimulatorItem().setConectarHosts(false);
