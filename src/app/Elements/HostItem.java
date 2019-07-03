@@ -61,7 +61,7 @@ public class HostItem extends JPanel implements NodeItem, Serializable {
         this.setSize(new Dimension(60, 60));
         ImageIcon imageIcon;
         Image image;
-        imageIcon = new ImageIcon(getClass().getResource("/images/ComputerIcon2.png"));
+        imageIcon = new ImageIcon(getClass().getResource("/images/ComputerIcon.png"));
         image = imageIcon.getImage();
 
         g.drawImage(image, 0, 0, getWidth(), getHeight(), this);

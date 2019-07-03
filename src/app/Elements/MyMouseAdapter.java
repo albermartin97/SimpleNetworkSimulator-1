@@ -62,9 +62,9 @@ public class MyMouseAdapter extends MouseAdapter {
             this.parent.getSimulatorItem().getvMain().getBtnNewLinker().setEnabled(false);
         }
         if (this.parent.getSimulatorItem().getWorkSpacePanel().getChildsItems().size() > 0 && this.parent.getSimulatorItem().getWorkSpacePanel().getLinkers().size() >= this.parent.getSimulatorItem().getWorkSpacePanel().getChildsItems().size() - 1) {
-            this.parent.getSimulatorItem().getvMain().getBtnStart().setEnabled(true);
+            this.parent.getSimulatorItem().getvMain().getBtnEnrutar().setEnabled(true);
         } else {
-            this.parent.getSimulatorItem().getvMain().getBtnStart().setEnabled(false);
+            this.parent.getSimulatorItem().getvMain().getBtnEnrutar().setEnabled(false);
         }
     }
 }

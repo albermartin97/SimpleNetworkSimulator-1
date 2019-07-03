@@ -66,7 +66,9 @@ public class Red implements Serializable {
         Collection<Edge<Linker>> list = (Collection<Edge<Linker>>) red.incidentEdges(vh);
         red.removeVertex(vh);
     }
-
+    public void removeLinker(Edge<Linker> vl) {
+        red.removeEdge(vl);
+    }
     public Edge<Linker> connect(Vertex<Node> h1, Vertex<Node> h2, String ip,
             BigDecimal speed, BigDecimal distance) {
         Linker l = new Linker();
@@ -537,7 +539,7 @@ public class Red implements Serializable {
                             + bundle.getString("ArrivedFrom")
                             + h1.getElement().getName() + bundle.getString("To")
                             + nextNode.getElement().getName() + bundle.getString("In")
-                            + timeTransport;
+                            + timeTransport + " s";
 
                     // Se a�ade a la cola del siguiente nodo
                     nextNode.getElement().addPackage(p);
@@ -595,7 +597,7 @@ public class Red implements Serializable {
                 String menssageTransport = bundle.getString("ThePackage") + p.getId()
                         + bundle.getString("ArrivedFrom") + h1.getElement().getName()
                         + bundle.getString("To") + nextNode.getElement().getName() + bundle.getString("In")
-                        + timeTransport;
+                        + timeTransport + " s";
 
                 // Se mueve el paquete a la siguiente cola
                 nextNode.getElement().addPackage(p);

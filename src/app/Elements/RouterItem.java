@@ -59,7 +59,7 @@ public class RouterItem extends JPanel implements NodeItem, Serializable {
         this.setSize(new Dimension(60, 60));
         ImageIcon imageIcon;
         Image image;
-        imageIcon = new ImageIcon(getClass().getResource("/images/RouterIcon2.png"));
+        imageIcon = new ImageIcon(getClass().getResource("/images/RouterIcon.png"));
         image = imageIcon.getImage();
         g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     }

@@ -68,60 +68,17 @@ public class VEnrutamiento extends javax.swing.JFrame {
     private void initComponents() {
 
         jConfTablaEnrutamiento = new javax.swing.JPanel();
-        tbRun = new javax.swing.JToolBar();
-        btnStart = new javax.swing.JButton();
-        btnStartToFinish = new javax.swing.JButton();
-        btnEnrutadoAutomatico = new javax.swing.JButton();
         jSPHostTable = new javax.swing.JScrollPane();
         jtHostTable = new javax.swing.JTable();
+        btnAceptarEnrutamiento = new javax.swing.JButton();
+        btnCancelarEnrutamiento = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
+        btnEnrutamientoAutomatico = new javax.swing.JButton();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         setTitle(bundle.getString("VEnrutamiento.title")); // NOI18N
         setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(555, 439));
-
-        tbRun.setFloatable(false);
-        tbRun.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        tbRun.setRollover(true);
-
-        btnStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconStart2.png"))); // NOI18N
-        btnStart.setToolTipText(bundle.getString("VEnrutamiento.btnStart.toolTipText")); // NOI18N
-        btnStart.setFocusable(false);
-        btnStart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnStart.setMargin(new java.awt.Insets(20, 14, 20, 14));
-        btnStart.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnStart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartActionPerformed(evt);
-            }
-        });
-        tbRun.add(btnStart);
-
-        btnStartToFinish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconStartToFinish2.png"))); // NOI18N
-        btnStartToFinish.setToolTipText(bundle.getString("VEnrutamiento.btnStartToFinish.toolTipText")); // NOI18N
-        btnStartToFinish.setFocusable(false);
-        btnStartToFinish.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnStartToFinish.setMargin(new java.awt.Insets(20, 14, 20, 14));
-        btnStartToFinish.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnStartToFinish.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartToFinishActionPerformed(evt);
-            }
-        });
-        tbRun.add(btnStartToFinish);
-
-        btnEnrutadoAutomatico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/routingIcon.png"))); // NOI18N
-        btnEnrutadoAutomatico.setToolTipText(bundle.getString("VEnrutamiento.btnEnrutadoAutomatico.toolTipText")); // NOI18N
-        btnEnrutadoAutomatico.setFocusable(false);
-        btnEnrutadoAutomatico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEnrutadoAutomatico.setMargin(new java.awt.Insets(20, 14, 20, 14));
-        btnEnrutadoAutomatico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnEnrutadoAutomatico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnrutadoAutomaticoActionPerformed(evt);
-            }
-        });
-        tbRun.add(btnEnrutadoAutomatico);
 
         List<Vertex<objects.Node>> vhListComputers = this.si.getSimulator().getRed()
         .getAllHosts();
@@ -157,53 +114,100 @@ public class VEnrutamiento extends javax.swing.JFrame {
         }
         jSPHostTable.setViewportView(jtHostTable);
 
+        btnAceptarEnrutamiento.setText(bundle.getString("VEnrutamiento.btnAceptarEnrutamiento.text")); // NOI18N
+        btnAceptarEnrutamiento.setToolTipText(bundle.getString("VEnrutamiento.btnAceptarEnrutamiento.toolTipText")); // NOI18N
+        btnAceptarEnrutamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarEnrutamientoActionPerformed(evt);
+            }
+        });
+
+        btnCancelarEnrutamiento.setText(bundle.getString("VEnrutamiento.btnCancelarEnrutamiento.text")); // NOI18N
+        btnCancelarEnrutamiento.setToolTipText(bundle.getString("VEnrutamiento.btnCancelarEnrutamiento.toolTipText")); // NOI18N
+        btnCancelarEnrutamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarEnrutamientoActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.setFloatable(false);
+        jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToolBar1.setRollover(true);
+
+        btnEnrutamientoAutomatico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/routingIcon.png"))); // NOI18N
+        btnEnrutamientoAutomatico.setToolTipText(bundle.getString("VEnrutamiento.btnEnrutamientoAutomatico.toolTipText")); // NOI18N
+        btnEnrutamientoAutomatico.setFocusable(false);
+        btnEnrutamientoAutomatico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEnrutamientoAutomatico.setMargin(new java.awt.Insets(8, 20, 8, 20));
+        btnEnrutamientoAutomatico.setMaximumSize(new java.awt.Dimension(73, 51));
+        btnEnrutamientoAutomatico.setMinimumSize(new java.awt.Dimension(73, 51));
+        btnEnrutamientoAutomatico.setPreferredSize(new java.awt.Dimension(73, 51));
+        btnEnrutamientoAutomatico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEnrutamientoAutomatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnrutamientoAutomaticoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnEnrutamientoAutomatico);
+
         javax.swing.GroupLayout jConfTablaEnrutamientoLayout = new javax.swing.GroupLayout(jConfTablaEnrutamiento);
         jConfTablaEnrutamiento.setLayout(jConfTablaEnrutamientoLayout);
         jConfTablaEnrutamientoLayout.setHorizontalGroup(
             jConfTablaEnrutamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jConfTablaEnrutamientoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tbRun, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSPHostTable, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jConfTablaEnrutamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfTablaEnrutamientoLayout.createSequentialGroup()
+                        .addComponent(btnCancelarEnrutamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfTablaEnrutamientoLayout.createSequentialGroup()
+                        .addComponent(jSPHostTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(jConfTablaEnrutamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jConfTablaEnrutamientoLayout.createSequentialGroup()
+                    .addGap(193, 193, 193)
+                    .addComponent(btnAceptarEnrutamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(194, Short.MAX_VALUE)))
         );
         jConfTablaEnrutamientoLayout.setVerticalGroup(
             jConfTablaEnrutamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jConfTablaEnrutamientoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jConfTablaEnrutamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSPHostTable, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
-                    .addGroup(jConfTablaEnrutamientoLayout.createSequentialGroup()
-                        .addComponent(tbRun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jSPHostTable, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(btnCancelarEnrutamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jConfTablaEnrutamientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfTablaEnrutamientoLayout.createSequentialGroup()
+                    .addContainerGap(373, Short.MAX_VALUE)
+                    .addComponent(btnAceptarEnrutamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jConfTablaEnrutamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(11, 11, 11))
+            .addComponent(jConfTablaEnrutamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jConfTablaEnrutamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jConfTablaEnrutamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnStartToFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartToFinishActionPerformed
+    private void btnAceptarEnrutamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarEnrutamientoActionPerformed
         boolean allEnrutado = true;
         for (int i = 0; i < si.getSimulator().getRed().getAllHosts().size(); i++) {
             for (int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++) {
                 if(jtHostTable.getValueAt(i, j) == null)
-                    allEnrutado = false;  
+                allEnrutado = false;
             }
         }
         if(allEnrutado){
@@ -219,59 +223,39 @@ public class VEnrutamiento extends javax.swing.JFrame {
                 }
             }
             this.setVisible(false);
-            List<simulator.Event> trace = si
-                    .getSimulator().play();
-            this.setVisible(false);
-            this.vTraceStepByStep = new VTraceStepByStep(this.si,trace);
-            vTraceStepByStep.setVisible(true);
-            vTraceStepByStep.getjToolBarTrace().setVisible(false);
+            this.vMain.getBtnStart().setEnabled(true);
+            this.vMain.getBtnStartToFinish().setEnabled(!anyRandom);
+            this.vMain.setVisible(true);
         }else{
             java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
             JOptionPane.showMessageDialog(this,bundle.getString("ErroEnrutamiento"),bundle.getString("ErroEnrutamientoTitulo"),JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnStartToFinishActionPerformed
+    }//GEN-LAST:event_btnAceptarEnrutamientoActionPerformed
 
-    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+    private void btnCancelarEnrutamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEnrutamientoActionPerformed
         boolean allEnrutado = true;
         for (int i = 0; i < si.getSimulator().getRed().getAllHosts().size(); i++) {
             for (int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++) {
                 if(jtHostTable.getValueAt(i, j) == null)
-                    allEnrutado = false;  
+                allEnrutado = false;
             }
         }
-        if(allEnrutado){
-            this.vMain.setRouting(true);
-            for (int i = 0; i < si.getSimulator().getRed().getAllHosts().size(); i++) {
-                Vertex<Node> vc = getChildItem(jtHostTable.getValueAt(i, 0).toString());
-                for (int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++) {
-                    Vertex<Node> vh = getChildItem(jtHostTable.getColumnName(j).toString());
-                    if(vh != null){
-                        Router r = (Router) vh.getElement();
-                        r.enrutar(vc, getLinkerItem((String) jtHostTable.getValueAt(i, j)));
-                    }
-                }
-            }
-            this.setVisible(false);
-            this.vTraceStepByStep = new VTraceStepByStep(this.si);
-            vTraceStepByStep.setVisible(true);
-        }else{
-            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
-            JOptionPane.showMessageDialog(this,bundle.getString("ErroEnrutamiento"),bundle.getString("ErroEnrutamientoTitulo"),JOptionPane.ERROR_MESSAGE);
-        }    
-    }//GEN-LAST:event_btnStartActionPerformed
+        this.setVisible(false);
+        this.vMain.getBtnStart().setEnabled(allEnrutado);
+        this.vMain.getBtnStartToFinish().setEnabled(!anyRandom && allEnrutado);
+        this.vMain.setVisible(true);
+    }//GEN-LAST:event_btnCancelarEnrutamientoActionPerformed
 
-    private void btnEnrutadoAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrutadoAutomaticoActionPerformed
+    private void btnEnrutamientoAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrutamientoAutomaticoActionPerformed
         for(int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++){
             Vertex<Node> vr = getChildItem(jtHostTable.getColumnName(j).toString());
             for(int i = 0; i < si.getSimulator().getRed().getAllHosts().size(); i++){
                 Vertex<Node> vh = getChildItem(jtHostTable.getValueAt(i, 0).toString());
-                if(vh != null){
-                    Edge<Linker> linker = this.si.getSimulator().getRed().getEnrutamiento(vh,vr);
-                    jtHostTable.setValueAt(linker.getElement().getIp(), i, j);
-                }
+                Edge<Linker> linker = this.si.getSimulator().getRed().getEnrutamiento(vh,vr);
+                jtHostTable.setValueAt(linker.getElement().getIp(), i, j);
             }
         }
-    }//GEN-LAST:event_btnEnrutadoAutomaticoActionPerformed
+    }//GEN-LAST:event_btnEnrutamientoAutomaticoActionPerformed
 
 
     private Vertex<Node> getChildItem(String selectedItem) {
@@ -294,19 +278,18 @@ public class VEnrutamiento extends javax.swing.JFrame {
         return null;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnrutadoAutomatico;
-    private javax.swing.JButton btnStart;
-    private javax.swing.JButton btnStartToFinish;
+    private javax.swing.JButton btnAceptarEnrutamiento;
+    private javax.swing.JButton btnCancelarEnrutamiento;
+    private javax.swing.JButton btnEnrutamientoAutomatico;
     private javax.swing.JPanel jConfTablaEnrutamiento;
     private javax.swing.JScrollPane jSPHostTable;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTable jtHostTable;
-    private javax.swing.JToolBar tbRun;
     // End of variables declaration//GEN-END:variables
 
     private void configComponents(boolean routing) {
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);  
-        this.btnStartToFinish.setEnabled(!anyRandom);
         if(routing){
             for(int j = 1; j <= si.getSimulator().getRed().getAllRouters().size(); j++){
             Vertex<Node> vr = getChildItem(jtHostTable.getColumnName(j).toString());
@@ -324,4 +307,7 @@ public class VEnrutamiento extends javax.swing.JFrame {
             }
         }
     }
+    /*
+    
+    */
 }

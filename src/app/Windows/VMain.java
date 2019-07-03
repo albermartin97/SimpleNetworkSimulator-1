@@ -38,6 +38,7 @@ import java.net.URI;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import objects.Router;
 
 /**
@@ -83,6 +84,8 @@ public class VMain extends javax.swing.JFrame {
         btnOpenFile = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnStart = new javax.swing.JButton();
+        btnStartToFinish = new javax.swing.JButton();
+        btnEnrutar = new javax.swing.JButton();
         jAddItems = new javax.swing.JToolBar();
         btnNewComputer = new javax.swing.JButton();
         btnNewLinker = new javax.swing.JButton();
@@ -93,8 +96,8 @@ public class VMain extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         setTitle(bundle.getString("VMain.title")); // NOI18N
-        setMinimumSize(new java.awt.Dimension(697, 527));
-        setPreferredSize(new java.awt.Dimension(697, 527));
+        setMinimumSize(new java.awt.Dimension(812, 530));
+        setPreferredSize(new java.awt.Dimension(812, 530));
 
         jMain.setMinimumSize(new java.awt.Dimension(1255, 760));
         jMain.setPreferredSize(new java.awt.Dimension(1255, 760));
@@ -183,6 +186,38 @@ public class VMain extends javax.swing.JFrame {
             }
         });
         jMenuWorkSpace.add(btnStart);
+
+        btnStartToFinish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconStartToFinish2.png"))); // NOI18N
+        btnStartToFinish.setToolTipText(bundle.getString("VMain.btnStartToFinish.toolTipText")); // NOI18N
+        btnStartToFinish.setFocusable(false);
+        btnStartToFinish.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnStartToFinish.setMargin(new java.awt.Insets(8, 20, 8, 20));
+        btnStartToFinish.setMaximumSize(new java.awt.Dimension(73, 51));
+        btnStartToFinish.setMinimumSize(new java.awt.Dimension(73, 51));
+        btnStartToFinish.setPreferredSize(new java.awt.Dimension(73, 51));
+        btnStartToFinish.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnStartToFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartToFinishActionPerformed(evt);
+            }
+        });
+        jMenuWorkSpace.add(btnStartToFinish);
+
+        btnEnrutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/routingIcon.png"))); // NOI18N
+        btnEnrutar.setToolTipText(bundle.getString("VMain.btnEnrutar.toolTipText")); // NOI18N
+        btnEnrutar.setFocusable(false);
+        btnEnrutar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEnrutar.setMargin(new java.awt.Insets(8, 20, 8, 20));
+        btnEnrutar.setMaximumSize(new java.awt.Dimension(73, 51));
+        btnEnrutar.setMinimumSize(new java.awt.Dimension(73, 51));
+        btnEnrutar.setPreferredSize(new java.awt.Dimension(73, 51));
+        btnEnrutar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEnrutar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnrutarActionPerformed(evt);
+            }
+        });
+        jMenuWorkSpace.add(btnEnrutar);
 
         jAddItems.setBorder(null);
         jAddItems.setFloatable(false);
@@ -291,11 +326,11 @@ public class VMain extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jMain, javax.swing.GroupLayout.PREFERRED_SIZE, 687, Short.MAX_VALUE)
+            .addComponent(jMain, javax.swing.GroupLayout.PREFERRED_SIZE, 788, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jMain, javax.swing.GroupLayout.PREFERRED_SIZE, 495, Short.MAX_VALUE)
+            .addComponent(jMain, javax.swing.GroupLayout.PREFERRED_SIZE, 498, Short.MAX_VALUE)
         );
 
         pack();
@@ -315,9 +350,8 @@ public class VMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewComputerActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        this.jMain.setEnabled(false);
-        this.vEnrutamiento = new VEnrutamiento(this, anyRandom, routing);
-        this.vEnrutamiento.setVisible(true);
+        VTraceStepByStep vTraceStepByStep = new VTraceStepByStep(this.si);
+        vTraceStepByStep.setVisible(true);
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnNewLinkerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewLinkerActionPerformed
@@ -330,6 +364,8 @@ public class VMain extends javax.swing.JFrame {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
         this.jMain.setEnabled(false);
         JFileChooser jf = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("SNS FILES", "sns", "sns");
+        jf.setFileFilter(filter);
         int approve = jf.showOpenDialog(this);
         File archivo = jf.getSelectedFile();
         if (archivo != null && approve == JFileChooser.APPROVE_OPTION) {
@@ -514,7 +550,7 @@ public class VMain extends javax.swing.JFrame {
                 String linkers = br.readLine();
                 int nLinkers = Integer.parseInt(linkers.substring(2, linkers.length()).trim());
                 for (int l = 0; l < nLinkers; l++) {
-                    String tipoItem = br.readLine();	
+                    String tipoItem = br.readLine();
                     String linker = br.readLine();
                     prop = br.readLine();
                     String ip = prop.substring(0, prop.length() - 1);
@@ -532,6 +568,7 @@ public class VMain extends javax.swing.JFrame {
                     Edge<Linker> link = this.si.getSimulator().getRed().connect(h1.getVertex(), h2.getVertex(), ip, speed, distance);
                     li.setLinker(link);
                     li.getLblName().setText(link.getElement().getIp());
+                    li.getLblName().setToolTipText(bundle.getString("speed") + "= " + li.getLinker().getElement().getSpeed().toString() + "; " + bundle.getString("distance") + "= " + li.getLinker().getElement().getDistance().toString());
 
                     this.si.getWorkSpacePanel().getLinkers().add(li);
                     h1.getLinkers().add(li);
@@ -568,13 +605,22 @@ public class VMain extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         this.jMain.setEnabled(false);
         JFileChooser jd = new JFileChooser();
-        jd.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("SNS FILES", "sns", "sns");
+        jd.setFileFilter(filter);
+        //jd.setAcceptAllFileFilterUsed(false);
         jd.setApproveButtonText("Guardar");
         int userSelection = jd.showSaveDialog(this);
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             this.jMain.setEnabled(true);
             try {
-                FileOutputStream fileOut = new FileOutputStream(jd.getSelectedFile().getAbsolutePath());
+                File f = jd.getSelectedFile();
+                String filePath = f.getPath();
+                if(!filePath.toLowerCase().endsWith(".sns"))
+                {
+                    f = new File(filePath + ".sns");
+                }
+                
+                FileOutputStream fileOut = new FileOutputStream(f.getAbsolutePath());
                 ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
                 objectOut.writeObject(si.toString());
                 objectOut.close();
@@ -617,6 +663,20 @@ public class VMain extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnHelpActionPerformed
+
+    private void btnEnrutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrutarActionPerformed
+        this.jMain.setEnabled(false);
+        this.vEnrutamiento = new VEnrutamiento(this, anyRandom, routing);
+        this.vEnrutamiento.setVisible(true);
+    }//GEN-LAST:event_btnEnrutarActionPerformed
+
+    private void btnStartToFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartToFinishActionPerformed
+        List<simulator.Event> trace = si
+                .getSimulator().play();
+        VTraceStepByStep vTraceStepByStep = new VTraceStepByStep(this.si, trace);
+        vTraceStepByStep.setVisible(true);
+        vTraceStepByStep.getjToolBarTrace().setVisible(false);
+    }//GEN-LAST:event_btnStartToFinishActionPerformed
 
     /**
      * @param args the command line arguments
@@ -679,9 +739,13 @@ public class VMain extends javax.swing.JFrame {
             this.getBtnNewLinker().setEnabled(true);
         }
         if (si.getWorkSpacePanel().getChildsItems().size() > 0 && si.getWorkSpacePanel().getLinkers().size() >= si.getWorkSpacePanel().getChildsItems().size() - 1) {
-            this.getBtnStart().setEnabled(true);
+            this.getBtnEnrutar().setEnabled(true);
+            if (routing) {
+                this.getBtnStart().setEnabled(true);
+                this.getBtnStartToFinish().setEnabled(routing && !anyRandom);
+            }
         } else {
-            this.getBtnStart().setEnabled(false);
+            this.getBtnEnrutar().setEnabled(false);
         }
     }
 
@@ -707,6 +771,14 @@ public class VMain extends javax.swing.JFrame {
 
     public JButton getBtnNewLinker() {
         return btnNewLinker;
+    }
+
+    public JButton getBtnEnrutar() {
+        return btnEnrutar;
+    }
+
+    public JButton getBtnStartToFinish() {
+        return btnStartToFinish;
     }
 
     public String getNameFile() {
@@ -746,7 +818,7 @@ public class VMain extends javax.swing.JFrame {
         this.btnNewRouter.setEnabled(b);
         this.btnNewLinker.setEnabled(b);
         this.btnNewComputer.setEnabled(b);
-        this.btnStart.setEnabled(b);
+        this.btnEnrutar.setEnabled(b);
         this.btnOpenFile.setEnabled(b);
         this.btnSave.setEnabled(b);
         this.btnNewWorkSpace.setEnabled(b);
@@ -759,6 +831,7 @@ public class VMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEnrutar;
     private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnNewComputer;
     private javax.swing.JButton btnNewLinker;
@@ -767,6 +840,7 @@ public class VMain extends javax.swing.JFrame {
     private javax.swing.JButton btnOpenFile;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnStart;
+    private javax.swing.JButton btnStartToFinish;
     private javax.swing.JToolBar jAddItems;
     private javax.swing.JPanel jMain;
     private javax.swing.JToolBar jMenuWorkSpace;
@@ -788,6 +862,8 @@ public class VMain extends javax.swing.JFrame {
             btnNewLinker.setEnabled(false);
         }
         btnStart.setEnabled(false);
+        btnStartToFinish.setEnabled(false);
+        btnEnrutar.setEnabled(false);
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }

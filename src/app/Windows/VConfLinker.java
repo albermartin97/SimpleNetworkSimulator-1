@@ -5,9 +5,11 @@
  */
 package app.Windows;
 
+import app.Elements.LinkerItem;
 import app.Elements.SimulatorItem;
 import java.awt.Cursor;
 import java.math.BigDecimal;
+import material.graphs.Edge;
 import objects.Linker;
 
 /**
@@ -18,6 +20,7 @@ public class VConfLinker extends javax.swing.JFrame {
 
     private SimulatorItem si;
     private VMain vMain;
+    private LinkerItem li;
 
     /**
      * Creates new form VConfLinker
@@ -26,13 +29,27 @@ public class VConfLinker extends javax.swing.JFrame {
         this.si = vMain.getSI();
         this.vMain = vMain;
         initComponents();
-        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2, 
+        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
+                (getToolkit().getScreenSize().height - this.getHeight()) / 2);
+    }
+
+    public VConfLinker(Edge<Linker> el, VMain vMain) {
+        this.si = vMain.getSI();
+        this.vMain = vMain;
+        for (LinkerItem li : vMain.getSI().getWorkSpacePanel().getLinkers()) {
+            if (li.getLblName().getText().equals(el.getElement().getIp())) {
+                this.li = li;
+            }
+        }
+        initComponents();
+        configComponents(li);
+        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }
 
     public VConfLinker() {
         initComponents();
-        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2, 
+        setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }
 
@@ -169,33 +186,49 @@ public class VConfLinker extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarConfLinkerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarConfLinkerActionPerformed
-        this.vMain.setRouting(false);
-        Linker l = new Linker();
-        l.setDistance(new BigDecimal(txtSizeLinker.getText()));
-        l.setSpeed(new BigDecimal(txtSpeedLinker.getText()));
-        l.setIp(txtNameLinker.getText());
-        si.setL(l);
-        this.setVisible(false);
-        si.setConectarHosts(true);
-        
-        if (si.getWorkSpacePanel().getChildsItems().size() > 0 && si.getWorkSpacePanel().getLinkers().size() + 1 >= si.getWorkSpacePanel().getChildsItems().size() - 1) {
-            this.vMain.getBtnStart().setEnabled(true);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+        if (li == null) {
+            this.vMain.setRouting(false);
+            Linker l = new Linker();
+            l.setDistance(new BigDecimal(txtSizeLinker.getText()));
+            l.setSpeed(new BigDecimal(txtSpeedLinker.getText()));
+            l.setIp(txtNameLinker.getText());
+            si.setL(l);
+            this.setVisible(false);
+            si.setConectarHosts(true);
+
+            if (si.getWorkSpacePanel().getChildsItems().size() > 0 && si.getWorkSpacePanel().getLinkers().size() + 1 >= si.getWorkSpacePanel().getChildsItems().size() - 1) {
+                this.vMain.getBtnEnrutar().setEnabled(true);
+            } else {
+                this.vMain.getBtnEnrutar().setEnabled(false);
+            }
+
+            this.vMain.enabled(false);
+            Cursor cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
+            this.vMain.setCursor(cursor);
+            this.vMain.setVisible(true);
+            this.vMain.getSI().getWorkSpacePanel().paint(this.getGraphics());
         } else {
-            this.vMain.getBtnStart().setEnabled(false);
+            li.getLblName().setText(txtNameLinker.getText());
+            li.getLinker().getElement().setIp(txtNameLinker.getText());
+            li.getLinker().getElement().setDistance(new BigDecimal(txtSizeLinker.getText()));
+            li.getLinker().getElement().setSpeed(new BigDecimal(txtSpeedLinker.getText()));
+            li.getLblName().setToolTipText(bundle.getString("speed") + "= " + li.getLinker().getElement().getSpeed().toString() + "; " + bundle.getString("distance") + "= " + li.getLinker().getElement().getDistance().toString());
+            this.setVisible(false);
+            this.vMain.setVisible(true);
+            this.vMain.getSI().getWorkSpacePanel().paint(this.getGraphics());
         }
-        
-        this.vMain.enabled(false);
-        Cursor cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
-        this.vMain.setCursor(cursor);
-        this.vMain.setVisible(true);
-        this.vMain.getSI().getWorkSpacePanel().paint(this.getGraphics());
     }//GEN-LAST:event_btnAceptarConfLinkerActionPerformed
 
     private void btnCancelarConfLinkerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConfLinkerActionPerformed
         this.setVisible(false);
         si.setConectarHosts(false);
     }//GEN-LAST:event_btnCancelarConfLinkerActionPerformed
-
+    private void configComponents(LinkerItem li) {
+        txtNameLinker.setText(li.getLinker().getElement().getIp());
+        txtSizeLinker.setText(li.getLinker().getElement().getDistance().toString());
+        txtSpeedLinker.setText(li.getLinker().getElement().getSpeed().toString());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarConfLinker;
@@ -211,4 +244,5 @@ public class VConfLinker extends javax.swing.JFrame {
     private javax.swing.JTextField txtSizeLinker;
     private javax.swing.JTextField txtSpeedLinker;
     // End of variables declaration//GEN-END:variables
+
 }

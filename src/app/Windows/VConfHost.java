@@ -359,9 +359,9 @@ public class VConfHost extends javax.swing.JFrame {
             this.vMain.getBtnNewLinker().setEnabled(false);
         }
         if (si.getWorkSpacePanel().getChildsItems().size() > 0 && si.getWorkSpacePanel().getLinkers().size() >= si.getWorkSpacePanel().getChildsItems().size() - 1) {
-            this.vMain.getBtnStart().setEnabled(true);
+            this.vMain.getBtnEnrutar().setEnabled(true);
         } else {
-            this.vMain.getBtnStart().setEnabled(false);
+            this.vMain.getBtnEnrutar().setEnabled(false);
         }
     }
 

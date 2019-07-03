@@ -1,8 +1,12 @@
 package app.Elements;
 
+import app.Windows.VConfLinker;
+import app.Windows.VConfRouter;
 import java.awt.Graphics;
 import java.io.Serializable;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 import material.graphs.Edge;
 import objects.Linker;
@@ -25,11 +29,45 @@ public class LinkerItem implements Serializable {
     }
 
     public LinkerItem(SimulatorItem simulatorItem, NodeItem h1, NodeItem h2) {
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
         this.lblName = new JLabel();
         this.si = simulatorItem;
         lblName.setBounds((h1.getX() + h2.getX()) / 2, (h1.getY() + h2.getY()) / 2, 100, 20);
         lblName.setVisible(true);
         lblName.setFont(new java.awt.Font("Tahoma", 1, 14));
+        JPopupMenu popUpMenuHost = new JPopupMenu();
+        JMenuItem miConfigurar = new JMenuItem();
+        miConfigurar.setText(bundle.getString("VConfLinker"));
+        miConfigurar.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VConfLinker vConfLinker = new VConfLinker(linker, simulatorItem.getvMain());
+                vConfLinker.setVisible(true);
+            }
+        });
+        popUpMenuHost.add(miConfigurar);
+        JMenuItem miEliminar = new JMenuItem();
+        miEliminar.setText(bundle.getString("VRemoveLinker"));
+        miEliminar.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                si.getSimulator().getRed().removeLinker(linker);
+                si.getWorkSpacePanel().updateUI();
+                si.getvMain().setRouting(false);
+                LinkerItem linkerItem = null;
+                for (LinkerItem li : si.getWorkSpacePanel().getLinkers()) {
+                    if (li.getLblName().getText().equals(lblName.getText())) {
+                        linkerItem = li;
+                    }
+                }
+                boolean borrado = si.getWorkSpacePanel().getLinkers().remove(linkerItem);
+                if (borrado) {
+                    si.getWorkSpacePanel().remove(lblName);
+                }
+            }
+        });
+        popUpMenuHost.add(miEliminar);
+        lblName.setComponentPopupMenu(popUpMenuHost);
         this.si.getWorkSpacePanel().add(lblName);
         this.h1 = h1;
         this.h2 = h2;
