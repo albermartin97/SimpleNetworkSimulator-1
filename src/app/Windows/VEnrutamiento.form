@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Container class="app.Elements.WorkSpacePanel" name="workSpacePanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+  </NonVisualComponents>
   <Properties>
     <Property name="title" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
       <ResourceString bundle="app/Windows/Bundle.properties" key="VEnrutamiento.title" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -108,7 +125,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(int m = 1; m &lt;= vhListRouters.size(); m++){&#xa;    JComboBox&lt;String&gt; comboBox = new JComboBox&lt;&gt;(this.linkers);&#xa;    TableColumn column = jtHostTable.getColumnModel().getColumn(m);&#xa;    column.setCellEditor(new DefaultCellEditor(comboBox));&#xa;    DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();&#xa;    renderer.setToolTipText(&quot;Click for combo box&quot;);&#xa;    column.setCellRenderer(renderer);&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(int m = 1; m &lt;= vhListRouters.size(); m++){&#xa;    JComboBox&lt;String&gt; comboBox = new JComboBox&lt;&gt;(this.linkers);&#xa;    TableColumn column = jtHostTable.getColumnModel().getColumn(m);&#xa;    column.setCellEditor(new DefaultCellEditor(comboBox));&#xa;    DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();&#xa;    renderer.setToolTipText(&quot;Click for combo box&quot;);&#xa;    column.setCellRenderer(renderer);&#xa;}&#xa;jtHostTable.getColumnModel().getColumn(0).setCellRenderer(&#xa;&#x9;&#x9;jtHostTable.getTableHeader().getDefaultRenderer());"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Vertex&lt;objects.Node&gt;&gt; vhListComputers = this.si.getSimulator().getRed()&#xa;                    .getAllHosts();&#xa;List&lt;Vertex&lt;objects.Node&gt;&gt; vhListRouters = this.si.getSimulator().getRed()&#xa;                    .getAllRouters();&#xa;&#xa;Object[][] rowData = new Object[vhListComputers.size()][vhListRouters.size() + 1];&#xa;String[] columnNames = new String[vhListRouters.size() + 1];&#xa;columnNames[0] = &quot;Hosts&quot;;&#xa;int i = 0;&#xa;int j = 1;&#xa;&#xa;for (Vertex&lt;objects.Node&gt; vHC : vhListComputers) {&#xa;    rowData[i][0] = vHC.getElement().getName();&#xa;    for (Vertex&lt;objects.Node&gt; vHR : vhListRouters) {&#xa;        columnNames[j] = vHR.getElement().getName();&#xa;        j++;&#xa;    }&#xa;    j = 1;&#xa;    i++;&#xa;}"/>
               </AuxValues>
             </Component>

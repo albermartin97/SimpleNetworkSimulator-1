@@ -68,12 +68,12 @@ public class VConfLinker extends javax.swing.JFrame {
         lblSizeLinker = new javax.swing.JLabel();
         txtSpeedLinker = new javax.swing.JTextField();
         txtSizeLinker = new javax.swing.JTextField();
-        lblBSConfLinker = new javax.swing.JLabel();
-        lblMConfLinker = new javax.swing.JLabel();
         btnAceptarConfLinker = new javax.swing.JButton();
         btnCancelarConfLinker = new javax.swing.JButton();
         lblNameLinker = new javax.swing.JLabel();
         txtNameLinker = new javax.swing.JTextField();
+        cBoxUnidadesVelocidad = new javax.swing.JComboBox<>();
+        cBoxUnidadesDistancia = new javax.swing.JComboBox<>();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         jLabel1.setText(bundle.getString("VConfLinker.jLabel1.text")); // NOI18N
@@ -89,11 +89,6 @@ public class VConfLinker extends javax.swing.JFrame {
         txtSpeedLinker.setToolTipText(bundle.getString("VConfLinker.txtSpeedLinker.toolTipText")); // NOI18N
 
         txtSizeLinker.setToolTipText(bundle.getString("VConfLinker.txtSizeLinker.toolTipText")); // NOI18N
-
-        lblBSConfLinker.setText(bundle.getString("VConfLinker.lblBSConfLinker.text")); // NOI18N
-
-        lblMConfLinker.setText(bundle.getString("VConfLinker.lblMConfLinker.text")); // NOI18N
-        lblMConfLinker.setToolTipText(bundle.getString("VConfLinker.lblMConfLinker.toolTipText")); // NOI18N
 
         btnAceptarConfLinker.setText(bundle.getString("VConfLinker.btnAceptarConfLinker.text")); // NOI18N
         btnAceptarConfLinker.addActionListener(new java.awt.event.ActionListener() {
@@ -113,53 +108,57 @@ public class VConfLinker extends javax.swing.JFrame {
 
         txtNameLinker.setToolTipText(bundle.getString("VConfLinker.txtNameLinker.toolTipText")); // NOI18N
 
+        cBoxUnidadesVelocidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gb/s", "Mb/s", "Kb/s", "b/s" }));
+        cBoxUnidadesVelocidad.setSelectedItem("b/s");
+        cBoxUnidadesVelocidad.setToolTipText(bundle.getString("VConfLinker.cBoxUnidadesVelocidad.toolTipText")); // NOI18N
+
+        cBoxUnidadesDistancia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "km", "m", "cm", "mm" }));
+        cBoxUnidadesDistancia.setSelectedItem("m");
+        cBoxUnidadesDistancia.setToolTipText(bundle.getString("VConfLinker.cBoxUnidadesDistancia.toolTipText")); // NOI18N
+
         javax.swing.GroupLayout jConfLinkerLayout = new javax.swing.GroupLayout(jConfLinker);
         jConfLinker.setLayout(jConfLinkerLayout);
         jConfLinkerLayout.setHorizontalGroup(
             jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jConfLinkerLayout.createSequentialGroup()
-                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jConfLinkerLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSpeedLinker)
-                            .addComponent(lblNameLinker)
-                            .addComponent(lblSizeLinker))
-                        .addGap(18, 18, 18)
-                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtSizeLinker, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                            .addComponent(txtNameLinker, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSpeedLinker, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(2, 2, 2)
-                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBSConfLinker)
-                            .addComponent(lblMConfLinker)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfLinkerLayout.createSequentialGroup()
-                        .addContainerGap(65, Short.MAX_VALUE)
-                        .addComponent(btnAceptarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(102, Short.MAX_VALUE)
+                .addComponent(btnAceptarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 10, Short.MAX_VALUE))
+            .addGroup(jConfLinkerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSpeedLinker)
+                    .addComponent(lblNameLinker)
+                    .addComponent(lblSizeLinker))
+                .addGap(18, 18, 18)
+                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtSizeLinker, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                    .addComponent(txtNameLinker, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSpeedLinker, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cBoxUnidadesVelocidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cBoxUnidadesDistancia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jConfLinkerLayout.setVerticalGroup(
             jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jConfLinkerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jConfLinkerLayout.createSequentialGroup()
-                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNameLinker)
-                            .addComponent(txtNameLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSpeedLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSpeedLinker)))
-                    .addComponent(lblBSConfLinker))
+                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNameLinker)
+                    .addComponent(txtNameLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSpeedLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSpeedLinker)
+                    .addComponent(cBoxUnidadesVelocidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSizeLinker)
                     .addComponent(txtSizeLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMConfLinker))
+                    .addComponent(cBoxUnidadesDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jConfLinkerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelarConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,9 +170,7 @@ public class VConfLinker extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jConfLinker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,8 +187,10 @@ public class VConfLinker extends javax.swing.JFrame {
         if (li == null) {
             this.vMain.setRouting(false);
             Linker l = new Linker();
-            l.setDistance(new BigDecimal(txtSizeLinker.getText()));
-            l.setSpeed(new BigDecimal(txtSpeedLinker.getText()));
+            String distanceUnite = getDistanceUnite();
+            String speedUnite = getSpeedUnite();
+            l.setDistance(new BigDecimal(txtSizeLinker.getText()).multiply(new BigDecimal(distanceUnite)));
+            l.setSpeed(new BigDecimal(txtSpeedLinker.getText()).multiply(new BigDecimal(speedUnite)));
             l.setIp(txtNameLinker.getText());
             si.setL(l);
             this.setVisible(false);
@@ -233,10 +232,10 @@ public class VConfLinker extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptarConfLinker;
     private javax.swing.JButton btnCancelarConfLinker;
+    private javax.swing.JComboBox<String> cBoxUnidadesDistancia;
+    private javax.swing.JComboBox<String> cBoxUnidadesVelocidad;
     private javax.swing.JPanel jConfLinker;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblBSConfLinker;
-    private javax.swing.JLabel lblMConfLinker;
     private javax.swing.JLabel lblNameLinker;
     private javax.swing.JLabel lblSizeLinker;
     private javax.swing.JLabel lblSpeedLinker;
@@ -244,5 +243,35 @@ public class VConfLinker extends javax.swing.JFrame {
     private javax.swing.JTextField txtSizeLinker;
     private javax.swing.JTextField txtSpeedLinker;
     // End of variables declaration//GEN-END:variables
+
+    private String getDistanceUnite() {
+        switch (cBoxUnidadesDistancia.getSelectedIndex()) {
+            case 0:
+                return "1000";
+            case 1:
+                return "1";
+            case 2:
+                return "0.001";
+            case 3:
+                return "0.0001";
+            default:
+                return "1";
+        }
+    }
+
+    private String getSpeedUnite() {
+        switch (cBoxUnidadesVelocidad.getSelectedIndex()) {
+            case 0:
+                return "1000000000";
+            case 1:
+                return "1000000";
+            case 2:
+                return "1000";
+            case 3:
+                return "1";
+            default:
+                return "1";
+        }
+    }
 
 }

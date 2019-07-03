@@ -67,6 +67,7 @@ public class VEnrutamiento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        workSpacePanel1 = new app.Elements.WorkSpacePanel();
         jConfTablaEnrutamiento = new javax.swing.JPanel();
         jSPHostTable = new javax.swing.JScrollPane();
         jtHostTable = new javax.swing.JTable();
@@ -74,6 +75,17 @@ public class VEnrutamiento extends javax.swing.JFrame {
         btnCancelarEnrutamiento = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         btnEnrutamientoAutomatico = new javax.swing.JButton();
+
+        javax.swing.GroupLayout workSpacePanel1Layout = new javax.swing.GroupLayout(workSpacePanel1);
+        workSpacePanel1.setLayout(workSpacePanel1Layout);
+        workSpacePanel1Layout.setHorizontalGroup(
+            workSpacePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        workSpacePanel1Layout.setVerticalGroup(
+            workSpacePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle"); // NOI18N
         setTitle(bundle.getString("VEnrutamiento.title")); // NOI18N
@@ -112,6 +124,8 @@ public class VEnrutamiento extends javax.swing.JFrame {
             renderer.setToolTipText("Click for combo box");
             column.setCellRenderer(renderer);
         }
+        jtHostTable.getColumnModel().getColumn(0).setCellRenderer(
+            jtHostTable.getTableHeader().getDefaultRenderer());
         jSPHostTable.setViewportView(jtHostTable);
 
         btnAceptarEnrutamiento.setText(bundle.getString("VEnrutamiento.btnAceptarEnrutamiento.text")); // NOI18N
@@ -285,6 +299,7 @@ public class VEnrutamiento extends javax.swing.JFrame {
     private javax.swing.JScrollPane jSPHostTable;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTable jtHostTable;
+    private app.Elements.WorkSpacePanel workSpacePanel1;
     // End of variables declaration//GEN-END:variables
 
     private void configComponents(boolean routing) {
