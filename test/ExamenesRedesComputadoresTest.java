@@ -25,9 +25,9 @@ import simulator.Simulator;
  *
  * @author alber
  */
-public class NewEmptyJUnitTest {
+public class ExamenesRedesComputadoresTest {
     
-    public NewEmptyJUnitTest() {
+    public ExamenesRedesComputadoresTest() {
     }
     
     @BeforeClass
