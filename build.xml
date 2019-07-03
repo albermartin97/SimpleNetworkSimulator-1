@@ -33,6 +33,7 @@
         <mkdir dir="${main.build.dir}"/>
         <javac srcdir="${main.src.dir}" destdir="${main.build.dir}" includeantruntime="false">
 		<exclude name="test/**"/>
+	</javac>
     </target>
 
         <!--TEST-COMPILE-->
