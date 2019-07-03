@@ -40,7 +40,7 @@ public class MyMouseAdapter extends MouseAdapter {
                 Cursor hourglassCursor = new Cursor(Cursor.DEFAULT_CURSOR);
                 this.parent.getSimulatorItem().getvMain().setCursor(hourglassCursor);
                 enabledBotons();
-
+                
                 parent.getSimulatorItem().getWorkSpacePanel().paint(g);
             } else {
                 this.parent.getSimulatorItem().setAuxHost(parent);

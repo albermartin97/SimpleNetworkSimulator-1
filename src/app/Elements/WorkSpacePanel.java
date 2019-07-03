@@ -24,17 +24,17 @@ public class WorkSpacePanel extends JPanel implements Serializable {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        /*if (linkers != null) {
+        if (linkers != null) {
             for (LinkerItem l : linkers) {
                 l.paint(g);
             }
-        }*/
+        }
     }
     @Override
     public void updateUI(){
         super.updateUI();
-        /*paint(this.getGraphics());
-        if (linkers != null) {
+        paint(this.getGraphics());
+        /*if (linkers != null) {
             for (LinkerItem l : linkers) {
                 l.paint(this.getGraphics());
             }

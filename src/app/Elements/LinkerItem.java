@@ -6,12 +6,13 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import material.graphs.Edge;
 import objects.Linker;
 
-public class LinkerItem implements Serializable {
+public class LinkerItem extends JPanel implements Serializable {
 
     /**
      *
@@ -23,6 +24,7 @@ public class LinkerItem implements Serializable {
     private NodeItem h2;
     private JLabel lblName;
 
+    @Override
     public void paint(Graphics g) {
         lblName.setBounds((h1.getX() + h2.getX()) / 2, (h1.getY() + h2.getY()) / 2, 100, 20);
         g.drawLine(h1.getX() + h1.getWidth() / 2, h1.getY() + h1.getHeight() / 2, h2.getX() + h2.getWidth() / 2, h2.getY() + h2.getHeight() / 2);
