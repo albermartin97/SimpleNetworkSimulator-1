@@ -70,7 +70,14 @@ public class VEnrutamiento extends javax.swing.JFrame {
         workSpacePanel1 = new app.Elements.WorkSpacePanel();
         jConfTablaEnrutamiento = new javax.swing.JPanel();
         jSPHostTable = new javax.swing.JScrollPane();
-        jtHostTable = new javax.swing.JTable();
+        jtHostTable = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                if(column == 0){
+                    return false;
+                }
+                return true;
+            }
+        };
         btnAceptarEnrutamiento = new javax.swing.JButton();
         btnCancelarEnrutamiento = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
@@ -126,6 +133,7 @@ public class VEnrutamiento extends javax.swing.JFrame {
         }
         jtHostTable.getColumnModel().getColumn(0).setCellRenderer(
             jtHostTable.getTableHeader().getDefaultRenderer());
+        jtHostTable.getTableHeader().setReorderingAllowed(false);
         jSPHostTable.setViewportView(jtHostTable);
 
         btnAceptarEnrutamiento.setText(bundle.getString("VEnrutamiento.btnAceptarEnrutamiento.text")); // NOI18N
