@@ -60,10 +60,10 @@ public class VAddPackage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtTamañoPackage = new javax.swing.JTextField();
+        txtTamanioPackage = new javax.swing.JTextField();
         jcbDestinoPackage = new javax.swing.JComboBox<>(this.computerList);
         lblKb = new javax.swing.JLabel();
-        lblTamañoPackage = new javax.swing.JLabel();
+        lblTamanioPackage = new javax.swing.JLabel();
         lblDestinoPackage = new javax.swing.JLabel();
         btnAceptarPackage = new javax.swing.JButton();
         btnCancelarPackage = new javax.swing.JButton();
@@ -75,13 +75,13 @@ public class VAddPackage extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        txtTamañoPackage.setToolTipText(bundle.getString("VAddPackage.txtTamañoPackage.toolTipText")); // NOI18N
+        txtTamanioPackage.setToolTipText(bundle.getString("VAddPackage.txtTamanioPackage.toolTipText")); // NOI18N
 
         jcbDestinoPackage.setToolTipText(bundle.getString("VAddPackage.jcbDestinoPackage.toolTipText")); // NOI18N
 
         lblKb.setText(bundle.getString("VAddPackage.lblKb.text")); // NOI18N
 
-        lblTamañoPackage.setText(bundle.getString("VAddPackage.lblTamañoPackage.text")); // NOI18N
+        lblTamanioPackage.setText(bundle.getString("VAddPackage.lblTamanioPackage.text")); // NOI18N
 
         lblDestinoPackage.setText(bundle.getString("VAddPackage.lblDestinoPackage.text")); // NOI18N
 
@@ -108,11 +108,11 @@ public class VAddPackage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTamañoPackage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTamanioPackage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblDestinoPackage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTamañoPackage)
+                            .addComponent(txtTamanioPackage)
                             .addComponent(jcbDestinoPackage, 0, 166, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblKb))
@@ -128,8 +128,8 @@ public class VAddPackage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTamañoPackage)
-                    .addComponent(txtTamañoPackage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTamanioPackage)
+                    .addComponent(txtTamanioPackage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblKb))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +150,7 @@ public class VAddPackage extends javax.swing.JFrame {
             this.setVisible(false);
             ci.getVertex()
                     .getElement()
-                    .addPackage(new objects.Package(new BigDecimal(txtTamañoPackage
+                    .addPackage(new objects.Package(new BigDecimal(txtTamanioPackage
                                     .getText()),
                                     (Vertex<Node>) getChildItem(jcbDestinoPackage
                                             .getSelectedItem().toString())));
@@ -188,7 +188,7 @@ public class VAddPackage extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbDestinoPackage;
     private javax.swing.JLabel lblDestinoPackage;
     private javax.swing.JLabel lblKb;
-    private javax.swing.JLabel lblTamañoPackage;
-    private javax.swing.JTextField txtTamañoPackage;
+    private javax.swing.JLabel lblTamanioPackage;
+    private javax.swing.JTextField txtTamanioPackage;
     // End of variables declaration//GEN-END:variables
 }

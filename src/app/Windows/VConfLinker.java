@@ -210,8 +210,11 @@ public class VConfLinker extends javax.swing.JFrame {
         } else {
             li.getLblName().setText(txtNameLinker.getText());
             li.getLinker().getElement().setIp(txtNameLinker.getText());
-            li.getLinker().getElement().setDistance(new BigDecimal(txtSizeLinker.getText()));
-            li.getLinker().getElement().setSpeed(new BigDecimal(txtSpeedLinker.getText()));
+            String distanceUnite = getDistanceUnite();
+            String speedUnite = getSpeedUnite();
+            li.getLinker().getElement().setDistance(new BigDecimal(txtSizeLinker.getText()).multiply(new BigDecimal(distanceUnite)));
+            li.getLinker().getElement().setSpeed(new BigDecimal(txtSpeedLinker.getText()).multiply(new BigDecimal(speedUnite)));
+            li.getLinker().getElement().setIp(txtNameLinker.getText());
             li.getLblName().setToolTipText(bundle.getString("speed") + "= " + li.getLinker().getElement().getSpeed().toString() + "; " + bundle.getString("distance") + "= " + li.getLinker().getElement().getDistance().toString());
             this.setVisible(false);
             this.vMain.setVisible(true);

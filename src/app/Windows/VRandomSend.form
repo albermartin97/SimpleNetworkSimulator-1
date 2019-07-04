@@ -42,12 +42,12 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblTamañoPackageRandomSend" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTamanioPackageRandomSend" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblTiempoMedioRandomSend" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtTamañoMedioRandomSend" max="32767" attributes="0"/>
+                          <Component id="txtTamanioMedioRandomSend" max="32767" attributes="0"/>
                           <Component id="txtTiempoMedioMedioRandomSend" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -66,8 +66,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTamañoPackageRandomSend" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTamañoMedioRandomSend" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTamanioPackageRandomSend" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTamanioMedioRandomSend" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblKbRandomSend" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -87,10 +87,10 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblTama&#xf1;oPackageRandomSend">
+    <Component class="javax.swing.JLabel" name="lblTamanioPackageRandomSend">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="app/Windows/Bundle.properties" key="VRandomSend.lblTama&#xf1;oPackageRandomSend.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+          <ResourceString bundle="app/Windows/Bundle.properties" key="VRandomSend.lblTamanioPackageRandomSend.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
     </Component>
@@ -101,10 +101,10 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTama&#xf1;oMedioRandomSend">
+    <Component class="javax.swing.JTextField" name="txtTamanioMedioRandomSend">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="app/Windows/Bundle.properties" key="VRandomSend.txtTama&#xf1;oMedioRandomSend.toolTipText" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+          <ResourceString bundle="app/Windows/Bundle.properties" key="VRandomSend.txtTamanioMedioRandomSend.toolTipText" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
     </Component>

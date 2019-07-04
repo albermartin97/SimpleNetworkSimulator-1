@@ -47,9 +47,9 @@ public class VRandomSend extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTamañoPackageRandomSend = new javax.swing.JLabel();
+        lblTamanioPackageRandomSend = new javax.swing.JLabel();
         lblTiempoMedioRandomSend = new javax.swing.JLabel();
-        txtTamañoMedioRandomSend = new javax.swing.JTextField();
+        txtTamanioMedioRandomSend = new javax.swing.JTextField();
         txtTiempoMedioMedioRandomSend = new javax.swing.JTextField();
         btnCancelarRandomSend = new javax.swing.JButton();
         btnAceptarRandomSend = new javax.swing.JButton();
@@ -63,11 +63,11 @@ public class VRandomSend extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(399, 113));
         setResizable(false);
 
-        lblTamañoPackageRandomSend.setText(bundle.getString("VRandomSend.lblTamañoPackageRandomSend.text")); // NOI18N
+        lblTamanioPackageRandomSend.setText(bundle.getString("VRandomSend.lblTamanioPackageRandomSend.text")); // NOI18N
 
         lblTiempoMedioRandomSend.setText(bundle.getString("VRandomSend.lblTiempoMedioRandomSend.text")); // NOI18N
 
-        txtTamañoMedioRandomSend.setToolTipText(bundle.getString("VRandomSend.txtTamañoMedioRandomSend.toolTipText")); // NOI18N
+        txtTamanioMedioRandomSend.setToolTipText(bundle.getString("VRandomSend.txtTamanioMedioRandomSend.toolTipText")); // NOI18N
 
         txtTiempoMedioMedioRandomSend.setToolTipText(bundle.getString("VRandomSend.txtTiempoMedioMedioRandomSend.toolTipText")); // NOI18N
 
@@ -103,11 +103,11 @@ public class VRandomSend extends javax.swing.JFrame {
                         .addComponent(btnCancelarRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTamañoPackageRandomSend)
+                            .addComponent(lblTamanioPackageRandomSend)
                             .addComponent(lblTiempoMedioRandomSend))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTamañoMedioRandomSend)
+                            .addComponent(txtTamanioMedioRandomSend)
                             .addComponent(txtTiempoMedioMedioRandomSend))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,8 +120,8 @@ public class VRandomSend extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTamañoPackageRandomSend)
-                    .addComponent(txtTamañoMedioRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTamanioPackageRandomSend)
+                    .addComponent(txtTamanioMedioRandomSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblKbRandomSend))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -160,7 +160,7 @@ public class VRandomSend extends javax.swing.JFrame {
             Host computer = (Host) ci.getVertex()
                     .getElement();
             computer.setRandomSend(
-                    new BigDecimal(txtTamañoMedioRandomSend.getText()),
+                    new BigDecimal(txtTamanioMedioRandomSend.getText()),
                     new BigDecimal(txtTiempoMedioMedioRandomSend.getText()));
         }
         this.setVisible(false);
@@ -174,14 +174,14 @@ public class VRandomSend extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelarRandomSend;
     private javax.swing.JLabel lblKbRandomSend;
     private javax.swing.JLabel lblSegundosRandomSend;
-    private javax.swing.JLabel lblTamañoPackageRandomSend;
+    private javax.swing.JLabel lblTamanioPackageRandomSend;
     private javax.swing.JLabel lblTiempoMedioRandomSend;
-    private javax.swing.JTextField txtTamañoMedioRandomSend;
+    private javax.swing.JTextField txtTamanioMedioRandomSend;
     private javax.swing.JTextField txtTiempoMedioMedioRandomSend;
     // End of variables declaration//GEN-END:variables
 
     private void configComponents(Host c) {
-        this.txtTamañoMedioRandomSend.setText(c.getRandomSend().getSizePackage().toString());
+        this.txtTamanioMedioRandomSend.setText(c.getRandomSend().getSizePackage().toString());
         this.txtTiempoMedioMedioRandomSend.setText(c.getRandomSend().getAverageTime().toString());
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2, 
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);

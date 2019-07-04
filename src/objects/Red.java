@@ -146,7 +146,7 @@ public class Red implements Serializable {
 	 *FIN RANDOM PACKAGE SENDS
      */
  /*
-        INICIO ENRUTAMIENTO AUTOMÁTICO
+        INICIO ENRUTAMIENTO AUTOMATICO
      */
     public Edge<Linker> getEnrutamiento(Vertex<Node> host, Vertex<Node> router) {
         ArrayList<Vertex<Node>> queueNodes = new ArrayList<>();
@@ -195,10 +195,10 @@ public class Red implements Serializable {
     }
 
     /*
-        FIN ENRUTAMIENTO AUTOMÁTICO
+        FIN ENRUTAMIENTO AUTOMATICO
      */
  /*
-        INICIO ENVÍO PAQUETES STEP BY STEP
+        INICIO ENVIO PAQUETES STEP BY STEP
      */
     public List<Event> sendNextPackages(int i) {
         List<Event> eventos = new ArrayList<>();
@@ -261,7 +261,7 @@ public class Red implements Serializable {
     }
 
     /*
-        FIN ENVÍO PAQUETES STEP BY STEP
+        FIN ENVIO PAQUETES STEP BY STEP
      */
  /*
 	 * INICIO PACKAGE SENDS ENVIO TOTAL SIN ENVIOS ALEATORIOS

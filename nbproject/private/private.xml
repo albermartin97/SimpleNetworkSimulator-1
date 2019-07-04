@@ -5,24 +5,14 @@
         <group>
             <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/WorkSpacePanel.java</file>
             <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/LinkerItem.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/SimulatorItem.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/MyMouseAdapter.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/NodeTable.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Windows/VConfHost.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/HostItem.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Windows/VMain.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/material/Position.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Windows/VRandomSend.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Windows/VAddPackage.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/simulator/Simulator.java</file>
             <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/MyMouseMotionAdapter.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Windows/VConfLinker.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Windows/Bundle.properties</file>
+            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/MyMouseAdapter.java</file>
             <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/RouterItem.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Windows/VEnrutamiento.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Windows/VConfRouter.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/HostTable.java</file>
-            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/objects/Red.java</file>
+            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/material/graphs/ALGraph.java</file>
+            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Elements/HostItem.java</file>
+            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/material/graphs/Edge.java</file>
+            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Windows/VMain.java</file>
+            <file>file:/C:/Users/alber/OneDrive/Documentos/NetBeansProjects/SimpleNetworkSimulator-1/src/app/Windows/VAddPackage.java</file>
         </group>
     </open-files>
 </project-private>

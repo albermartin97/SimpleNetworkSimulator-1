@@ -36,12 +36,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lblTamañoPackage" max="32767" attributes="0"/>
+                          <Component id="lblTamanioPackage" max="32767" attributes="0"/>
                           <Component id="lblDestinoPackage" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtTamañoPackage" max="32767" attributes="0"/>
+                          <Component id="txtTamanioPackage" max="32767" attributes="0"/>
                           <Component id="jcbDestinoPackage" pref="166" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -63,8 +63,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTamañoPackage" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTamañoPackage" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTamanioPackage" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTamanioPackage" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblKb" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -83,10 +83,10 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="txtTama&#xf1;oPackage">
+    <Component class="javax.swing.JTextField" name="txtTamanioPackage">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="app/Windows/Bundle.properties" key="VAddPackage.txtTama&#xf1;oPackage.toolTipText" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+          <ResourceString bundle="app/Windows/Bundle.properties" key="VAddPackage.txtTamanioPackage.toolTipText" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
     </Component>
@@ -108,10 +108,10 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblTama&#xf1;oPackage">
+    <Component class="javax.swing.JLabel" name="lblTamanioPackage">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="app/Windows/Bundle.properties" key="VAddPackage.lblTama&#xf1;oPackage.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+          <ResourceString bundle="app/Windows/Bundle.properties" key="VAddPackage.lblTamanioPackage.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
     </Component>
