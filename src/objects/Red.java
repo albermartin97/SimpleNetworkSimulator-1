@@ -18,7 +18,7 @@ import material.graphs.Vertex;
 public class Red implements Serializable {
 
     private static BigDecimal velocidadCable = new BigDecimal("200000000"); // Unidad : m/s
-    private static final java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+    private static final java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app.Windows.Bundle");
     private Random r = new Random();
 
     private ALGraph<Node, Linker> red;
