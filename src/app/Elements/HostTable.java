@@ -15,13 +15,14 @@ public class HostTable extends AbstractTableModel {
     private JScrollPane scrollPane;
     private Object[][] rowData;
     private String[] columnNames;
-
+    private static java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+    
     public HostTable() {
 
     }
 
     public HostTable(Vertex<Node> vh) {
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+        
         if (vh != null) {
             rowData = new Object[vh.getElement().getQueuePackages().size()][4];
             String names[] = {bundle.getString("IDPackage"), bundle.getString("Size"), bundle.getString("Time"),

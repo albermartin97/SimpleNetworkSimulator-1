@@ -18,6 +18,7 @@ import material.graphs.Vertex;
 public class Red implements Serializable {
 
     private static BigDecimal velocidadCable = new BigDecimal("200000000"); // Unidad : m/s
+    private static java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
     private Random r = new Random();
 
     private ALGraph<Node, Linker> red;
@@ -502,7 +503,6 @@ public class Red implements Serializable {
         Package p = h1.getElement().getQueuePackages().remove();
 
         if (h1 != p.getDestinationHost() && p.getDestinationHost() != null) {
-            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
             // Se diferencia entre si es un computer o un router por la forma de
             // obtener el siguiente nodo
             if (h1.getElement() instanceof Host) {
@@ -618,7 +618,6 @@ public class Red implements Serializable {
                 return states;
             }
         } else {
-            java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
             String mensaje = bundle.getString("ThePackage") + p.getId() + bundle.getString("HasBeenSent");
             List<State> states = new ArrayList<>();
             State state = new State(new Event(p.getTime(), mensaje, h1.getElement(), null, null, null), new Event(

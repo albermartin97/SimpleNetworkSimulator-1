@@ -23,7 +23,8 @@ public class LinkerItem extends JPanel implements Serializable {
     private NodeItem h1;
     private NodeItem h2;
     private JLabel lblName;
-
+    private static java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+    
     @Override
     public void paint(Graphics g) {
         lblName.setBounds((h1.getX() + h2.getX()) / 2, (h1.getY() + h2.getY()) / 2, 100, 20);
@@ -31,7 +32,6 @@ public class LinkerItem extends JPanel implements Serializable {
     }
 
     public LinkerItem(SimulatorItem simulatorItem, NodeItem h1, NodeItem h2) {
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
         this.lblName = new JLabel();
         this.si = simulatorItem;
         lblName.setBounds((h1.getX() + h2.getX()) / 2, (h1.getY() + h2.getY()) / 2, 100, 20);

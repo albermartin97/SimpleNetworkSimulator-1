@@ -11,14 +11,14 @@ import objects.Linker;
 public class MyMouseAdapter extends MouseAdapter {
 
     private NodeItem parent;
-
+    private static java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
+    
     public MyMouseAdapter() {
         super();
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/Windows/Bundle");
         if (parent.getSimulatorItem().isConectarHosts()) {
             if (parent.getSimulatorItem().getClickHost() == 1) {
                 Graphics g = parent.getSimulatorItem().getWorkSpacePanel().getGraphics();
