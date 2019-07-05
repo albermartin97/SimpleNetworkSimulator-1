@@ -6,6 +6,7 @@
 package app.Windows;
 
 import app.Elements.HostItem;
+import app.Elements.NodeItem;
 import java.math.BigDecimal;
 import objects.Host;
 
@@ -144,7 +145,7 @@ public class VRandomSend extends javax.swing.JFrame {
             Host computer = (Host) vConfComputer.getCI().getVertex()
                     .getElement();
             computer.setRandomSend(null);
-
+            vConfComputer.getSI().getvMain().setanyRandom(anyRandom());
         }
         vConfComputer.setEnabled(true);
         vConfComputer.getRbtnEnvioAleatorio().setSelected(false);
@@ -162,6 +163,7 @@ public class VRandomSend extends javax.swing.JFrame {
             computer.setRandomSend(
                     new BigDecimal(txtTamanioMedioRandomSend.getText()),
                     new BigDecimal(txtTiempoMedioMedioRandomSend.getText()));
+            vConfComputer.getSI().getvMain().setanyRandom(true);
         }
         this.setVisible(false);
         vConfComputer.setEnabled(true);
@@ -185,5 +187,16 @@ public class VRandomSend extends javax.swing.JFrame {
         this.txtTiempoMedioMedioRandomSend.setText(c.getRandomSend().getAverageTime().toString());
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2, 
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
+    }
+    private boolean anyRandom() {
+        for(NodeItem ni : vConfComputer.getSI().getWorkSpacePanel().getChildsItems()){
+            if(ni.getVertex().getElement() instanceof Host){
+                Host h =  (Host) ni.getVertex().getElement();
+                if(h.isRandomSend()){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

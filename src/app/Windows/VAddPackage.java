@@ -153,7 +153,7 @@ public class VAddPackage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarPackageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarPackageActionPerformed
-        if(getChildItem(jcbDestinoPackage.getSelectedItem().toString()) != null){
+        if(getChildItem(jcbDestinoPackage.getSelectedItem().toString()) != null && !txtTamanioPackage.getText().equals("")){
             this.setVisible(false);
             ci.getVertex()
                     .getElement()

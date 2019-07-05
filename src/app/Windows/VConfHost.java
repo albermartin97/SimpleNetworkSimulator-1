@@ -8,6 +8,7 @@ package app.Windows;
 import app.Elements.HostItem;
 import app.Elements.HostTable;
 import app.Elements.LinkerItem;
+import app.Elements.NodeItem;
 import app.Elements.SimulatorItem;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
@@ -272,6 +273,12 @@ public class VConfHost extends javax.swing.JFrame {
                 si.getSimulator().getRed().removeHost(ci.getVertex());
                 si.getWorkSpacePanel().updateUI();
                 vMain.setRouting(false);
+                if (ci.getVertex().getElement() instanceof Host) {
+                    Host c = (Host) ci.getVertex().getElement();
+                    if(c.isRandomSend()){
+                        vMain.setanyRandom(anyRandom());
+                    }
+                }
                 for (LinkerItem li : ci.getLinkers()) {
                     boolean borrado = si.getWorkSpacePanel().getLinkers().remove(li);
                     if(borrado)
@@ -280,6 +287,7 @@ public class VConfHost extends javax.swing.JFrame {
                 si.getWorkSpacePanel().getChildsItems().remove(ci);
                 enabledBotons();
             }
+            
         });
         popUpMenuHost.add(miEliminar);
         ci.setComponentPopupMenu(popUpMenuHost);
@@ -403,5 +411,16 @@ public class VConfHost extends javax.swing.JFrame {
         }else{
             this.setVisible(true);
         }
+    }
+    private boolean anyRandom() {
+        for(NodeItem ni : vMain.getSI().getWorkSpacePanel().getChildsItems()){
+            if(ni.getVertex().getElement() instanceof Host){
+                Host h =  (Host) ni.getVertex().getElement();
+                if(h.isRandomSend()){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -453,6 +453,12 @@ public class VMain extends javax.swing.JFrame {
                                     si.getSimulator().getRed().removeHost(ci.getVertex());
                                     si.getWorkSpacePanel().updateUI();
                                     routing = false;
+                                    if (ci.getVertex().getElement() instanceof Host) {
+                                       Host c = (Host) ci.getVertex().getElement();
+                                       if(c.isRandomSend()){
+                                           vMain.setanyRandom(anyRandom());
+                                       }
+                                    }
                                     for (LinkerItem li : ci.getLinkers()) {
                                         boolean borrado = si.getWorkSpacePanel().getLinkers().remove(li);
                                         if (borrado) {
@@ -743,6 +749,9 @@ public class VMain extends javax.swing.JFrame {
             if (routing) {
                 this.getBtnStart().setEnabled(true);
                 this.getBtnStartToFinish().setEnabled(routing && !anyRandom);
+            }else{
+                this.getBtnStart().setEnabled(false);
+                this.getBtnStartToFinish().setEnabled(false);
             }
         } else {
             this.getBtnEnrutar().setEnabled(false);
@@ -792,7 +801,9 @@ public class VMain extends javax.swing.JFrame {
     public boolean isAnyRandom() {
         return anyRandom;
     }
-
+    public void setanyRandom(boolean anyRandom){
+        this.anyRandom = anyRandom;
+    }
     public void setAnyRandom(boolean anyRandom) {
         this.anyRandom = this.anyRandom || anyRandom;
     }
@@ -866,5 +877,16 @@ public class VMain extends javax.swing.JFrame {
         btnEnrutar.setEnabled(false);
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
+    }
+    private boolean anyRandom() {
+        for(NodeItem ni : this.getSI().getWorkSpacePanel().getChildsItems()){
+            if(ni.getVertex().getElement() instanceof Host){
+                Host h =  (Host) ni.getVertex().getElement();
+                if(h.isRandomSend()){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
