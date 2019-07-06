@@ -453,6 +453,8 @@ public class VMain extends javax.swing.JFrame {
                                     si.getSimulator().getRed().removeHost(ci.getVertex());
                                     si.getWorkSpacePanel().updateUI();
                                     routing = false;
+                                    si.getvMain().getBtnStart().setEnabled(false);
+                                    si.getvMain().getBtnStartToFinish().setEnabled(false);
                                     if (ci.getVertex().getElement() instanceof Host) {
                                        Host c = (Host) ci.getVertex().getElement();
                                        if(c.isRandomSend()){
@@ -533,6 +535,8 @@ public class VMain extends javax.swing.JFrame {
                                     si.getSimulator().getRed().removeHost(ri.getVertex());
                                     si.getWorkSpacePanel().updateUI();
                                     routing = false;
+                                    si.getvMain().getBtnStart().setEnabled(false);
+                                    si.getvMain().getBtnStartToFinish().setEnabled(false);
                                     for (LinkerItem li : ri.getLinkers()) {
                                         boolean borrado = si.getWorkSpacePanel().getLinkers().remove(li);
                                         if (borrado) {
@@ -814,6 +818,8 @@ public class VMain extends javax.swing.JFrame {
 
     public void setRouting(boolean routing) {
         this.routing = routing;
+        this.getBtnStart().setEnabled(routing);
+        this.getBtnStartToFinish().setEnabled(routing);
     }
 
     public JPanel getjMain() {
