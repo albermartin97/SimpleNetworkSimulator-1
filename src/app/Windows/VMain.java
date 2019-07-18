@@ -34,8 +34,11 @@ import objects.Package;
 import simulator.Simulator;
 import app.Elements.NodeItem;
 import java.awt.Desktop;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URI;
 import java.util.HashMap;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -456,10 +459,10 @@ public class VMain extends javax.swing.JFrame {
                                     si.getvMain().getBtnStart().setEnabled(false);
                                     si.getvMain().getBtnStartToFinish().setEnabled(false);
                                     if (ci.getVertex().getElement() instanceof Host) {
-                                       Host c = (Host) ci.getVertex().getElement();
-                                       if(c.isRandomSend()){
-                                           vMain.setanyRandom(anyRandom());
-                                       }
+                                        Host c = (Host) ci.getVertex().getElement();
+                                        if (c.isRandomSend()) {
+                                            vMain.setanyRandom(anyRandom());
+                                        }
                                     }
                                     for (LinkerItem li : ci.getLinkers()) {
                                         boolean borrado = si.getWorkSpacePanel().getLinkers().remove(li);
@@ -625,11 +628,10 @@ public class VMain extends javax.swing.JFrame {
             try {
                 File f = jd.getSelectedFile();
                 String filePath = f.getPath();
-                if(!filePath.toLowerCase().endsWith(".sns"))
-                {
+                if (!filePath.toLowerCase().endsWith(".sns")) {
                     f = new File(filePath + ".sns");
                 }
-                
+
                 FileOutputStream fileOut = new FileOutputStream(f.getAbsolutePath());
                 ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
                 objectOut.writeObject(si.toString());
@@ -692,6 +694,7 @@ public class VMain extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        // get the property value and return it
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -753,7 +756,7 @@ public class VMain extends javax.swing.JFrame {
             if (routing) {
                 this.getBtnStart().setEnabled(true);
                 this.getBtnStartToFinish().setEnabled(routing && !anyRandom);
-            }else{
+            } else {
                 this.getBtnStart().setEnabled(false);
                 this.getBtnStartToFinish().setEnabled(false);
             }
@@ -805,9 +808,11 @@ public class VMain extends javax.swing.JFrame {
     public boolean isAnyRandom() {
         return anyRandom;
     }
-    public void setanyRandom(boolean anyRandom){
+
+    public void setanyRandom(boolean anyRandom) {
         this.anyRandom = anyRandom;
     }
+
     public void setAnyRandom(boolean anyRandom) {
         this.anyRandom = this.anyRandom || anyRandom;
     }
@@ -884,11 +889,12 @@ public class VMain extends javax.swing.JFrame {
         setLocation((getToolkit().getScreenSize().width - this.getWidth()) / 2,
                 (getToolkit().getScreenSize().height - this.getHeight()) / 2);
     }
+
     private boolean anyRandom() {
-        for(NodeItem ni : this.getSI().getWorkSpacePanel().getChildsItems()){
-            if(ni.getVertex().getElement() instanceof Host){
-                Host h =  (Host) ni.getVertex().getElement();
-                if(h.isRandomSend()){
+        for (NodeItem ni : this.getSI().getWorkSpacePanel().getChildsItems()) {
+            if (ni.getVertex().getElement() instanceof Host) {
+                Host h = (Host) ni.getVertex().getElement();
+                if (h.isRandomSend()) {
                     return true;
                 }
             }
